@@ -8,7 +8,13 @@
  **/
 
 // game resources
-var g_resources= [];
+var g_resources= [
+    {
+	name: "title_screen",
+	type: "image",
+	src:  "data/art/title.png"
+    }
+];
 
 
 var jsApp	= 
@@ -41,30 +47,74 @@ var jsApp	=
     /** Callback when everything is loaded. */
     loaded: function ()
     {
+	// Set title screen state
+	me.state.set(me.state.TITLE, new TitleScreen());
+
         // Set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new PlayScreen());
 
         // Start the game 
-        me.state.change(me.state.PLAY);
+        me.state.change(me.state.TITLE);
     }
 
 }; // jsApp
 
+/*
+ * Game state screens
+ */
+var TitleScreen = me.ScreenObject.extend(
+    {
+	init: function()
+	{
+	    this.parent(true);
+	    this.background = null;
+	},
+	
+	onResetEvent: function()
+	{
+	    this.background = me.loader.getImage("title_screen");
+	    
+	    //Bind enter key
+	    me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+	},
+	
+	update: function()
+	{
+	    //Check if enter has been pressed
+	    if (me.input.isKeyPressed('enter'))
+	    {
+		me.state.change(me.state.PLAY);
+	    }
+	    return true;
+	},
+
+	draw : function(context)
+	{
+	    context.drawImage(this.background, 0,0);	
+	},
+
+	onDestroyEvent: function()
+	{
+	    //Unbind enter key
+	    me.input.unbindKey(me.input.KEY.ENTER);
+	}
+    });
+
 /* The in game stuff*/
 var PlayScreen = me.ScreenObject.extend(
-{
-    onResetEvent: function()
-    {	
-        // Stuff to reset on state change
-    },
-
-
-    /** Action to perform when game is finished (state change) */
-    onDestroyEvent: function()
     {
-
+	onResetEvent: function()
+	{	
+        // Stuff to reset on state change
+	},
+	
+	
+	/** Action to perform when game is finished (state change) */
+	onDestroyEvent: function()
+    {
+	
     }
-});
+    });
 
 
 //bootstrap :)
