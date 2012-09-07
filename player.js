@@ -25,37 +25,45 @@ var Player = me.ObjectEntity.extend(
             return true;
         }
 
-        var keyCount = 0;
-        this.vel.x = 0;
-        this.vel.y = 0;
+        this._steer();
+
+        return true;
+    },
+
+    _steer: function()
+    {
+        var moveX = 0;
+        var moveY = 0;
+        var speedX = this.accel.x * me.timer.tick;
+        var speedY = this.accel.y * me.timer.tick;
 
         // Player movement
         if(me.input.isKeyPressed('left'))
         {
-            this.vel.x -= this.accel.x * me.timer.tick;
-            keyCount++;
+            moveX = -speedX;
         }else if(me.input.isKeyPressed('right')) {
-            this.vel.x += this.accel.x * me.timer.tick;
-            keyCount++;
+            moveX = speedX;
         }
 
         if(me.input.isKeyPressed('up')) {
-            this.vel.y -= this.accel.y * me.timer.tick;
-            keyCount++;
+            moveY = -speedY;
         }else if(me.input.isKeyPressed('down')) {
-            this.vel.y += this.accel.y * me.timer.tick;
-            keyCount++;
+            moveY = speedY;
         }
 
-        if(keyCount == 2)
-        {
-            this.vel.x /= 2;
-            this.vel.y /= 2;
-        }
+        var dist = Math.sqrt(Math.pow(moveX, 2) + Math.pow(moveY, 2));
+
+        if(moveX != 0)
+            this.vel.x += moveX / dist;
+        else
+            this.vel.x = 0;
+
+        if(moveY != 0)
+            this.vel.y += moveY / dist;
+        else
+            this.vel.y = 0;
 
         // Notify of player movement
         this.updateMovement();
-
-        return true;
-    },
+    }
 });

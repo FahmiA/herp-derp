@@ -4,7 +4,7 @@ var Table = me.ObjectEntity.extend(
     init: function(x, y, settings)
     {
         this.parent(x, y, settings);
-        this.collide = true;
+        //this.collide = true;
         
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(3, 3);
@@ -13,7 +13,9 @@ var Table = me.ObjectEntity.extend(
 
     update: function()
     {
-        return false;
+        if(this.evil)
+            this.flicker(60);
+        return true;
     },
 });
 
