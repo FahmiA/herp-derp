@@ -10,20 +10,25 @@
 // game resources
 var g_resources= [
 {
-    // Level tileset
-    name: 'groundTiles',
+    // Object tileset
+    name: 'OBJ_TILESET',
     type: 'image',
-    src: 'data/groundTiles.png'
+    src: 'data/art/OBJ_TILESET.png'
 }, {
-    // Character tileset
-    name: 'characterTiles',
+    // Level tileset
+    name: 'SOLIDS',
     type: 'image',
-    src: 'data/characterTiles.png'
+    src: 'data/art/SOLIDS.png'
+}, {
+    // Level tileset
+    name: 'TURF_TILESET',
+    type: 'image',
+    src: 'data/art/TURF_TILESET.png'
 }, {
     // Level 1
     name: 'area01',
     type: 'tmx',
-    src: 'data/area01.tmx'
+    src: 'data/testlevel.tmx'
 }, {
 	name: "title_screen",
 	type: "image",
@@ -72,6 +77,7 @@ var jsApp	=
 
         // Add entities
         me.entityPool.add('player', Player);
+        me.entityPool.add('table', Table);
 
         // Start the game 
         me.state.change(me.state.TITLE);
@@ -104,7 +110,7 @@ var TitleScreen = me.ScreenObject.extend(
 	    //Check if enter has been pressed
 	    if (me.input.isKeyPressed('enter'))
 	    {
-		me.state.change(me.state.PLAY);
+		    me.state.change(me.state.PLAY);
 	    }
 	    return true;
 	},
