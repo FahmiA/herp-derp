@@ -28,7 +28,7 @@ var g_resources= [
     // Level 1
     name: 'area01',
     type: 'tmx',
-    src: 'testlevel.tmx'
+    src: 'data/testlevel.tmx'
 }, {
 	name: "title_screen",
 	type: "image",

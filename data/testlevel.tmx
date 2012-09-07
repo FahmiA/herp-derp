@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="TURF_TILESET" tilewidth="32" tileheight="32">
-  <image source="data/art/TURF_TILESET.png" width="512" height="512"/>
+  <image source="art/TURF_TILESET.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="257" name="OBJ_TILESET" tilewidth="32" tileheight="32">
-  <image source="data/art/OBJ_TILESET.png" width="256" height="256"/>
+  <image source="art/OBJ_TILESET.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="321" name="SOLIDS" tilewidth="32" tileheight="32">
-  <image source="data/art/SOLIDS.png" width="160" height="32"/>
+  <image source="art/SOLIDS.png" width="160" height="32"/>
   <tile id="0">
    <properties>
     <property name="type" value="solid"/>
