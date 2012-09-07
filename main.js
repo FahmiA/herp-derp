@@ -15,15 +15,25 @@ var g_resources= [
     type: 'image',
     src: 'data/art/OBJ_TILESET.png'
 }, {
-    // Level tileset
-    name: 'SOLIDS',
-    type: 'image',
-    src: 'data/art/SOLIDS.png'
-}, {
-    // Level tileset
+    // Turf tileset
     name: 'TURF_TILESET',
     type: 'image',
     src: 'data/art/TURF_TILESET.png'
+}, {
+    // Mob tileset
+    name: 'MOB_TILESET',
+    type: 'image',
+    src: 'data/art/MOB_TILESET.png'
+}, {
+    // Effects tileset
+    name: 'EFFECTS_TILESET',
+    type: 'image',
+    src: 'data/art/EFFECTS_TILESET.png'
+}, {
+    // Colliders tileset
+    name: 'COLLIDERS',
+    type: 'image',
+    src: 'data/art/COLLIDERS.png'
 }, {
     // Level 1
     name: 'area01',
