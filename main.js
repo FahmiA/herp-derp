@@ -73,12 +73,6 @@ var jsApp	=
         // Add entities
         me.entityPool.add('player', Player);
 
-        // Add controls
-        me.input.bindKey(me.input.KEY.LEFT, 'left');
-        me.input.bindKey(me.input.KEY.RIGHT, 'right');
-        me.input.bindKey(me.input.KEY.UP, 'up');
-        me.input.bindKey(me.input.KEY.DOWN, 'down');
-
         // Start the game 
         me.state.change(me.state.TITLE);
     }
@@ -122,6 +116,8 @@ var TitleScreen = me.ScreenObject.extend(
 
 	onDestroyEvent: function()
 	{
+	    //Destroy the image
+
 	    //Unbind enter key
 	    me.input.unbindKey(me.input.KEY.ENTER);
 	    me.input.unbindMouse(me.input.mouse.LEFT);
