@@ -76,6 +76,7 @@ var TitleScreen = me.ScreenObject.extend(
 	    
 	    //Bind enter key
 	    me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+	    me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
 	},
 	
 	update: function()
@@ -97,6 +98,7 @@ var TitleScreen = me.ScreenObject.extend(
 	{
 	    //Unbind enter key
 	    me.input.unbindKey(me.input.KEY.ENTER);
+	    me.input.unbindMouse(me.input.mouse.LEFT);
 	}
     });
 
