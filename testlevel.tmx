@@ -6,6 +6,14 @@
  <tileset firstgid="65" name="TURF_TILESET" tilewidth="32" tileheight="32">
   <image source="../pxljm/art/TURF_TILESET.png" width="512" height="512"/>
  </tileset>
+ <tileset firstgid="321" name="SOLIDS" tilewidth="32" tileheight="32">
+  <image source="data/art/SOLIDS.png" width="160" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Tiles" width="20" height="20">
   <data encoding="base64" compression="zlib">
    eJzNklEKwCAMQ3u1Tez9jzSEfUiw0Y7I/HggiI+k1c3MxVyEdl9f2vkm/OGrwGk+Vd9+X73PiXfmw66znPhvMAfzRbnZuyy7fOq+0WyZrwxY2X2UI+sb5Yw8GR92Pc2n7vvFp+QBDpBqLQ==
@@ -55,4 +63,9 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="colliders" width="20" height="20" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJy9lG0KACAIQ+to3f9S/Y3w4w1WgiDmdGq15hjLrJW4Y0//bd9YUlMRpReCpTOJbJVf5CezVs8IJuPR9ZXlcez4dT5nvwRDatFdVb6OdxST2dmdpZyrWiqW5ne831//qUM3mIcntQ==
+  </data>
+ </layer>
 </map>
