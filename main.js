@@ -8,7 +8,24 @@
  **/
 
 // game resources
-var g_resources= [];
+var g_resources= [
+{
+    // Level tileset
+    name: 'groundTiles',
+    type: 'image',
+    src: 'data/groundTiles.png'
+}, {
+    // Character tileset
+    name: 'characterTiles',
+    type: 'image',
+    src: 'data/characterTiles.png'
+}, {
+    // Level 1
+    name: 'area01',
+    type: 'tmx',
+    src: 'data/area01.tmx'
+}
+];
 
 
 var jsApp	= 
@@ -35,6 +52,8 @@ var jsApp	=
 
         // Load everything & display a loading screen
         me.state.change(me.state.LOADING);
+
+        me.debug.renderHitBox = true;
     },
 
 
@@ -43,6 +62,15 @@ var jsApp	=
     {
         // Set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new PlayScreen());
+
+        // Add entities
+        me.entityPool.add('player', Player);
+
+        // Add controls
+        me.input.bindKey(me.input.KEY.LEFT, 'left');
+        me.input.bindKey(me.input.KEY.RIGHT, 'right');
+        me.input.bindKey(me.input.KEY.UP, 'up');
+        me.input.bindKey(me.input.KEY.DOWN, 'down');
 
         // Start the game 
         me.state.change(me.state.PLAY);
@@ -55,7 +83,11 @@ var PlayScreen = me.ScreenObject.extend(
 {
     onResetEvent: function()
     {	
-        // Stuff to reset on state change
+        // Load a level
+        me.levelDirector.loadLevel('area01');
+
+        // Make sure everything is in the right order
+        me.game.sort();
     },
 
 
