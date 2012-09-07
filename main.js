@@ -132,7 +132,7 @@ var TitleScreen = me.ScreenObject.extend(
 	    me.input.unbindKey(me.input.KEY.ENTER);
 	    me.input.unbindMouse(me.input.mouse.LEFT);
 	}
-    });
+});
 
 /* The in game stuff*/
 var PlayScreen = me.ScreenObject.extend(

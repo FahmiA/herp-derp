@@ -25,30 +25,33 @@ var Player = me.ObjectEntity.extend(
             return true;
         }
 
-        var horzMovement = 1;
-        var vertMovement = 0;
+        var keyCount = 0;
+        this.vel.x = 0;
+        this.vel.y = 0;
 
         // Player movement
         if(me.input.isKeyPressed('left'))
         {
             this.vel.x -= this.accel.x * me.timer.tick;
-            this.vel.y = 0;
+            keyCount++;
         }else if(me.input.isKeyPressed('right')) {
             this.vel.x += this.accel.x * me.timer.tick;
-            this.vel.y = 0;
-        }else if(me.input.isKeyPressed('up')) {
-            this.vel.y -= this.accel.y * me.timer.tick;
-            this.vel.x = 0;
-        }else if(me.input.isKeyPressed('down')) {
-            this.vel.y += this.accel.y * me.timer.tick;
-            this.vel.x = 0;
-        }else{
-            this.vel.x = 0;
-            this.vel.y = 0;
+            keyCount++;
         }
 
-        //this.vel.x = Math.cos(Math.PI/2 * horzMovement) * this.accel.x * me.timer.tick;
-        //this.vel.y = Math.sin(Math.Pi/2 * vertMovement) * this.accel.x * me.timer.tick;
+        if(me.input.isKeyPressed('up')) {
+            this.vel.y -= this.accel.y * me.timer.tick;
+            keyCount++;
+        }else if(me.input.isKeyPressed('down')) {
+            this.vel.y += this.accel.y * me.timer.tick;
+            keyCount++;
+        }
+
+        if(keyCount == 2)
+        {
+            this.vel.x /= 2;
+            this.vel.y /= 2;
+        }
 
         // Notify of player movement
         this.updateMovement();
