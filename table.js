@@ -10,6 +10,11 @@ var Table = me.ObjectEntity.extend(
         this.setVelocity(1, 1);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
 
+        // Set animations
+        this.addAnimation('move', [9, 10]);
+        this.addAnimation('stay', [8]);
+        this.setCurrentAnimation('stay');
+
         if(typeof(settings.evil) != 'undefined')
         {
             this.evil = settings.evil;
@@ -31,6 +36,7 @@ var Table = me.ObjectEntity.extend(
                 if(this.pos.distance(player.pos) < this.width * 2)
                 {
                     this.target = player;
+                    this.setCurrentAnimation('move');
                 }
             }
 
