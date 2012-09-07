@@ -4,9 +4,7 @@ var Player = me.ObjectEntity.extend(
     init: function(x, y, settings)
     {
         this.parent(x, y, settings);
-        this.collide = true;
-
-	console.debug(settings);
+        this.collidable = true;
         
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(3, 3);
@@ -24,10 +22,10 @@ var Player = me.ObjectEntity.extend(
 	me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
 
         // Adjust the bounding box
-		this.updateColRect(5, 22, 5, 22);
+	this.updateColRect(5, 22, 5, 22);
 
         // Set the display to follow our position on both axis
-	    me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+	me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     },
 
     update: function()
@@ -60,14 +58,13 @@ var Player = me.ObjectEntity.extend(
             this.vel.y = 0;
         }
 
+	// Notify of player movement
+        this.updateMovement();
+
 	//Player shooting
 	if(me.input.isKeyPressed('shoot'))
 	{
-	    //Fire mah lazer
-	    console.log("Pew!Pew!");
-	    
-	    //Play shooting player
-	    
+	    this.fireWeapon();    
 	}
 	
 	//Update the aim towards the screen
@@ -76,15 +73,31 @@ var Player = me.ObjectEntity.extend(
         //this.vel.x = Math.cos(Math.PI/2 * horzMovement) * this.accel.x * me.timer.tick;
         //this.vel.y = Math.sin(Math.Pi/2 * vertMovement) * this.accel.x * me.timer.tick;
 
-        // Notify of player movement
-        this.updateMovement();
-
         return true;
+    },
+
+    onCollision: function(res, obj)
+    {
+	console.log("Thump");
     },
 
     updateAim: function(pos)
     {
 	//Do math to convert player position and mouse pos
 	this.aim = Math.atan2(pos.y - this.pos.y, pos.x - this.pos.x);
+    },
+    
+    fireWeapon: function()
+    {
+	//Fire mah lazer
+	console.log("Pew!Pew!",Math.cos(this.aim),Math.sin(this.aim));
+	
+	//FIX ME!
+	var bullet = new Projectile(this.pos.x, this.pos.y, this.aim);
+	me.game.add(bullet, this.z);
+	me.game.sort();
+	
+	//Play shooting sound
+	
     }
 });

@@ -30,9 +30,10 @@ var g_resources= [
     type: 'tmx',
     src: 'data/testlevel.tmx'
 }, {
-	name: "title_screen",
-	type: "image",
-	src:  "data/art/title.png"
+    //Title screen image
+    name: "title_screen",
+    type: "image",
+    src:  "data/art/title.png"
 }
 ];
 

@@ -1,24 +1,25 @@
-var bullet = me.ObjectEntity.extend(
+var Projectile = me.ObjectEntity.extend(
     {
 	init: function(x, y, heading)
 	{
-	    this.parent(x, y, {
+	    var settings = {
 		name: "bullet",
 		x: 0,
 		y: 0,
 		z: 2,
-		width: 1,
-		height: 1,
+		width: 32,
+		height: 32,
 		gid: null,
 		isPolygon: false,
-		image: "bulletTile",
+		image: "OBJ_TILESET",
 		spriteheight: 32,
 		spritewidth: 32
-	    });
+	    };
+	    this.parent(x, y, settings);
 
-	    this.collide = true;
+	    this.collidable = true;
 	    
-	    this.setVelocity(3,3);
+	    this.setVelocity(2,2);
 	    this.gravity = 0;
 	    
 	    this.aim = heading;
@@ -26,15 +27,24 @@ var bullet = me.ObjectEntity.extend(
 
 	update: function()
 	{   
+	    console.log("Firing...");
 	    //Move along path
-	    //this.vel.x = 5;
-	    //this.vel.y = 5;
-	},
+	    this.vel.x += this.accel.x * me.timer.tick;
+	    this.vel.y -= this.accel.y * me.timer.tick;
 
-	onCollision: function(res, obj)
-	{
-	    console.debug(res);
-	    console.debug(obj);
-	    console.log("BOOM!");
+	    // Notify of projectile movement
+            this.updateMovement();
+
+	    //Check Collision
+	    var res = me.game.collide(this);
+	    if (res != null)
+	    {
+		console.debug(res.obj.name);
+		if(res.obj.name != "player")
+		{
+		    console.log("BOOM");
+		    me.game.remove(this);
+		}
+	    }
 	}
     });
