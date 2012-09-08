@@ -202,8 +202,19 @@ var Chair = ChasingEnemy.extend(
         this.updateColRect(5, 22, 5, 22);
 
         // Set animations
-        this.addAnimation('move', [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]);
-        this.addAnimation('stay', [48]);
+        var aniMoveIndex = Math.floor(Math.random() * 3);
+        if(aniMoveIndex == 0)
+        {
+            this.addAnimation('move', [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]);
+            this.addAnimation('stay', [48]);
+        }else if(aniMoveIndex == 1) {
+            this.addAnimation('move', [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]);
+            this.addAnimation('stay', [60]);
+        }else{
+            this.addAnimation('move', [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83]);
+            this.addAnimation('stay', [72]);
+        }
+
         this.setCurrentAnimation('stay');
 
         this.damage = 5
