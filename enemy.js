@@ -24,6 +24,8 @@ var Enemy = me.ObjectEntity.extend(
         }else{
             this.evil = false;
         }
+
+        this.player = null;
     },
 
     update: function()
@@ -37,15 +39,19 @@ var Enemy = me.ObjectEntity.extend(
             return true;
         }
 
+        if(this.player == null)
+        {
+            this.player = me.game.getEntityByName('player')[0];
+        }
+
         this.doUpdate = false;
 
         // Search for the player
         if(!this.target)
         {
-            var player = me.game.getEntityByName('player')[0];
-            if(this.pos.distance(player.pos) < this.respondDist)
+            if(this.pos.distance(this.player.pos) < this.respondDist)
             {
-                this.target = player;
+                this.target = this.player;
             }
         }
 
@@ -252,30 +258,46 @@ var Computer = Enemy.extend(
 /**Vending Machine*/
 var Vendor = Enemy.extend(
 {
-    init:  function (x, y, settings){
-	this.parent(x, y, settings, settings.width * 2);
-
-        // Set animations
-        this.addAnimation('idle', [27]);
-        this.addAnimation('alert', [27, 28]);
-        this.setCurrentAnimation('idle'),
-
-	this.cooldown = 60;
-    },
-    
-    onProximty: function()
+    init:  function(x, y, settings)
     {
-	
+        this.parent(x, y, settings, settings.width * 2);
+
+        this.fireGap = 60; // Ticks between firing
+        this.tickCount = 0;
+        this.lastTick = 0;
+    },
+
+    onProximity: function()
+    {
+        var aim = Math.atan2(this.pos.y - this.player.pos.y, this.pos.x - this.player.pos.x);
+        var PI = Math.PI;
+
+        this.tickCount += me.timer.tick;
+        if(aim > -2 && aim < -1) // In Radians
+        {
+            if(this.tickCount - this.lastTick > this.fireGap)
+            {
+                this._shoot();
+                this.lastTick = this.tickCount;
+            }
+        }
+    },
+
+    _shoot: function()
+    {
+        console.debug('Fired!');
     }
 });
 
 var Watercooler = Enemy.extend(
 {
-    init: function (x, y, settings){
-	this.parent(x, y, settings, settings.width * 2);
+    init: function (x, y, settings)
+    {
+	    this.parent(x, y, settings, settings.width * 2);
     },
 
-    onPromixty: function(){
+    onPromixty: function()
+    {
 	
     }
 });
