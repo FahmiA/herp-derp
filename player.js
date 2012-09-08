@@ -185,8 +185,6 @@ var Player = me.ObjectEntity.extend(
     {
         //Fire mah lazer
         //TODO SOUND
-	var x = 2144;
-	var y = 1984;
         
         //Create a bullet
         var bullet = new Bullet(
