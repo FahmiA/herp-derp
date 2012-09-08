@@ -84,7 +84,6 @@ var Player = me.ObjectEntity.extend(
 
     onHit: function(obj)
     {
-        console.debug(obj.name);
         if(!this.alive)
             return;	
 

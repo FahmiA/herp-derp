@@ -22,11 +22,22 @@
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="vender" gid="354" x="175" y="89" width="32" height="32">
+  <object name="health" gid="482" x="254" y="34" width="32" height="32"/>
+  <object name="computer" gid="465" x="191" y="93" width="32" height="32">
    <properties>
     <property name="evil" value="true"/>
+    <property name="image" value="MOB_TILESET"/>
+    <property name="spriteheight" value="32"/>
+    <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="health" gid="482" x="254" y="34" width="32" height="32"/>
+  <object name="computer" x="156" y="38" width="32" height="32">
+   <properties>
+    <property name="evil" value="true"/>
+    <property name="image" value="MOB_TILESET"/>
+    <property name="spriteheight" value="32"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

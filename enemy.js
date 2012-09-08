@@ -208,6 +208,10 @@ var Computer = Enemy.extend(
 {
     init: function(x, y, settings)
     {
+        // Hard-code these settings for convenience
+        settings.image = 'MOB_TILESET';
+        settings.spritewidth = 32;
+        settings.spriteheight = 32;
         this.parent(x, y, settings, settings.width * 2);
 
         // Set animations
