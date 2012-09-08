@@ -7,10 +7,11 @@ var Projectile = me.ObjectEntity.extend({
         this.collidable = true;
         this.updateColRect(0, 1, 0, 1);
 
-        this.setVelocity(15,15);
+        this.setVelocity(5,5);
         this.gravity = 0;
             
         this.aim = aim;
+	this.damage = 5;
     },
 
         update: function()
@@ -69,27 +70,17 @@ var Bullet = Projectile.extend({
     },
     
     draw: function(context) {
-	//Stolen math code
-	var xDistance = Math.abs(this.pos.x - this.source.x);
-	var yDistance = Math.abs(this.pos.y - this.source.y);
-	var distanceAB  = Math.sqrt(Math.pow(xDistance, 2) + 
-                                    Math.pow(yDistance, 2));
-	var distanceAC = 24;
-        var deltaXAC    = distanceAC * Math.cos(this.aim);
-        var deltaYAC    = distanceAC * Math.sin(this.aim);
-
-	var xC          = this.pos.x + deltaXAC;
-	var yC          = this.pos.y + deltaYAC;
+	var tracer = getPoint(this.pos, this.aim, 24);
 	
 	//Create drawing gradient
-	var grad = context.createLinearGradient(xC, yC, this.pos.x, this.pos.y);
+	var grad = context.createLinearGradient(tracer.x, tracer.y, this.pos.x, this.pos.y);
 	grad.addColorStop(0, "white");
 	grad.addColorStop(1, "rgba(255, 255, 0, 0.25)");
 	context.strokeStyle = grad;
 	
 	context.beginPath();
 	context.moveTo(this.pos.x, this.pos.y);
-	context.lineTo(xC, yC);
+	context.lineTo(tracer.x, tracer.y);
 	context.stroke();
     }
 });
@@ -112,3 +103,23 @@ var Soda = Projectile.extend({
 	this.parent(x, y, settings, aim);
     }
 });
+
+//Math stuff
+function getPoint(pos, angle, dist)
+{
+    //Stolen math code
+    //    var xDistance = Math.abs(this.pos.x - this.source.x);
+    //    var yDistance = Math.abs(this.pos.y - this.source.y);
+    //    var distanceAB  = Math.sqrt(Math.pow(xDistance, 2) + 
+    //                              Math.pow(yDistance, 2));
+    
+
+    var distanceAC = dist;
+    var deltaXAC    = distanceAC * Math.cos(angle);
+    var deltaYAC    = distanceAC * Math.sin(angle);
+
+    var xC          = pos.x + deltaXAC;
+    var yC          = pos.y + deltaYAC;
+
+    return new me.Vector2d(xC, yC);
+}
