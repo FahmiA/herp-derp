@@ -39,7 +39,7 @@ var Projectile = me.ObjectEntity.extend({
             {
                 console.log("Thunk");
                 //TODO SOUND Wall hit
-                me.game.remove(this);
+                //me.game.remove(this);
             }
 	    
 	    this.parent(this);

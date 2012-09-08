@@ -101,8 +101,8 @@ var Enemy = me.ObjectEntity.extend(
     {
         //Do math to convert player and enemy position
         this.aim = Math.atan2(
-	    pos.y - this.pos.y - this.anchorPoint.y + me.game.viewport.pos.y,
-	    pos.x - this.pos.x - this.anchorPoint.x + me.game.viewport.pos.x);
+	    pos.y - this.pos.y,
+	    pos.x - this.pos.x);
     }
 });
 
@@ -272,9 +272,6 @@ var Vendor = Enemy.extend(
 
     onProximity: function()
     {
-        var aim = Math.atan2(this.pos.y - this.player.pos.y, this.pos.x - this.player.pos.x);
-        var PI = Math.PI;
-
         this.tickCount += me.timer.tick;
         if(aim > -2 && aim < -1) // In Radians
         {
@@ -291,7 +288,7 @@ var Vendor = Enemy.extend(
 	//Create a soda
 	var soda = new Soda(
 	    this.pos.x,
-	    this.pos.y,  
+	    this.pos.y, 
 	    this.aim);
 	me.game.add(soda, this.z);
 	me.game.sort();
