@@ -64,6 +64,13 @@ var Table = me.ObjectEntity.extend(
                 
         return moved;
     },
+    
+    onHit: function(obj)
+    {
+	console.log("Crack");
+	if(obj.name == "bullet")
+	    return true;
+    },
 
     _chaseTarget: function()
     {
