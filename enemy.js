@@ -233,3 +233,32 @@ var Computer = Enemy.extend(
 });
 
 /**Vending Machine*/
+var Vendor = Enemy.extend(
+{
+    init:  function (){
+	this.parent(x, y, settings, settings.width * 2);
+
+        // Set animations
+        this.addAnimation('idle', [27]);
+        this.addAnimation('alert', [27, 28]);
+        this.setCurrentAnimation('idle'),
+
+	this.cooldown = 60;
+    },
+    
+    onProximty: function()
+    {
+	
+    }
+});
+
+var Watercooler = Enemy.extend(
+{
+    init: function (){
+	this.parent(x, y, settings, settings.width * 2);
+    },
+
+    onPromixty: function(){
+	
+    }
+});

@@ -80,12 +80,21 @@ var jsApp        =
     /** Callback when everything is loaded. */
     loaded: function ()
     {
-        // Set title screen state
+	//Set presenting screen
+	me.state.set(me.state.PRESENTS, new CreditScreen());
+	
+        //Set title screen state
         me.state.set(me.state.TITLE, new TitleScreen());
 
         // Set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new PlayScreen());
 
+	//Set end game screen
+	me.state.set(me.state.END, new EndScreen());
+
+	//Set death screen
+	me.state.set (me.state.DEATH, new DeathScreen());
+	
         // Add entities
         me.entityPool.add('player', Player);
         me.entityPool.add('table', Table);
@@ -163,6 +172,51 @@ var PlayScreen = me.ScreenObject.extend(
     }
 });
 
+var CreditScreen = me.ScreenObject.extend(
+{
+    onResetEvent: function()
+    {        
+    
+    },
+
+
+    /** Action to perform when game is finished (state change) */
+    onDestroyEvent: function()
+    {
+        
+    }
+},
+
+
+var EndScreen = me.ScreenObject.extend(
+{
+ onResetEvent: function()
+    {        
+     
+    },
+
+
+    /** Action to perform when game is finished (state change) */
+    onDestroyEvent: function()
+    {
+        
+    }
+},
+
+
+var DeathScreen = me.ScreenObject.extend(
+{
+    onResetEvent: function()
+    {        
+     
+    },
+
+    /** Action to perform when game is finished (state change) */
+    onDestroyEvent: function()
+    {
+        
+    }
+},
 
 //bootstrap :)
 window.onReady(function() 
