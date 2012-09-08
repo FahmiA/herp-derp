@@ -38,7 +38,8 @@ var g_resources= [
     // Level 1
     name: 'area01',
     type: 'tmx',
-    src: 'data/testlevel.tmx'
+    src: 'data/aniTest.tmx'
+    //src: 'data/testlevel.tmx'
 }, {
     //Title screen image
     name: "title_screen",
@@ -101,8 +102,8 @@ var jsApp        =
         me.entityPool.add('computer', Computer);
         me.entityPool.add('chair', Chair);
         me.entityPool.add('chairchair', Chair);
-	me.entityPool.add('vender', Vendor);
-	me.entityPool.add('watercooler', Watercooler);
+        me.entityPool.add('vender', Vendor);
+        me.entityPool.add('watercooler', Watercooler);
 
         // Start the game 
         me.state.change(me.state.TITLE);
