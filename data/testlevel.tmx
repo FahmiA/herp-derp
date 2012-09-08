@@ -160,7 +160,11 @@
   <object name="watercooler" gid="163" x="477" y="267"/>
   <object name="watercooler" gid="163" x="493" y="267"/>
   <object name="watercooler" gid="156" x="663" y="257"/>
-  <object name="watercooler" gid="158" x="714" y="159"/>
+  <object name="watercooler" gid="158" x="714" y="159">
+   <properties>
+    <property name="evil" value="true"/>
+   </properties>
+  </object>
   <object name="watercooler" gid="156" x="495" y="142"/>
   <object name="computer" gid="535" x="766" y="706"/>
  </objectgroup>
