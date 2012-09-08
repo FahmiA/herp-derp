@@ -167,6 +167,11 @@
   </object>
   <object name="watercooler" gid="156" x="495" y="142"/>
   <object name="computer" gid="535" x="766" y="706"/>
+  <object name="vender" gid="166" x="551" y="287">
+   <properties>
+    <property name="evil" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="collision" width="30" height="30" opacity="0.39">
   <data encoding="base64">
