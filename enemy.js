@@ -5,8 +5,8 @@ var Enemy = me.ObjectEntity.extend(
     {
         this.parent(x, y, settings);
         this.collidable = true;
-
-	this.health = 100;
+        
+        this.health = 100;
         
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(0, 0);
@@ -14,12 +14,23 @@ var Enemy = me.ObjectEntity.extend(
 
         this.respondDist = respondDist;
         this.target = null;
-	this.aim = 0;
+        this.aim = 0;
         this.doUpdate = false;
+        
+        // Set up evilness
+        if(typeof(settings.evil) != 'undefined')
+        {
+            this.evil = settings.evil;
+        }else{
+            this.evil = false;
+        }
     },
 
     update: function()
     {
+        if(!this.evil)
+            return false;
+
         if(!this.alive)
         {
             this.parent(this);
@@ -39,10 +50,10 @@ var Enemy = me.ObjectEntity.extend(
         }
 
         if(this.target)
-	{
-	    this._updateAim(this.target.pos);
+        {
+            this._updateAim(this.target.pos);
             this.onProximity();
-	}
+        }
 
         // Update player movement
         this.updateMovement();
@@ -61,14 +72,14 @@ var Enemy = me.ObjectEntity.extend(
     {
         console.log("Crack");
         if(obj.name == "bullet")
-	{
-	    this.health -= obj.damage;
-	}
+        {
+            this.health -= obj.damage;
+        }
 
-	if (this.health <= 0)
-	    me.game.remove(this);
+        if (this.health <= 0)
+            me.game.remove(this);
 
-	return true; //Absorb bullet
+        return true; //Absorb bullet
     },
 
     stateChanged: function()
@@ -95,16 +106,17 @@ var ChasingEnemy = Enemy.extend(
         this.setVelocity(speed, speed);
     },
 
-     update: function()
+    update: function()
     {
-	this.parent();
-	
-	//Check collision with objects
+        if (!this.parent())
+            return;
+
+        //Check collision with objects
         var res = me.game.collide(this);
         if (res != null)
         {   
             if (res.obj.name == "player")
-		res.obj.onHit(this);
+                res.obj.onHit(this);
         }
     },
 
