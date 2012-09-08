@@ -34,7 +34,6 @@ var Explosion = me.ObjectEntity.extend(
             }
         }
 
-
         this.parent(this);
         this.updateMovement();
         return true;

@@ -36,7 +36,6 @@ var Projectile = me.ObjectEntity.extend({
         wrld = this.updateMovement();
         if(wrld.x != 0 || wrld.y != 0)
         {
-            console.log("Thunk");
             //TODO SOUND Wall hit
             me.game.remove(this);
         }
