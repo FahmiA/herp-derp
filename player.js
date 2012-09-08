@@ -78,7 +78,17 @@ var Player = me.ObjectEntity.extend(
 
     onCollision: function(res, obj)
     {
-	console.log("Thump");
+	//console.log("Thwack");
+    },
+
+    onHit: function(obj)
+    {
+	if(obj.name != "bullet")
+	{
+	    console.log("Thwack");
+	    //Loose health
+	    //TODO SOUND
+	}
     },
 
     updateAim: function(pos)
@@ -90,14 +100,13 @@ var Player = me.ObjectEntity.extend(
     fireWeapon: function()
     {
 	//Fire mah lazer
-	console.log("Pew!Pew!",Math.cos(this.aim),Math.sin(this.aim));
+	console.log("Pew!Pew!");
+
+	//TODO SOUND
 	
-	//FIX ME!
-	var bullet = new Projectile(this.pos.x, this.pos.y, this.aim);
+	//Create a bullet
+	var bullet = new Bullet(this.pos.x, this.pos.y, this.aim);
 	me.game.add(bullet, this.z);
 	me.game.sort();
-	
-	//Play shooting sound
-	
     }
 });
