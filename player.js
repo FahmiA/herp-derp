@@ -136,7 +136,7 @@ var Player = me.ObjectEntity.extend(
         var aim = this.aim;
         var PI = Math.PI;
 
-        if(aim <= 0 && aim > -PI / 4) {
+        if((aim <= 0 && aim > -PI / 4) || (aim >= 0 && aim < PI / 4)) {
             this.setCurrentAnimation('lookRight');
             this.doUpdate = true;
         }else if(aim <= -PI / 4 && aim > -PI / 2) {
@@ -145,10 +145,10 @@ var Player = me.ObjectEntity.extend(
         }else if(aim <= -PI / 2 && aim > -(3 * PI) / 4) {
             this.setCurrentAnimation('lookUpLeft');
             this.doUpdate = true;
-        }else if(aim <= -(3 * PI) / 4 && aim > -PI) {
+        }else if((aim <= -(3 * PI) / 4 && aim > -PI) || (aim < PI && aim > (3 * PI) / 4)) {
             this.setCurrentAnimation('lookLeft');
             this.doUpdate = true;
-        }else if(aim <= PI && aim > PI / 2) {
+        }else if(aim <= (3 * PI) / 4 && aim > PI / 2) {
             this.setCurrentAnimation('lookDownLeft');
             this.doUpdate = true;
         }else{
