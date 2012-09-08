@@ -67,9 +67,9 @@ var Table = me.ObjectEntity.extend(
 
     onHit: function(obj)
     {
-	console.log("Crack");
-	if(obj.name == "bullet")
-	    return true;
+        console.log("Crack");
+        if(obj.name == "bullet")
+            return true;
     },
 
     _chaseTarget: function()

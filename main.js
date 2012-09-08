@@ -2,7 +2,7 @@
  * 
  *   melonJS
  *   http://www.melonjs.org
- *		
+ *                
  *   Step by step game creation tutorial
  *
  **/
@@ -48,8 +48,8 @@ var g_resources= [
 ];
 
 
-var jsApp	= 
-{	
+var jsApp        = 
+{        
     /** Initialize the jsApp */
     onload: function()
     {
@@ -80,8 +80,8 @@ var jsApp	=
     /** Callback when everything is loaded. */
     loaded: function ()
     {
-	// Set title screen state
-	me.state.set(me.state.TITLE, new TitleScreen());
+        // Set title screen state
+        me.state.set(me.state.TITLE, new TitleScreen());
 
         // Set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new PlayScreen());
@@ -101,51 +101,51 @@ var jsApp	=
  */
 var TitleScreen = me.ScreenObject.extend(
     {
-	init: function()
-	{
-	    this.parent(true);
-	    this.background = null;
-	},
-	
-	onResetEvent: function()
-	{
-	    this.background = me.loader.getImage("title_screen");
-	    
-	    //Bind enter key
-	    me.input.bindKey(me.input.KEY.ENTER, "enter", true);
-	    me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
-	},
-	
-	update: function()
-	{
-	    //Check if enter has been pressed
-	    if (me.input.isKeyPressed('enter'))
-	    {
-		    me.state.change(me.state.PLAY);
-	    }
-	    return true;
-	},
+        init: function()
+        {
+            this.parent(true);
+            this.background = null;
+        },
+        
+        onResetEvent: function()
+        {
+            this.background = me.loader.getImage("title_screen");
+            
+            //Bind enter key
+            me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+            me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
+        },
+        
+        update: function()
+        {
+            //Check if enter has been pressed
+            if (me.input.isKeyPressed('enter'))
+            {
+                me.state.change(me.state.PLAY);
+            }
+            return true;
+        },
 
-	draw : function(context)
-	{
-	    context.drawImage(this.background, 0,0);	
-	},
+        draw : function(context)
+        {
+            context.drawImage(this.background, 0,0);        
+        },
 
-	onDestroyEvent: function()
-	{
-	    //Destroy the image
+        onDestroyEvent: function()
+        {
+            //Destroy the image
 
-	    //Unbind enter key
-	    me.input.unbindKey(me.input.KEY.ENTER);
-	    me.input.unbindMouse(me.input.mouse.LEFT);
-	}
+            //Unbind enter key
+            me.input.unbindKey(me.input.KEY.ENTER);
+            me.input.unbindMouse(me.input.mouse.LEFT);
+        }
 });
 
 /* The in game stuff*/
 var PlayScreen = me.ScreenObject.extend(
 {
     onResetEvent: function()
-    {	
+    {        
         // Load a level
         me.levelDirector.loadLevel('area01');
 
@@ -157,7 +157,7 @@ var PlayScreen = me.ScreenObject.extend(
     /** Action to perform when game is finished (state change) */
     onDestroyEvent: function()
     {
-	
+        
     }
 });
 
