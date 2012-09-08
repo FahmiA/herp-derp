@@ -13,7 +13,7 @@ var Table = me.ObjectEntity.extend(
         // Set animations
         this.addAnimation('move', [9, 10]);
         this.addAnimation('stay', [8]);
-        this.setCurrentAnimation('stay');
+        this.setCurrentAnimation('move');
 
         if(typeof(settings.evil) != 'undefined')
         {
@@ -27,31 +27,42 @@ var Table = me.ObjectEntity.extend(
 
     update: function()
     {
-        if(this.alive)
+        if(!this.alive)
         {
-            // Search for the player
-            if(this.evil && !this.target)
-            {
-                var player = me.game.getEntityByName('player')[0];
-                if(this.pos.distance(player.pos) < this.width * 2)
-                {
-                    this.target = player;
-                    this.setCurrentAnimation('move');
-                }
-            }
+            this.parent(this);
+            return true;
+        }
 
-            // Chase the player 
-            if(this.target)
+        // Search for the player
+        if(this.evil && !this.target)
+        {
+            var player = me.game.getEntityByName('player')[0];
+            if(this.pos.distance(player.pos) < this.width * 2)
             {
-                this._chaseTarget();
-                this.flicker(2);
+                this.target = player;
+                this.setCurrentAnimation('move');
             }
+        }
+
+        // Chase the player 
+        if(this.target)
+        {
+            this._chaseTarget();
         }
 
         // Update player movement
         this.updateMovement();
 
-        return true;
+        // Update animation if necessary
+        var moved = false;
+        if (this.vel.x != 0 || this.vel.y != 0)
+        {
+            // Update object animation
+            this.parent(this);
+            moved = true;
+        }
+                
+        return moved;
     },
 
     _chaseTarget: function()
