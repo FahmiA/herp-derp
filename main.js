@@ -75,6 +75,7 @@ var jsApp        =
         me.state.change(me.state.LOADING);
 
         me.debug.renderHitBox = true;
+	me.debug.renderCollisionMap = true;
     },
 
 

@@ -7,7 +7,7 @@ var Projectile = me.ObjectEntity.extend({
         this.collidable = true;
         this.updateColRect(0, 1, 0, 1);
 
-        this.setVelocity(15,15);
+        this.setVelocity(1,1);
         this.gravity = 0;
             
         this.aim = aim;
@@ -24,8 +24,9 @@ var Projectile = me.ObjectEntity.extend({
             var res = me.game.collide(this);
             if (res != null)
             {   
-                var absorbed = false;
-                
+		//console.log("Hit ", res.obj.name);
+		
+                var absorbed = true;
                 //Let the collided objects decide if they absord the bullet
                 if (typeof(res.obj.onHit) == "function")
                     absorbed = res.obj.onHit(this);
@@ -55,13 +56,6 @@ var Bullet = Projectile.extend({
         
         var settings = {
             name: "bullet",
-            x: x,
-            y: y,
-            z: 2,
-            width:  1,
-            height: 1,
-            gid: null,
-            isPolygon: false,
             image: "OBJ_TILESET",
             spriteheight: 1,
             spritewidth: 1
@@ -70,16 +64,21 @@ var Bullet = Projectile.extend({
     },
     
     draw: function(context) {
-	var tracer = getPoint(this.pos, this.aim, 24);
+	var adjusted = new me.Vector2d(this.pos.x - me.game.viewport.pos.x, 
+				       this.pos.y - me.game.viewport.pos.y)
+	var tracer = getPoint(adjusted, this.aim, -12);
+	
+	//console.log(adjusted.x, adjusted.y);
+	//me.game.remove(this);
 	
 	//Create drawing gradient
-	var grad = context.createLinearGradient(tracer.x, tracer.y, this.pos.x, this.pos.y);
-	grad.addColorStop(0, "white");
-	grad.addColorStop(1, "rgba(255, 255, 0, 1)");
+	var grad = context.createLinearGradient(tracer.x, tracer.y, adjusted.x, adjusted.y);
+	grad.addColorStop(1, "white");
+	grad.addColorStop(0, "rgba(255, 255, 0, 1)");
 	context.strokeStyle = grad;
 	
 	context.beginPath();
-	context.moveTo(this.pos.x, this.pos.y);
+	context.moveTo(adjusted.x, adjusted.y);
 	context.lineTo(tracer.x, tracer.y);
 	context.stroke();
     }
@@ -87,10 +86,12 @@ var Bullet = Projectile.extend({
 
 var Soda = Projectile.extend({
     init: function(x, y, aim){
+	console.log(x, y);
+	
 	var settings = {
 	    name: "bullet",
-	    x: x,
-	    y: y,
+	    x: 0,
+	    y: 0,
 	    z: 2,
 	    width: 1,
 	    height: 1,
