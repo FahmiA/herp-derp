@@ -118,12 +118,6 @@ var Soda = Projectile.extend({
 function getPoint(pos, angle, dist)
 {
     //Stolen math code
-    //    var xDistance = Math.abs(this.pos.x - this.source.x);
-    //    var yDistance = Math.abs(this.pos.y - this.source.y);
-    //    var distanceAB  = Math.sqrt(Math.pow(xDistance, 2) + 
-    //                              Math.pow(yDistance, 2));
-    
-
     var distanceAC = dist;
     var deltaXAC    = distanceAC * Math.cos(angle);
     var deltaYAC    = distanceAC * Math.sin(angle);

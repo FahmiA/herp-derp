@@ -104,6 +104,20 @@ var Player = me.ObjectEntity.extend(
 	case "explosion":
 	    //TODO SOUND
 	    this._doDamage(obj.damage);
+	    
+	    //Throw player slightly
+	    /*
+	    var aim = Math.atan2(this.pos.y - obj.pos.y,
+				   this.pos.x - obj.pos.x);
+	    var toss = getPoint(this.pos , aim, 2);
+	    console.log(this.accel);
+	    tween = new me.Tween(this.pos)
+	    tween.to({x: toss.x, 
+		      y: toss.y},
+		    500);
+	    tween.easing(me.Tween.Easing.Linear.EaseNone);
+	    tween.start();
+	    */
 	    break;
 	default:
 	    return;

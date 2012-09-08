@@ -20,15 +20,21 @@ var Explosion = me.ObjectEntity.extend(
         this.damage = 50;
     },
 
+    onCollision: function(res, obj)
+    {
+	console.log("Collision");
+    },
+    
     update: function()
     {
         this.parent();
 
-        var res = me.game.collide(this);
+        var res = null;//me.game.collide(this);
         if(res != null)
         {
             if(res.obj.type == 'player')
             {
+		console.log("Hit Player")
                 res.obj.onHit(this);
             }
         }

@@ -1,3 +1,5 @@
+Features
+-------
 Bullets working again - Dan, DONE
 Some enemies evil - Fahmi, DONE
 Animation - Fahmi, DONE
@@ -13,8 +15,20 @@ audio - Nick
 Vender aiming bug - Fahmi/Dan - DONE
 Game screens - Nick
 Novel enemy behaviour - Dan
-donuts - Fahmi
-Computer explosions randomised
-armour (if time)
-AI tweeking
+Donuts - Fahmi - DONE
+New map + black borders
+Enemy Deadstates
+Game Tweaking
+     - Player health/enemy damage
+     - Enemy health/player damage
+     - Non-evil - more hitpoints
+Armour
+AI tweaking
     - Path finding + deviation
+
+Known Bugs
+---------
+Destroy cans on player hit
+Computer animation - Fahmi
+Player Speed on diagonals
+Viewport Deadzone
