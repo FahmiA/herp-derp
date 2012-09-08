@@ -17,6 +17,7 @@ Vender aiming bug - Fahmi/Dan - DONE
 Game screens - Nick
 Novel enemy behaviour - Dan
 Donuts - Fahmi - DONE
+Chair colour should be random - Fahmi - DONE
 New map + black borders
 Enemy Deadstates
 Game Tweaking
