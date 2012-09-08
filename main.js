@@ -55,7 +55,7 @@ var jsApp        =
     {
 
         // Init the video
-        if (!me.video.init('jsapp', 832, 832, false, 1.0))
+        if (!me.video.init('jsapp', 400, 400, false, 1.0))
         {
             alert("Sorry but your browser does not support html 5 canvas.");
             return;
@@ -100,6 +100,7 @@ var jsApp        =
         me.entityPool.add('table', Table);
         me.entityPool.add('computer', Computer);
         me.entityPool.add('chair', Chair);
+        me.entityPool.add('chairchair', Chair);
 
         // Start the game 
         me.state.change(me.state.TITLE);
