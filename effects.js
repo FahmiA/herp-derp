@@ -40,3 +40,45 @@ var Explosion = me.ObjectEntity.extend(
     },
 
 });
+
+/** Watter Spill  Effect */
+var WaterSpill = me.ObjectEntity.extend(
+{
+    init: function(x, y, settings)
+    {
+        this.parent(x, y, settings);
+        this.collidable = true;
+        
+        // Set the default horizontal & vertical speed (accel vector)
+        this.setVelocity(0, 0);
+        this.gravity = 0; // 0 as this is a top-down, not a platformer
+
+        // Set animations
+        this.addAnimation('spill', [16, 17, 18]);
+        this.animationspeed = 60;
+        this.setCurrentAnimation('spill', function() {
+            me.game.remove(this);
+        });
+
+        // Accessed by player
+        this.damage = 5;
+    },
+
+    update: function()
+    {
+        this.parent();
+
+        var res = me.game.collide(this);
+        if(res != null)
+        {
+            if(res.obj.type == 'player')
+            {
+                res.obj.onHit(this);
+            }
+        }
+
+        this.parent(this);
+        this.updateMovement();
+        return true;
+    }
+});

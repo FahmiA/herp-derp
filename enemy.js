@@ -231,7 +231,7 @@ var Computer = Enemy.extend(
                 this.stateChanged();
             }else{
                 var settings = {
-		    name: 'explosion',
+                    name: 'explosion',
                     image: 'EFFECTS_TILESET',
                     spritewidth: 32,
                     spriteheight: 32,
@@ -242,7 +242,7 @@ var Computer = Enemy.extend(
                 var maxX = this.pos.x + 32;
                 var minY = this.pos.y - 32;
                 var maxY = this.pos.y + 32;
-                // TODO: Give explostions a vector to follow AWAY from the computer.
+                // TODO: Give explosions a vector to follow AWAY from the computer.
                 for(var i = 0; i < maxExplosions; i++)
                 {
                     var x = minX + (Math.random() * (maxX - minX));
@@ -268,7 +268,6 @@ var Vendor = Enemy.extend(
 
         this.fireGap = 60; // Ticks between firing
         this.tickCount = 0;
-        this.lastTick = 0;
     },
 
     onProximity: function()
@@ -279,10 +278,10 @@ var Vendor = Enemy.extend(
         this.tickCount += me.timer.tick;
         if(aim > -2 && aim < -1) // In Radians
         {
-            if(this.tickCount - this.lastTick > this.fireGap)
+            if(this.tickCount > this.fireGap)
             {
                 this._shoot();
-                this.lastTick = this.tickCount;
+                this.tickCount = 0;
             }
         }
     },
@@ -304,10 +303,39 @@ var Watercooler = Enemy.extend(
     init: function (x, y, settings)
     {
 	    this.parent(x, y, settings, settings.width * 2);
+
+        this.fireGap = 240; // Ticks between firing
+        this.tickCount = 120;
     },
 
-    onPromixty: function()
+    onProximity: function()
     {
-	
+        this.tickCount += me.timer.tick;
+        if(this.tickCount > this.fireGap)
+        {
+            this.tickCount = 0;
+
+            var settings = {
+                name: 'waterSpill',
+                image: 'EFFECTS_TILESET',
+                spritewidth: 32,
+                spriteheight: 32,
+            };
+
+            var maxSpills = 9;
+            var minX = this.pos.x - 32;
+            var maxX = this.pos.x + 32;
+            var minY = this.pos.y - 32;
+            var maxY = this.pos.y + 32;
+            for(var x = minX; x <= maxX; x += 32)
+            {
+                for(var y = minY; y <= maxY; y += 32)
+                {
+                    me.game.add(new WaterSpill(x, y, settings), this.z + 1);
+                }
+            }
+
+            me.game.sort();
+        }
     }
 });

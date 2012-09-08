@@ -19,7 +19,7 @@
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="vender" gid="353" x="160" y="96" width="32" height="32">
+  <object name="watercooler" gid="349" x="156" y="68" width="32" height="32">
    <properties>
     <property name="evil" value="true"/>
    </properties>
