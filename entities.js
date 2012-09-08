@@ -7,7 +7,9 @@ var Projectile = me.ObjectEntity.extend({
 	 */
     init: function(x, y, settings, aim)
     {
+//	this.parent(true);
 	this.parent(x, y, settings);
+
 	this.collidable = true;
 	this.updateColRect(0, 1, 0, 1);
 
@@ -26,7 +28,7 @@ var Projectile = me.ObjectEntity.extend({
 	    //Check collision with objects
 	    var res = me.game.collide(this);
 	    if (res != null)
-	    {
+	    {	
 		var absorbed = false;
 		
 		//Let the collided objects decide if they absord the bullet
@@ -57,13 +59,13 @@ var Bullet = Projectile.extend({
 	    x: x,
 	    y: y,
 	    z: 2,
-	    width:  32,
-	    height: 32,
+	    width:  1,
+	    height: 1,
 	    gid: null,
 	    isPolygon: false,
 	    image: "OBJ_TILESET",
-	    spriteheight: 32,
-	    spritewidth: 32
+	    spriteheight: 1,
+	    spritewidth: 1
 	};
 
 	this.parent(x, y, settings, aim);

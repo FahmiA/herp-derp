@@ -5,6 +5,8 @@ var Player = me.ObjectEntity.extend(
     {
         this.parent(x, y, settings);
         this.collidable = true;
+
+	this.anchorPoint = new me.Vector2d(this.width/2, this.height/2);
         
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(3, 3);
@@ -17,9 +19,23 @@ var Player = me.ObjectEntity.extend(
         me.input.bindKey(me.input.KEY.RIGHT, 'right');
         me.input.bindKey(me.input.KEY.UP, 'up');
         me.input.bindKey(me.input.KEY.DOWN, 'down');
+	
+	//Bind WASD too
+	me.input.bindKey(me.input.KEY.A, 'left');
+        me.input.bindKey(me.input.KEY.D, 'right');
+        me.input.bindKey(me.input.KEY.W, 'up');
+        me.input.bindKey(me.input.KEY.S, 'down');
+
 
 	me.input.bindKey(me.input.KEY.SPACE, 'shoot', true);
 	me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
+
+        // Set animations
+        this.addAnimation('moveUp', [4, 5]);
+        this.addAnimation('moveDown', [6, 7]);
+        this.addAnimation('moveLeft', [2, 3]);
+        this.addAnimation('moveRight', [0, 1]);
+        this.setCurrentAnimation('moveRight');
 
         // Adjust the bounding box
 	this.updateColRect(5, 22, 5, 22);
@@ -30,55 +46,32 @@ var Player = me.ObjectEntity.extend(
 
     update: function()
     {
+	//Check if player is still alive
         if(!this.alive)
         {
             this.parent(this);
             return true;
         }
 
-        var horzMovement = 1;
-        var vertMovement = 0;
+	//Check player controls
+        this._steer();
 
-        // Player movement
-        if(me.input.isKeyPressed('left'))
+        // Update animation if necessary
+        var moved = false;
+        if (this.vel.x != 0 || this.vel.y != 0)
         {
-            this.vel.x -= this.accel.x * me.timer.tick;
-            this.vel.y = 0;
-        }else if(me.input.isKeyPressed('right')) {
-            this.vel.x += this.accel.x * me.timer.tick;
-            this.vel.y = 0;
-        }else if(me.input.isKeyPressed('up')) {
-            this.vel.y -= this.accel.y * me.timer.tick;
-            this.vel.x = 0;
-        }else if(me.input.isKeyPressed('down')) {
-            this.vel.y += this.accel.y * me.timer.tick;
-            this.vel.x = 0;
-        }else{
-            this.vel.x = 0;
-            this.vel.y = 0;
+            // Update object animation
+            this.parent(this);
+            moved = true;
         }
-
-	// Notify of player movement
-        this.updateMovement();
 
 	//Player shooting
 	if(me.input.isKeyPressed('shoot'))
 	{
-	    this.fireWeapon();    
+	    this._fireWeapon();    
 	}
-	
-	//Update the aim towards the screen
-	this.updateAim(me.input.mouse.pos);
-
-        //this.vel.x = Math.cos(Math.PI/2 * horzMovement) * this.accel.x * me.timer.tick;
-        //this.vel.y = Math.sin(Math.Pi/2 * vertMovement) * this.accel.x * me.timer.tick;
-
-        return true;
-    },
-
-    onCollision: function(res, obj)
-    {
-	//console.log("Thwack");
+                
+        return moved;
     },
 
     onHit: function(obj)
@@ -91,13 +84,60 @@ var Player = me.ObjectEntity.extend(
 	}
     },
 
-    updateAim: function(pos)
+    _steer: function()
+    {
+        var moveX = 0;
+        var moveY = 0;
+        var speedX = this.accel.x * me.timer.tick;
+        var speedY = this.accel.y * me.timer.tick;
+
+        // Player movement
+        if(me.input.isKeyPressed('left'))
+        {
+            moveX = -speedX;
+            this.setCurrentAnimation('moveLeft');
+        }else if(me.input.isKeyPressed('right')) {
+            moveX = speedX;
+            this.setCurrentAnimation('moveRight');
+        }
+
+        if(me.input.isKeyPressed('up')) {
+            moveY = -speedY;
+            this.setCurrentAnimation('moveUp');
+        }else if(me.input.isKeyPressed('down')) {
+            moveY = speedY;
+            this.setCurrentAnimation('moveDown');
+        }
+	
+	//Ensure travel speed is constant
+	var dist = Math.sqrt(Math.pow(moveX, 2) + Math.pow(moveY, 2));
+	
+	if (moveX != 0)
+	    this.vel.x += moveX/dist;
+	else
+	    this.vel.x = 0;
+
+	if (moveY != 0)
+	    this.vel.y += moveY/dist;
+	else
+	    this.vel.y = 0;
+
+	// Notify of player movement
+        this.updateMovement();
+	
+	//Update the aim towards the screen
+	this._updateAim(me.input.mouse.pos);
+
+        return true;
+    },
+
+    _updateAim: function(pos)
     {
 	//Do math to convert player position and mouse pos
 	this.aim = Math.atan2(pos.y - this.pos.y, pos.x - this.pos.x);
     },
     
-    fireWeapon: function()
+    _fireWeapon: function()
     {
 	//Fire mah lazer
 	console.log("Pew!Pew!");
