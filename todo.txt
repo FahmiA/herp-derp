@@ -1,0 +1,19 @@
+Bullets working again - Dan, DONE
+Some enemies evil - Fahmi, DONE
+Animation - Fahmi, DONE
+Player shoot damage - Dan, 
+Can move through walls - Fahmi,  DONE
+Vending machine - Fahmi and Dan
+    Shoots player - DONE
+    Can kill player - DONE
+    Animation - DONE
+watercooler - Fahmi - DONE
+    - Watercooler continues spill water even when player is away, Fahmi - DONE
+audio - Nick
+Vender aiming bug
+Game screens - Nick
+donuts
+Computer explosions randomised
+armer (if time)
+AI tweeking
+    - Path finding + deviation
