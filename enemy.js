@@ -12,14 +12,7 @@ var Enemy = me.ObjectEntity.extend(
         this.setVelocity(0, 0);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
 
-        // Set up evilness
-        if(typeof(settings.evil) != 'undefined')
-        {
-            this.evil = settings.evil;
-        }else{
-            this.evil = false;
-        }
-
+        this.respondDist = respondDist;
         this.target = null;
 	this.aim = 0;
         this.doUpdate = false;
@@ -36,10 +29,10 @@ var Enemy = me.ObjectEntity.extend(
         this.doUpdate = false;
 
         // Search for the player
-        if(this.evil && !this.target)
+        if(!this.target)
         {
             var player = me.game.getEntityByName('player')[0];
-            if(this.pos.distance(player.pos) < this.width * 2)
+            if(this.pos.distance(player.pos) < this.respondDist)
             {
                 this.target = player;
             }
@@ -162,8 +155,8 @@ var Table = ChasingEnemy.extend(
         this.parent(x, y, settings, settings.width * 3, 1);
 
         // Set animations
-        this.addAnimation('move', [9, 10]);
-        this.addAnimation('stay', [8]);
+        this.addAnimation('move', [24, 25, 26]);
+        this.addAnimation('stay', [24]);
         this.setCurrentAnimation('move');
 
 	this.damage = 25;
@@ -198,15 +191,43 @@ var Computer = Enemy.extend(
         this.parent(x, y, settings, settings.width * 2);
 
         // Set animations
-        this.addAnimation('idle', [27, 28]);
+        this.addAnimation('idle', [27]);
         this.addAnimation('alert', [27, 28]);
-        this.setCurrentAnimation('alert', 'alert');
+        this.setCurrentAnimation('idle');
+
+        this.fuseMaxTicks = 120;
+        this.fuseTicks = 0;
     },
 
     onProximity: function()
     {
-	this.setCurrentAnimation('alert');
-        console.debug('Boom!');
-	me.game.remove(this);
+        if(this.alive)
+        {
+            if(this.fuseTicks < this.fuseMaxTicks)
+            {
+                this.fuseTicks++;
+                this.setCurrentAnimation('alert');
+                this.stateChanged();
+            }else{
+                var settings = {
+                    image: 'EFFECTS_TILESET',
+                    spritewidth: 32,
+                    spriteheight: 32,
+                };
+
+                for(var row = this.pos.x - 32; row < this.pos.x + 32; row += 32)
+                {
+                    for(var col = this.pos.y - 32; col < this.pos.y + 32; col += 32)
+                    {
+                        me.game.add(new Explosion(row, col, settings), this.z + 1);
+                    }
+                }
+
+                me.game.remove(this);
+                me.game.sort();
+
+                this.alive = false;
+            }
+        }
     }
 });

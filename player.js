@@ -5,6 +5,7 @@ var Player = me.ObjectEntity.extend(
     {
         this.parent(x, y, settings);
         this.collidable = true;
+        this.type = 'player';
 
         this.anchorPoint = new me.Vector2d(this.width/2, this.height/2);
         
