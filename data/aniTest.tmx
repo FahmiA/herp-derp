@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="10" height="5" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="TURF_TILESET" tilewidth="32" tileheight="32">
   <image source="art/TURF_TILESET.png" width="512" height="512"/>
  </tileset>
@@ -9,12 +9,12 @@
  <tileset firstgid="449" name="OBJ_TILESET" tilewidth="32" tileheight="32">
   <image source="art/OBJ_TILESET.png" width="256" height="256"/>
  </tileset>
- <layer name="Back" width="10" height="5">
+ <layer name="Back" width="10" height="10">
   <data encoding="base64">
-   BQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAA=
+   BQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAA==
   </data>
  </layer>
- <objectgroup name="Fore" width="10" height="5">
+ <objectgroup name="Fore" width="10" height="10">
   <object name="player" x="64" y="80" width="32" height="32">
    <properties>
     <property name="image" value="MOB_TILESET"/>
@@ -22,21 +22,29 @@
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="health" gid="482" x="254" y="34" width="32" height="32"/>
-  <object name="computer" gid="465" x="191" y="93" width="32" height="32">
+  <object name="table" gid="281" x="267" y="39" width="32" height="32">
    <properties>
     <property name="evil" value="true"/>
-    <property name="image" value="MOB_TILESET"/>
-    <property name="spriteheight" value="32"/>
-    <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="computer" x="156" y="38" width="32" height="32">
+  <object name="chair" gid="305" x="276" y="311" width="32" height="32">
    <properties>
     <property name="evil" value="true"/>
-    <property name="image" value="MOB_TILESET"/>
-    <property name="spriteheight" value="32"/>
-    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object name="watercooler" gid="350" x="7" y="39" width="32" height="32">
+   <properties>
+    <property name="evil" value="true"/>
+   </properties>
+  </object>
+  <object name="computer" gid="293" x="3" y="313" width="32" height="32">
+   <properties>
+    <property name="evil" value="true"/>
+   </properties>
+  </object>
+  <object name="vender" gid="353" x="100" y="39" width="32" height="32">
+   <properties>
+    <property name="evil" value="true"/>
    </properties>
   </object>
  </objectgroup>

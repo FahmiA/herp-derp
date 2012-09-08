@@ -38,8 +38,8 @@ var g_resources= [
     // Level 1
     name: 'area01',
     type: 'tmx',
-    //src: 'data/aniTest.tmx'
-    src: 'data/testlevel.tmx'
+    src: 'data/aniTest.tmx'
+    //src: 'data/testlevel.tmx'
 }, {
     //Title screen image
     name: "title_screen",

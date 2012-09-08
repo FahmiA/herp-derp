@@ -1,8 +1,15 @@
 /** Abstract Enemy */
 var Enemy = me.ObjectEntity.extend(
 {
-    init: function(x, y, settings, respondDist)
+    init: function(x, y, settings, respondDist, animates)
     {
+        // Hard-code these settings for convenience
+        if(animates)
+        {
+            settings.image = 'MOB_TILESET';
+            settings.spritewidth = 32;
+            settings.spriteheight = 32;
+        }
         this.parent(x, y, settings);
         this.collidable = true;
         
@@ -107,9 +114,9 @@ var Enemy = me.ObjectEntity.extend(
 
 var ChasingEnemy = Enemy.extend(
 {
-    init: function(x, y, settings, respondDist, speed)
+    init: function(x, y, settings, respondDist, animates, speed)
     {
-        this.parent(x, y, settings, respondDist);
+        this.parent(x, y, settings, respondDist, animates);
         this.speed = speed;
 
         this.setVelocity(speed, speed);
@@ -172,7 +179,7 @@ var Table = ChasingEnemy.extend(
 {
     init: function(x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 3, 1);
+        this.parent(x, y, settings, settings.width * 3, true, 1);
 
         // Set animations
         this.addAnimation('move', [24, 25, 26]);
@@ -188,7 +195,7 @@ var Chair = ChasingEnemy.extend(
 {
     init: function (x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 4, 2);
+        this.parent(x, y, settings, settings.width * 4, true, 2);
 
         //Chairs have less health
         this.health = 35;
@@ -208,11 +215,7 @@ var Computer = Enemy.extend(
 {
     init: function(x, y, settings)
     {
-        // Hard-code these settings for convenience
-        settings.image = 'MOB_TILESET';
-        settings.spritewidth = 32;
-        settings.spriteheight = 32;
-        this.parent(x, y, settings, settings.width * 2);
+        this.parent(x, y, settings, settings.width * 2, true);
 
         // Set animations
         this.addAnimation('idle', [36]);
@@ -267,7 +270,7 @@ var Vender = Enemy.extend(
 {
     init:  function(x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 2);
+        this.parent(x, y, settings, settings.width * 2, false);
 
         this.fireGap = 60; // Ticks between firing
         this.tickCount = 0;
@@ -303,7 +306,7 @@ var Watercooler = Enemy.extend(
 {
     init: function (x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 2);
+        this.parent(x, y, settings, settings.width * 2, false);
 
         this.fireGap = 240; // Ticks between firing
         this.tickCount = 120;
