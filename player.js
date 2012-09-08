@@ -100,8 +100,12 @@ var Player = me.ObjectEntity.extend(
 	    //TODO SOUND
 	    this._doDamage(obj.damage);
 	    break;
-	default:
+	case "explosion":
+	    //TODO SOUND
+	    this._doDamage(obj.damage);
 	    break;
+	default:
+	    return;
 	}
     },
 

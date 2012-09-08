@@ -82,7 +82,6 @@ var Enemy = me.ObjectEntity.extend(
         this.aim = Math.atan2(
 	    pos.y - this.pos.y - this.anchorPoint.y + me.game.viewport.pos.y,
 	    pos.x - this.pos.x - this.anchorPoint.x + me.game.viewport.pos.x);
-	console.log(this.aim);
     }
 });
 
@@ -210,6 +209,7 @@ var Computer = Enemy.extend(
                 this.stateChanged();
             }else{
                 var settings = {
+		    name: 'explosion',
                     image: 'EFFECTS_TILESET',
                     spritewidth: 32,
                     spriteheight: 32,
@@ -231,3 +231,5 @@ var Computer = Enemy.extend(
         }
     }
 });
+
+/**Vending Machine*/
