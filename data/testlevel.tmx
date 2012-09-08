@@ -172,28 +172,24 @@
   <object name="chair" gid="126" x="2822" y="2609"/>
   <object name="chair" gid="128" x="2786" y="2608"/>
   <object name="chair" gid="133" x="2809" y="2411"/>
-  <object name="chair" gid="133" x="2907" y="2348"/>
-  <object name="chair" gid="135" x="2814" y="2346"/>
   <object name="chair" gid="135" x="2786" y="2278"/>
   <object name="chair" gid="135" x="2913" y="2415"/>
   <object name="chair" gid="136" x="2826" y="2454"/>
-  <object name="chair" gid="134" x="2751" y="2061">
-   <properties>
-    <property name="evil" value="true"/>
-   </properties>
-  </object>
+  <object name="chair" gid="134" x="2751" y="2061"/>
   <object name="chair" gid="134" x="2686" y="2062"/>
   <object name="chair" gid="136" x="2926" y="2100"/>
   <object name="chair" gid="138" x="2873" y="2068"/>
   <object name="chair" gid="139" x="2895" y="2131"/>
   <object name="chair" gid="140" x="2881" y="2164"/>
   <object name="chair" gid="122" x="2922" y="2614"/>
-  <object name="chair" x="2775" y="2093" width="32" height="32">
+  <object name="chair" gid="134" x="2814" y="2347">
    <properties>
     <property name="evil" value="true"/>
-    <property name="image" value="MOB_TILESET"/>
-    <property name="spriteheight" value="32"/>
-    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object name="chair" gid="134" x="2911" y="2347">
+   <properties>
+    <property name="evil" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -265,6 +261,14 @@
  <objectgroup name="Player" width="150" height="150">
   <object name="player" x="2567" y="2409" width="32" height="32">
    <properties>
+    <property name="image" value="MOB_TILESET"/>
+    <property name="spriteheight" value="32"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object name="table" gid="94" x="2778" y="2123">
+   <properties>
+    <property name="evil" value="true"/>
     <property name="image" value="MOB_TILESET"/>
     <property name="spriteheight" value="32"/>
     <property name="spritewidth" value="32"/>
