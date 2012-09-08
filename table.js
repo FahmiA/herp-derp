@@ -4,7 +4,7 @@ var Table = me.ObjectEntity.extend(
     init: function(x, y, settings)
     {
         this.parent(x, y, settings);
-        //this.collide = true;
+        this.collidable = true;
         
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(1, 1);
@@ -64,7 +64,7 @@ var Table = me.ObjectEntity.extend(
                 
         return moved;
     },
-    
+
     onHit: function(obj)
     {
         console.log("Crack");
