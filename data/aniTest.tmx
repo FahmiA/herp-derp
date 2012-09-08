@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="5" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="TURF_TILESET" tilewidth="32" tileheight="32">
+  <image source="art/TURF_TILESET.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="257" name="MOB_TILESET" tilewidth="32" tileheight="32">
+  <image source="art/MOB_TILESET.png" width="384" height="512"/>
+ </tileset>
+ <layer name="Back" width="10" height="5">
+  <data encoding="base64">
+   BQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAA=
+  </data>
+ </layer>
+ <objectgroup name="Fore" width="10" height="5">
+  <object name="player" x="64" y="80" width="32" height="32">
+   <properties>
+    <property name="image" value="MOB_TILESET"/>
+    <property name="spriteheight" value="32"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object name="computer" x="221" y="70" width="32" height="32">
+   <properties>
+    <property name="evil" value="true"/>
+    <property name="image" value="MOB_TILESET"/>
+    <property name="spriteheight" value="32"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
