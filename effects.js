@@ -15,13 +15,28 @@ var Explosion = me.ObjectEntity.extend(
         this.setCurrentAnimation('explode', function() {
             me.game.remove(this);
         });
+
+        // Accessed by player
+        this.damage = 50;
     },
 
     update: function()
     {
-        this.updateMovement();
+        this.parent();
+
+        var res = me.game.collide(this);
+        if(res != null)
+        {
+            if(res.obj.type == 'player')
+            {
+                res.obj.onHit(this);
+            }
+        }
+
+
         this.parent(this);
+        this.updateMovement();
         return true;
-    }
+    },
 
 });
