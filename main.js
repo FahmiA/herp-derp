@@ -55,7 +55,7 @@ var jsApp        =
     {
 
         // Init the video
-        if (!me.video.init('jsapp', 400, 400, false, 1.0))
+        if (!me.video.init('jsapp', 832, 832, false, 1.0))
         {
             alert("Sorry but your browser does not support html 5 canvas.");
             return;
@@ -81,7 +81,7 @@ var jsApp        =
     loaded: function ()
     {
 	//Set presenting screen
-	me.state.set(me.state.PRESENTS, new CreditScreen());
+//	me.state.set(me.state.PRESENTS, new CreditScreen());
 	
         //Set title screen state
         me.state.set(me.state.TITLE, new TitleScreen());
@@ -90,10 +90,10 @@ var jsApp        =
         me.state.set(me.state.PLAY, new PlayScreen());
 
 	//Set end game screen
-	me.state.set(me.state.END, new EndScreen());
+//	me.state.set(me.state.END, new EndScreen());
 
 	//Set death screen
-	me.state.set (me.state.DEATH, new DeathScreen());
+//	me.state.set (me.state.DEATH, new DeathScreen());
 	
         // Add entities
         me.entityPool.add('player', Player);
@@ -101,6 +101,8 @@ var jsApp        =
         me.entityPool.add('computer', Computer);
         me.entityPool.add('chair', Chair);
         me.entityPool.add('chairchair', Chair);
+	me.entityPool.add('vender', Vendor);
+	me.entityPool.add('watercooler', Watercooler);
 
         // Start the game 
         me.state.change(me.state.TITLE);
@@ -126,6 +128,8 @@ var TitleScreen = me.ScreenObject.extend(
             //Bind enter key
             me.input.bindKey(me.input.KEY.ENTER, "enter", true);
             me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
+
+	    //me.video.scale(me.video.getScreenFrameBuffer(), 0.5);
         },
         
         update: function()
@@ -140,7 +144,7 @@ var TitleScreen = me.ScreenObject.extend(
 
         draw : function(context)
         {
-            context.drawImage(this.background, 0,0);        
+            context.drawImage(this.background, 0,0); 
         },
 
         onDestroyEvent: function()
@@ -186,23 +190,23 @@ var CreditScreen = me.ScreenObject.extend(
     {
         
     }
-},
+});
 
 
 var EndScreen = me.ScreenObject.extend(
 {
- onResetEvent: function()
+    onResetEvent: function()
     {        
-     
+	
     },
-
-
+    
+    
     /** Action to perform when game is finished (state change) */
     onDestroyEvent: function()
     {
         
     }
-},
+});
 
 
 var DeathScreen = me.ScreenObject.extend(
@@ -217,7 +221,7 @@ var DeathScreen = me.ScreenObject.extend(
     {
         
     }
-},
+});
 
 //bootstrap :)
 window.onReady(function() 

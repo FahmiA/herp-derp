@@ -7,11 +7,11 @@ var Projectile = me.ObjectEntity.extend({
         this.collidable = true;
         this.updateColRect(0, 1, 0, 1);
 
-        this.setVelocity(5,5);
+        this.setVelocity(15,15);
         this.gravity = 0;
             
         this.aim = aim;
-	this.damage = 5;
+	this.damage = 100;
     },
 
         update: function()
@@ -75,7 +75,7 @@ var Bullet = Projectile.extend({
 	//Create drawing gradient
 	var grad = context.createLinearGradient(tracer.x, tracer.y, this.pos.x, this.pos.y);
 	grad.addColorStop(0, "white");
-	grad.addColorStop(1, "rgba(255, 255, 0, 0.25)");
+	grad.addColorStop(1, "rgba(255, 255, 0, 1)");
 	context.strokeStyle = grad;
 	
 	context.beginPath();

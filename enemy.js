@@ -247,7 +247,7 @@ var Computer = Enemy.extend(
 /**Vending Machine*/
 var Vendor = Enemy.extend(
 {
-    init:  function (){
+    init:  function (x, y, settings){
 	this.parent(x, y, settings, settings.width * 2);
 
         // Set animations
@@ -266,7 +266,7 @@ var Vendor = Enemy.extend(
 
 var Watercooler = Enemy.extend(
 {
-    init: function (){
+    init: function (x, y, settings){
 	this.parent(x, y, settings, settings.width * 2);
     },
 
