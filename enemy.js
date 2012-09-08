@@ -336,6 +336,9 @@ var Watercooler = Enemy.extend(
             }
 
             me.game.sort();
+            
+            // Forget the player exists
+            this.target = null; 
         }
     }
 });
