@@ -163,9 +163,10 @@ var Player = me.ObjectEntity.extend(
         //TODO SOUND
         
         //Create a bullet
-        var bullet = new Bullet(this.pos.x + this.anchorPoint.x,
-                                this.pos.y + this.anchorPoint.y, 
-                                this.aim);
+        var bullet = new Bullet(
+	    this.pos.x + this.anchorPoint.x - me.game.viewport.pos.x,
+            this.pos.y + this.anchorPoint.y - me.game.viewport.pos.y,  
+            this.aim);
 	me.game.add(bullet, this.z);
 	me.game.sort();
     }
