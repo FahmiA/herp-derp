@@ -155,19 +155,18 @@ var Player = me.ObjectEntity.extend(
             this.setCurrentAnimation('lookDownRight');
             this.doUpdate = true;
         }
-
     },
     
     _fireWeapon: function()
     {
         //Fire mah lazer
-        console.log("Pew!Pew!");
-
         //TODO SOUND
         
         //Create a bullet
-        var bullet = new Bullet(this.pos.x, this.pos.y, this.aim);
-        me.game.add(bullet, this.z);
-        me.game.sort();
+        var bullet = new Bullet(this.pos.x + this.anchorPoint.x,
+                                this.pos.y + this.anchorPoint.y, 
+                                this.aim);
+	me.game.add(bullet, this.z);
+	me.game.sort();
     }
 });
