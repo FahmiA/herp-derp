@@ -11,7 +11,7 @@ var Player = me.ObjectEntity.extend(
         this.anchorPoint = new me.Vector2d(this.width/2, this.height/2);
         
         // Set the default horizontal & vertical speed (accel vector)
-        this.setVelocity(5, 5);
+        this.setVelocity(2, 2);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
 
         this.aim = 0;
@@ -185,13 +185,12 @@ var Player = me.ObjectEntity.extend(
     {
         //Fire mah lazer
         //TODO SOUND
-        console.log(this.pos.x, this.pos.y, this.anchorPoint.x, this.anchorPoint.y, me.game.viewport.pos.x, me.game.viewport.pos.y);
 
         //Create a bullet
-        var bullet = new Bullet(
+	var bullet = new Bullet(
 	    this.pos.x + this.anchorPoint.x,
-            this.pos.y + this.anchorPoint.y,  
-            this.aim);
+	    this.pos.y + this.anchorPoint.y,  
+	    this.aim);
 	me.game.add(bullet, this.z);
 	me.game.sort();
     },

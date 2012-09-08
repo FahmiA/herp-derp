@@ -5,7 +5,7 @@ var Projectile = me.ObjectEntity.extend({
         this.parent(x, y, settings);
 
         this.collidable = true;
-        this.updateColRect(0, 1, 0, 1);
+        this.updateColRect(0, 2, 0, 2);
 
         this.setVelocity(1,1);
         this.gravity = 0;
@@ -24,14 +24,12 @@ var Projectile = me.ObjectEntity.extend({
             var res = me.game.collide(this);
             if (res != null)
             {   
-		//console.log("Hit ", res.obj.name);
-		
                 var absorbed = true;
                 //Let the collided objects decide if they absord the bullet
                 if (typeof(res.obj.onHit) == "function")
                     absorbed = res.obj.onHit(this);
-
-                if(absorbed)
+		
+		if(absorbed || res.obj.name == 'bullet')
                     me.game.remove(this);
             }
 
