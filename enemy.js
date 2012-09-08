@@ -76,11 +76,15 @@ var Enemy = me.ObjectEntity.extend(
 
     onHit: function(obj)
     {
-        console.log("Crack");
         if(obj.name == "bullet")
         {
+	    console.log("Crack");
             this.health -= obj.damage;
         }
+	else if (obj.name == "soda")
+	{
+	    return false;
+	}
 
         if (this.health <= 0)
             me.game.remove(this);
@@ -285,7 +289,13 @@ var Vendor = Enemy.extend(
 
     _shoot: function()
     {
-        console.debug('Fired!');
+	//Create a soda
+	var soda = new Soda(
+	    this.pos.x,
+	    this.pos.y,  
+	    this.aim);
+	me.game.add(soda, this.z);
+	me.game.sort();
     }
 });
 

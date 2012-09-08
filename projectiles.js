@@ -5,7 +5,7 @@ var Projectile = me.ObjectEntity.extend({
         this.parent(x, y, settings);
 
         this.collidable = true;
-        this.updateColRect(0, 2, 0, 2);
+        //this.updateColRect(0, 32, 0, 32);
 
         this.setVelocity(1,1);
         this.gravity = 0;
@@ -40,7 +40,10 @@ var Projectile = me.ObjectEntity.extend({
                 console.log("Thunk");
                 //TODO SOUND Wall hit
                 me.game.remove(this);
-             }
+            }
+	    
+	    this.parent(this);
+	    return true;
         }
 });
 
@@ -59,6 +62,8 @@ var Bullet = Projectile.extend({
             spritewidth: 1
         };
         this.parent(x, y, settings, aim);
+
+	this.setVelocity(15,15);
     },
     
     draw: function(context) {
@@ -84,22 +89,27 @@ var Bullet = Projectile.extend({
 
 var Soda = Projectile.extend({
     init: function(x, y, aim){
-	console.log(x, y);
-	
 	var settings = {
-	    name: "bullet",
-	    x: 0,
-	    y: 0,
-	    z: 2,
-	    width: 1,
-	    height: 1,
-	    gid: null,
-	    isPolygon: false,
-	    image: "OBJ_TILESET",
-	    spriteheight: 1,
-	    spritewidth: 1
+	    name: "soda",
+	    image: "EFFECTS_TILESET",
+	    spriteheight: 32,
+	    spritewidth: 32
 	};
 	this.parent(x, y, settings, aim);
+
+	this.addAnimation('flip', [11, 12]);
+	this.setCurrentAnimation('flip');
+
+	this.updateColRect(8, 16, 8, 16);
+
+	this.setVelocity(0.2, 0.2);
+    },
+
+    update: function()
+    {
+	this.updateMovement();
+	this.parent(this);
+	return true;
     }
 });
 

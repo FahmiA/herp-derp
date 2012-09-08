@@ -11,7 +11,7 @@ var Player = me.ObjectEntity.extend(
         this.anchorPoint = new me.Vector2d(this.width/2, this.height/2);
         
         // Set the default horizontal & vertical speed (accel vector)
-        this.setVelocity(2, 2);
+        this.setVelocity(1.5, 1.5);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
 
         this.aim = 0;
