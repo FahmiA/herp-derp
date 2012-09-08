@@ -10,14 +10,7 @@ var Enemy = me.ObjectEntity.extend(
         this.setVelocity(0, 0);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
 
-        // Set up evilness
-        if(typeof(settings.evil) != 'undefined')
-        {
-            this.evil = settings.evil;
-        }else{
-            this.evil = false;
-        }
-
+        this.respondDist = respondDist;
         this.target = null;
         this.doUpdate = false;
     },
@@ -33,10 +26,10 @@ var Enemy = me.ObjectEntity.extend(
         this.doUpdate = false;
 
         // Search for the player
-        if(this.evil && !this.target)
+        if(!this.target)
         {
             var player = me.game.getEntityByName('player')[0];
-            if(this.pos.distance(player.pos) < this.width * 2)
+            if(this.pos.distance(player.pos) < this.respondDist)
             {
                 this.target = player;
             }
@@ -127,8 +120,8 @@ var Table = ChasingEnemy.extend(
         this.parent(x, y, settings, settings.width * 3, 1);
 
         // Set animations
-        this.addAnimation('move', [9, 10]);
-        this.addAnimation('stay', [8]);
+        this.addAnimation('move', [24, 25, 26]);
+        this.addAnimation('stay', [24]);
         this.setCurrentAnimation('move');
     },
 });
