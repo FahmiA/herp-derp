@@ -1,0 +1,561 @@
+!	.\lib\melonJS-0.9.4.js	/^		return (this != null && !isNaN(this) && this.trim() != "");$/;"	r
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+$.onReady	.\lib\melonJS-0.9.4.js	/^	$.onReady = function(fn) {$/;"	r
+ALIGN	.\lib\melonJS-0.9.4.js	/^		ALIGN : {$/;"	r
+AXIS	.\lib\melonJS-0.9.4.js	/^				AXIS : {$/;"	r
+Array.prototype.remove	.\lib\melonJS-0.9.4.js	/^	Array.prototype.remove = function(obj) {$/;"	r
+Back	.\lib\melonJS-0.9.4.js	/^		Back : {},$/;"	r
+Bounce	.\lib\melonJS-0.9.4.js	/^		Bounce : {}$/;"	r
+Circular	.\lib\melonJS-0.9.4.js	/^		Circular : {},$/;"	r
+Cubic	.\lib\melonJS-0.9.4.js	/^		Cubic : {},$/;"	r
+Date.now	.\lib\melonJS-0.9.4.js	/^		Date.now = function(){return new Date().getTime()};$/;"	r
+Elastic	.\lib\melonJS-0.9.4.js	/^		Elastic : {},$/;"	r
+Exponential	.\lib\melonJS-0.9.4.js	/^		Exponential : {},$/;"	r
+Function.prototype.bind	.\lib\melonJS-0.9.4.js	/^		Function.prototype.bind = function() {$/;"	r
+Function.prototype.defer	.\lib\melonJS-0.9.4.js	/^	Function.prototype.defer = function() {$/;"	r
+GUID_base	.\lib\melonJS-0.9.4.js	/^		var GUID_base  = "";$/;"	r
+KeyBinding	.\lib\melonJS-0.9.4.js	/^		var KeyBinding = {};$/;"	r
+Linear	.\lib\melonJS-0.9.4.js	/^		Linear : {},$/;"	r
+Number.prototype.clamp	.\lib\melonJS-0.9.4.js	/^	Number.prototype.clamp = function(low, high) {$/;"	r
+Number.prototype.degToRad	.\lib\melonJS-0.9.4.js	/^    Number.prototype.degToRad = function (angle) {$/;"	r
+Number.prototype.radToDeg	.\lib\melonJS-0.9.4.js	/^	Number.prototype.radToDeg = function (angle) {$/;"	r
+Number.prototype.random	.\lib\melonJS-0.9.4.js	/^	Number.prototype.random = function(min, max) {$/;"	r
+Number.prototype.round	.\lib\melonJS-0.9.4.js	/^	Number.prototype.round = function() {$/;"	r
+Number.prototype.sign	.\lib\melonJS-0.9.4.js	/^	Number.prototype.sign = function() {$/;"	r
+Number.prototype.toHex	.\lib\melonJS-0.9.4.js	/^	Number.prototype.toHex = function() {$/;"	r
+Object.create	.\lib\melonJS-0.9.4.js	/^		Object.create = function(o) {$/;"	r
+Object.defineProperty	.\lib\melonJS-0.9.4.js	/^		Object.defineProperty = function(obj, prop, desc) {$/;"	r
+Object.extend	.\lib\melonJS-0.9.4.js	/^	Object.extend = function(prop) {$/;"	r
+Quadratic	.\lib\melonJS-0.9.4.js	/^		Quadratic : {},$/;"	r
+Quartic	.\lib\melonJS-0.9.4.js	/^		Quartic : {},$/;"	r
+Quintic	.\lib\melonJS-0.9.4.js	/^		Quintic : {},$/;"	r
+Sinusoidal	.\lib\melonJS-0.9.4.js	/^		Sinusoidal : {},$/;"	r
+Stat_Item.prototype.reset	.\lib\melonJS-0.9.4.js	/^	Stat_Item.prototype.reset = function() {$/;"	r
+Stat_Item.prototype.set	.\lib\melonJS-0.9.4.js	/^    Stat_Item.prototype.set = function(value) { $/;"	r
+Stat_Item.prototype.update	.\lib\melonJS-0.9.4.js	/^	Stat_Item.prototype.update = function(val) {$/;"	r
+String.prototype.contains	.\lib\melonJS-0.9.4.js	/^	String.prototype.contains = function(word) {$/;"	r
+String.prototype.isBoolean	.\lib\melonJS-0.9.4.js	/^	String.prototype.isBoolean = function() {$/;"	r
+String.prototype.isNumeric	.\lib\melonJS-0.9.4.js	/^	String.prototype.isNumeric = function() {$/;"	r
+String.prototype.toHex	.\lib\melonJS-0.9.4.js	/^	String.prototype.toHex = function() {$/;"	r
+String.prototype.trim	.\lib\melonJS-0.9.4.js	/^		String.prototype.trim = function () {  $/;"	r
+_fade	.\lib\melonJS-0.9.4.js	/^		var _fade = {$/;"	r
+_followH	.\lib\melonJS-0.9.4.js	/^				_followH : function(target) {$/;"	r
+_followV	.\lib\melonJS-0.9.4.js	/^				_followV : function(target) {$/;"	r
+_keyStr	.\lib\melonJS-0.9.4.js	/^		var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+\/=";$/;"	r
+_onSwitchComplete	.\lib\melonJS-0.9.4.js	/^				_onSwitchComplete = function() {$/;"	r
+_screenObject	.\lib\melonJS-0.9.4.js	/^		var _screenObject = {};$/;"	r
+_valuesStart	.\lib\melonJS-0.9.4.js	/^		var _object = object, _valuesStart = {}, _valuesDelta = {}, _valuesEnd = {}, _duration = 1000, _delayTime = 0, _startTime = null, _easingFunction = me.Tween.Easing.Linear.EaseNone, _chainedTween = null, _onUpdateCallback = null, _onCompleteCallback = null;$/;"	r
+abs	.\lib\melonJS-0.9.4.js	/^		abs : function() {$/;"	r
+add	.\lib\melonJS-0.9.4.js	/^		add : function(\/**me.Vector2d*\/ v) {$/;"	r
+add	.\lib\melonJS-0.9.4.js	/^		add : function(tileset) {$/;"	r
+addAnimation	.\lib\melonJS-0.9.4.js	/^				addAnimation : function(name, frame) {$/;"	r
+addItem	.\lib\melonJS-0.9.4.js	/^		addItem : function(name, item) {$/;"	r
+addStat	.\lib\melonJS-0.9.4.js	/^                  var addStat = function(k, v) {$/;"	r
+adjustSize	.\lib\melonJS-0.9.4.js	/^				adjustSize : function(x, w, y, h) {$/;"	r
+api	.\lib\melonJS-0.9.4.js	/^		var api = {};$/;"	r
+api.HexToRGB	.\lib\melonJS-0.9.4.js	/^		api.HexToRGB = function(h, a) {$/;"	r
+api.RGBToHex	.\lib\melonJS-0.9.4.js	/^		api.RGBToHex = function(r, g, b) {$/;"	r
+api.add	.\lib\melonJS-0.9.4.js	/^		api.add = function(object, zOrder) {$/;"	r
+api.addEntity	.\lib\melonJS-0.9.4.js	/^		api.addEntity = function(entityType, zOrder) {$/;"	r
+api.addHUD	.\lib\melonJS-0.9.4.js	/^		api.addHUD = function(x, y, w, h, bg) {$/;"	r
+api.applyFriction	.\lib\melonJS-0.9.4.js	/^		api.applyFriction = function(v, f) {$/;"	r
+api.applyRGBFilter	.\lib\melonJS-0.9.4.js	/^		api.applyRGBFilter = function(object, effect, option) {$/;"	r
+api.blitSurface	.\lib\melonJS-0.9.4.js	/^				api.blitSurface = function() {$/;"	r
+api.blitSurface	.\lib\melonJS-0.9.4.js	/^		api.blitSurface = function() {$/;"	r
+api.clearSurface	.\lib\melonJS-0.9.4.js	/^		api.clearSurface = function(context, col) {$/;"	r
+api.collide	.\lib\melonJS-0.9.4.js	/^		api.collide = function(objB) {$/;"	r
+api.createCanvasSurface	.\lib\melonJS-0.9.4.js	/^		api.createCanvasSurface = function(width, height) {$/;"	r
+api.createGUID	.\lib\melonJS-0.9.4.js	/^		api.createGUID = function() {$/;"	r
+api.currentLevel	.\lib\melonJS-0.9.4.js	/^			api.currentLevel = {pos:{x:0,y:0}};$/;"	r
+api.decodeBase64	.\lib\melonJS-0.9.4.js	/^		api.decodeBase64 = function(input) {$/;"	r
+api.decodeBase64AsArray	.\lib\melonJS-0.9.4.js	/^		api.decodeBase64AsArray = function(input, bytes) {$/;"	r
+api.decodeCSV	.\lib\melonJS-0.9.4.js	/^		api.decodeCSV = function(input, limit) {$/;"	r
+api.disableHUD	.\lib\melonJS-0.9.4.js	/^		api.disableHUD = function() {$/;"	r
+api.draw	.\lib\melonJS-0.9.4.js	/^		api.draw = function() {$/;"	r
+api.draw	.\lib\melonJS-0.9.4.js	/^		api.draw = function(context) {$/;"	r
+api.flush	.\lib\melonJS-0.9.4.js	/^		api.flush = function() {$/;"	r
+api.getBasename	.\lib\melonJS-0.9.4.js	/^		api.getBasename = function(path) {$/;"	r
+api.getEntityByGUID	.\lib\melonJS-0.9.4.js	/^		api.getEntityByGUID = function(guid)$/;"	r
+api.getEntityByName	.\lib\melonJS-0.9.4.js	/^		api.getEntityByName = function(entityName)$/;"	r
+api.getHeight	.\lib\melonJS-0.9.4.js	/^		api.getHeight = function() {$/;"	r
+api.getPixels	.\lib\melonJS-0.9.4.js	/^		api.getPixels = function(arg) {$/;"	r
+api.getPos	.\lib\melonJS-0.9.4.js	/^		api.getPos = function(c) {$/;"	r
+api.getScreenCanvas	.\lib\melonJS-0.9.4.js	/^		api.getScreenCanvas = function() {$/;"	r
+api.getScreenFrameBuffer	.\lib\melonJS-0.9.4.js	/^		api.getScreenFrameBuffer = function() {$/;"	r
+api.getTime	.\lib\melonJS-0.9.4.js	/^		api.getTime = function() {$/;"	r
+api.getWidth	.\lib\melonJS-0.9.4.js	/^		api.getWidth = function() {$/;"	r
+api.getWrapper	.\lib\melonJS-0.9.4.js	/^		api.getWrapper = function() {$/;"	r
+api.init	.\lib\melonJS-0.9.4.js	/^		api.init = function() {$/;"	r
+api.init	.\lib\melonJS-0.9.4.js	/^		api.init = function(width, height) {$/;"	r
+api.init	.\lib\melonJS-0.9.4.js	/^		api.init = function(wrapperid, game_width, game_height,	doublebuffering, scale) {$/;"	r
+api.loadTMXLevel	.\lib\melonJS-0.9.4.js	/^		api.loadTMXLevel = function(level) {$/;"	r
+api.makeAllDirty	.\lib\melonJS-0.9.4.js	/^		api.makeAllDirty = function() {$/;"	r
+api.makeDirty	.\lib\melonJS-0.9.4.js	/^		api.makeDirty = function(obj, updated, oldRect) {$/;"	r
+api.mergeProperties	.\lib\melonJS-0.9.4.js	/^		api.mergeProperties = function(dest, src, overwrite) {$/;"	r
+api.remove	.\lib\melonJS-0.9.4.js	/^		api.remove = function(obj) {$/;"	r
+api.remove	.\lib\melonJS-0.9.4.js	/^		api.remove = function(obj, force) {$/;"	r
+api.removeAll	.\lib\melonJS-0.9.4.js	/^		api.removeAll = function() {$/;"	r
+api.repaint	.\lib\melonJS-0.9.4.js	/^		api.repaint = function() {$/;"	r
+api.reset	.\lib\melonJS-0.9.4.js	/^		api.reset = function() {$/;"	r
+api.resetGUID	.\lib\melonJS-0.9.4.js	/^		api.resetGUID = function(base) {$/;"	r
+api.scale	.\lib\melonJS-0.9.4.js	/^		api.scale = function(context, scale) {$/;"	r
+api.setAlpha	.\lib\melonJS-0.9.4.js	/^		api.setAlpha = function(context, enable) {$/;"	r
+api.setNocache	.\lib\melonJS-0.9.4.js	/^		api.setNocache = function(enable) {$/;"	r
+api.setTMXProperties	.\lib\melonJS-0.9.4.js	/^		api.setTMXProperties = function(obj, xmldata) {$/;"	r
+api.sort	.\lib\melonJS-0.9.4.js	/^		api.sort = function(sort_func) {$/;"	r
+api.update	.\lib\melonJS-0.9.4.js	/^		api.update = function() {$/;"	r
+api.updateDisplaySize	.\lib\melonJS-0.9.4.js	/^		api.updateDisplaySize = function(scale) {$/;"	r
+ar	.\lib\melonJS-0.9.4.js	/^			var dec = Base64.decode(input), ar = [], i, j, len;$/;"	r
+audio_channels	.\lib\melonJS-0.9.4.js	/^		var audio_channels = [];$/;"	r
+binList	.\lib\melonJS-0.9.4.js	/^		var binList = {};$/;"	r
+bind	.\lib\melonJS-0.9.4.js	/^			bind: [3],$/;"	r
+bold	.\lib\melonJS-0.9.4.js	/^		bold : function() {$/;"	r
+buffer	.\lib\melonJS-0.9.4.js	/^					var buffer = [];$/;"	r
+ceil	.\lib\melonJS-0.9.4.js	/^		ceil : function() {$/;"	r
+ceilSelf	.\lib\melonJS-0.9.4.js	/^		ceilSelf : function() {$/;"	r
+checkCollision	.\lib\melonJS-0.9.4.js	/^				checkCollision : function(obj) {$/;"	r
+checkCollision	.\lib\melonJS-0.9.4.js	/^		checkCollision : function(obj, pv) {$/;"	r
+checkSlope	.\lib\melonJS-0.9.4.js	/^				checkSlope : function(tile, left) {$/;"	r
+clamp	.\lib\melonJS-0.9.4.js	/^		clamp : function(low, high) {$/;"	r
+clampSelf	.\lib\melonJS-0.9.4.js	/^		clampSelf : function(low, high) {$/;"	r
+clearTile	.\lib\melonJS-0.9.4.js	/^		clearTile : function(x, y) {$/;"	r
+clicked	.\lib\melonJS-0.9.4.js	/^		clicked : function() {$/;"	r
+clone	.\lib\melonJS-0.9.4.js	/^		clone : function() {$/;"	r
+collideVsAABB	.\lib\melonJS-0.9.4.js	/^				collideVsAABB : function(\/** {me.Rect} *\/ rect) {$/;"	r
+computeVelocity	.\lib\melonJS-0.9.4.js	/^				computeVelocity : function(vel) {$/;"	r
+console	.\lib\melonJS-0.9.4.js	/^		console = {$/;"	r
+contains	.\lib\melonJS-0.9.4.js	/^				contains: function(r) {$/;"	r
+contains	.\lib\melonJS-0.9.4.js	/^		contains : function(gid) {$/;"	r
+containsPoint	.\lib\melonJS-0.9.4.js	/^				containsPoint: function(v) {$/;"	r
+context.fillStyle	.\lib\melonJS-0.9.4.js	/^			context.fillStyle = "#89b002";$/;"	r
+context.fillStyle	.\lib\melonJS-0.9.4.js	/^	 *       context.fillStyle = "#89b002";$/;"	r
+context.strokeStyle	.\lib\melonJS-0.9.4.js	/^						context.strokeStyle = "blue";$/;"	r
+context.strokeStyle	.\lib\melonJS-0.9.4.js	/^			context.strokeStyle = "silver";$/;"	r
+context.strokeStyle	.\lib\melonJS-0.9.4.js	/^	 *       context.strokeStyle = "silver";$/;"	r
+copy	.\lib\melonJS-0.9.4.js	/^		copy : function(\/**me.Vector2d*\/ v) {$/;"	r
+dance	.\lib\melonJS-0.9.4.js	/^	 *    dance: function()$/;"	r
+default	.\lib\melonJS-0.9.4.js	/^					default : {$/;"	r
+destroy	.\lib\melonJS-0.9.4.js	/^				destroy : function() {$/;"	r
+destroy	.\lib\melonJS-0.9.4.js	/^		destroy : function() {$/;"	r
+dirtyObjects	.\lib\melonJS-0.9.4.js	/^		var dirtyObjects = [];$/;"	r
+dirtyRects	.\lib\melonJS-0.9.4.js	/^		var dirtyRects = [];$/;"	r
+dispatchMouseEvent	.\lib\melonJS-0.9.4.js	/^		function dispatchMouseEvent(e) {$/;"	r
+distance	.\lib\melonJS-0.9.4.js	/^		distance : function(\/**me.Vector2d*\/ v) {$/;"	r
+distanceTo	.\lib\melonJS-0.9.4.js	/^				distanceTo: function(o)$/;"	r
+div	.\lib\melonJS-0.9.4.js	/^		div : function(\/**Int*\/	n) {$/;"	r
+doClimb	.\lib\melonJS-0.9.4.js	/^				doClimb : function(up) {$/;"	r
+doJump	.\lib\melonJS-0.9.4.js	/^				doJump : function() {$/;"	r
+doWalk	.\lib\melonJS-0.9.4.js	/^				doWalk : function(left) {$/;"	r
+dotProduct	.\lib\melonJS-0.9.4.js	/^		dotProduct : function(\/**me.Vector2d*\/ v) {$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^				draw : function(context) {$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^				draw : function(context, color) {$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^		draw : function() {$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^		draw : function(context) {$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^		draw : function(context, rect) {$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^		draw : function(context, text, x, y) {$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^		draw : function(context, x, y) {$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^	 *    draw : function (context, x, y)$/;"	r
+draw	.\lib\melonJS-0.9.4.js	/^	 *    draw : function(context)$/;"	r
+drawTile	.\lib\melonJS-0.9.4.js	/^		drawTile : function(context, dx, dy, tmxTile) {$/;"	r
+drawTile	.\lib\melonJS-0.9.4.js	/^		drawTile : function(context, x, y, tmxTile, tileset) {$/;"	r
+drawTileLayer	.\lib\melonJS-0.9.4.js	/^		drawTileLayer : function(context, layer, viewport, rect) {$/;"	r
+entityClass	.\lib\melonJS-0.9.4.js	/^		var entityClass = {};$/;"	r
+equals	.\lib\melonJS-0.9.4.js	/^		equals : function(\/**me.Vector2d*\/ v) {$/;"	r
+errmsg	.\lib\melonJS-0.9.4.js	/^				var errmsg = "melonJS: failed loading " + sound_id + "." + activeAudioExt;$/;"	r
+error	.\lib\melonJS-0.9.4.js	/^			error: function() {alert(Array.prototype.slice.call(arguments).join(", "));}$/;"	r
+eventType	.\lib\melonJS-0.9.4.js	/^							eventType = 'touchend';$/;"	r
+eventType	.\lib\melonJS-0.9.4.js	/^							eventType = 'touchmove';$/;"	r
+eventType	.\lib\melonJS-0.9.4.js	/^							eventType = 'touchstart';$/;"	r
+fadeIn	.\lib\melonJS-0.9.4.js	/^				fadeIn : function(color, duration, onComplete) {$/;"	r
+fadeOut	.\lib\melonJS-0.9.4.js	/^				fadeOut : function(color, duration, onComplete) {$/;"	r
+fillArray	.\lib\melonJS-0.9.4.js	/^		fillArray : function(xmldata, encoding, compression) {$/;"	r
+flicker	.\lib\melonJS-0.9.4.js	/^				flicker : function(duration, callback) {$/;"	r
+flipX	.\lib\melonJS-0.9.4.js	/^				flipX : function(flip) {$/;"	r
+flipX	.\lib\melonJS-0.9.4.js	/^				flipX : function(sw) {$/;"	r
+flipY	.\lib\melonJS-0.9.4.js	/^				flipY : function(flip) {$/;"	r
+flipY	.\lib\melonJS-0.9.4.js	/^				flipY : function(sh) {$/;"	r
+floor	.\lib\melonJS-0.9.4.js	/^		floor : function() {$/;"	r
+floorSelf	.\lib\melonJS-0.9.4.js	/^		floorSelf : function() {$/;"	r
+focusOn	.\lib\melonJS-0.9.4.js	/^				focusOn : function(target) {$/;"	r
+follow	.\lib\melonJS-0.9.4.js	/^				follow : function(target, axis) {$/;"	r
+forceJump	.\lib\melonJS-0.9.4.js	/^				forceJump : function() {$/;"	r
+frame	.\lib\melonJS-0.9.4.js	/^						frame : [],$/;"	r
+frame	.\lib\melonJS-0.9.4.js	/^						frame = [];$/;"	r
+free	.\lib\melonJS-0.9.4.js	/^			free : function() {$/;"	r
+g_resources	.\lib\melonJS-0.9.4.js	/^		 * var g_resources = [ {name: "tileset-platformer",  type:"image",   src: "data\/map\/tileset-platformer.png"},$/;"	r
+gameObjects	.\lib\melonJS-0.9.4.js	/^		var gameObjects = [];$/;"	r
+get	.\lib\melonJS-0.9.4.js	/^								get : function() {$/;"	r
+get	.\lib\melonJS-0.9.4.js	/^						get : function() {$/;"	r
+getAllTagElements	.\lib\melonJS-0.9.4.js	/^			getAllTagElements : function() {$/;"	r
+getBooleanAttribute	.\lib\melonJS-0.9.4.js	/^			getBooleanAttribute : function(elt, str, val) {$/;"	r
+getFirstElementByTagName	.\lib\melonJS-0.9.4.js	/^			getFirstElementByTagName : function(name) {$/;"	r
+getFloatAttribute	.\lib\melonJS-0.9.4.js	/^			getFloatAttribute : function(elt, str, val) {$/;"	r
+getHeight	.\lib\melonJS-0.9.4.js	/^				getHeight : function() {$/;"	r
+getIntAttribute	.\lib\melonJS-0.9.4.js	/^			getIntAttribute : function(elt, str, val) {$/;"	r
+getItemValue	.\lib\melonJS-0.9.4.js	/^		getItemValue : function(name) {$/;"	r
+getLayerByName	.\lib\melonJS-0.9.4.js	/^		getLayerByName : function(name) {$/;"	r
+getLayers	.\lib\melonJS-0.9.4.js	/^		getLayers : function() {$/;"	r
+getObjectByIndex	.\lib\melonJS-0.9.4.js	/^		getObjectByIndex : function(idx) {$/;"	r
+getObjectCount	.\lib\melonJS-0.9.4.js	/^		getObjectCount : function() {$/;"	r
+getObjectGroupByName	.\lib\melonJS-0.9.4.js	/^		getObjectGroupByName : function(name) {$/;"	r
+getObjectGroups	.\lib\melonJS-0.9.4.js	/^		getObjectGroups : function() {$/;"	r
+getObjectPropertyByName	.\lib\melonJS-0.9.4.js	/^		getObjectPropertyByName : function(name) {$/;"	r
+getPropertyList	.\lib\melonJS-0.9.4.js	/^		getPropertyList: function() {$/;"	r
+getRect	.\lib\melonJS-0.9.4.js	/^				getRect : function() {$/;"	r
+getRect	.\lib\melonJS-0.9.4.js	/^		getRect : function() {$/;"	r
+getStringAttribute	.\lib\melonJS-0.9.4.js	/^			getStringAttribute : function(elt, str, val) {$/;"	r
+getTile	.\lib\melonJS-0.9.4.js	/^		getTile : function(x, y) {$/;"	r
+getTileId	.\lib\melonJS-0.9.4.js	/^		getTileId : function(x, y) {$/;"	r
+getTileImage	.\lib\melonJS-0.9.4.js	/^		getTileImage : function(tmxTile) {$/;"	r
+getTileOffsetX	.\lib\melonJS-0.9.4.js	/^		getTileOffsetX : function(tileId) {$/;"	r
+getTileOffsetY	.\lib\melonJS-0.9.4.js	/^		getTileOffsetY : function(tileId) {$/;"	r
+getTileProperties	.\lib\melonJS-0.9.4.js	/^		getTileProperties: function(tileId) {$/;"	r
+getTilesetByGid	.\lib\melonJS-0.9.4.js	/^		getTilesetByGid : function(gid) {$/;"	r
+getTilesetByIndex	.\lib\melonJS-0.9.4.js	/^		getTilesetByIndex : function(i) {$/;"	r
+getWidth	.\lib\melonJS-0.9.4.js	/^				getWidth : function() {$/;"	r
+goTo	.\lib\melonJS-0.9.4.js	/^		goTo : function(level) {$/;"	r
+handlers	.\lib\melonJS-0.9.4.js	/^			handlers:{} $/;"	r
+httpReq.onload	.\lib\melonJS-0.9.4.js	/^			httpReq.onload = function(event){$/;"	r
+httpReq.responseType	.\lib\melonJS-0.9.4.js	/^			httpReq.responseType = "arraybuffer";$/;"	r
+imgList	.\lib\melonJS-0.9.4.js	/^		var imgList = [];$/;"	r
+info	.\lib\melonJS-0.9.4.js	/^			info: function() {},$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^				init : function(minX, minY, maxX, maxY, realw, realh) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^				init : function(v, w, h) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^				init : function(x, y, image, spritewidth, spriteheight) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^				init : function(x, y, settings) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		 *    init : function()$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		 init : function(x, y, settings) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init :  function(tmxObj, tilesets, z) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function() {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(\/**Int*\/ x, \/**Int*\/ y) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(addAsObject, isPersistent) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(font, size, color, align) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(font, size, scale, firstChar) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(name, tmxObjGroup, tilesets, z) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(x, y, settings) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(x, y, val) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(x, y, w, h, bg) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init : function(x, y, w, h, gid) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function () {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function (name, tilewidth, tileheight, spacing, margin, imagesrc) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function (xmltileset) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function(layer, tilewidth, tileheight, orientation, tilesets, zOrder) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function(name, color, z) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function(name, width, height, imagesrc, z, ratio) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function(w, h, tw, th, tilesets, z) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function(width, height, tilewidth, tileheight) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function(x, y) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^		init: function(xmlfile, x, y) {$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^	 *    init: function()$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^	 *    init: function(isDancing)$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^	 *    init: function(x, y)$/;"	r
+init	.\lib\melonJS-0.9.4.js	/^	 *    init:function(x, y)$/;"	r
+initArray	.\lib\melonJS-0.9.4.js	/^		initArray : function() {$/;"	r
+isCurrentAnimation	.\lib\melonJS-0.9.4.js	/^				isCurrentAnimation : function(name) {$/;"	r
+isFlickering	.\lib\melonJS-0.9.4.js	/^				isFlickering : function() {$/;"	r
+isTileCollectable	.\lib\melonJS-0.9.4.js	/^		isTileCollectable : function (tileId) {$/;"	r
+isTileCollidable	.\lib\melonJS-0.9.4.js	/^		isTileCollidable : function(tileId) {$/;"	r
+isVisible	.\lib\melonJS-0.9.4.js	/^				isVisible : function(rect) {$/;"	r
+italic	.\lib\melonJS-0.9.4.js	/^		italic : function() {$/;"	r
+items	.\lib\melonJS-0.9.4.js	/^		var items = {};$/;"	r
+keyLock	.\lib\melonJS-0.9.4.js	/^		var keyLock = {};$/;"	r
+keyLocked	.\lib\melonJS-0.9.4.js	/^		var keyLocked = {};$/;"	r
+keyStatus	.\lib\melonJS-0.9.4.js	/^		var keyStatus = {};$/;"	r
+length	.\lib\melonJS-0.9.4.js	/^		length : function() {$/;"	r
+levelIdx	.\lib\melonJS-0.9.4.js	/^		var levelIdx = [];$/;"	r
+levels	.\lib\melonJS-0.9.4.js	/^		var levels = {};$/;"	r
+load	.\lib\melonJS-0.9.4.js	/^		load : function() {$/;"	r
+loadFontMetrics	.\lib\melonJS-0.9.4.js	/^		loadFontMetrics : function(font, size) {$/;"	r
+loaded	.\lib\melonJS-0.9.4.js	/^	 *    loaded: function ()$/;"	r
+log	.\lib\melonJS-0.9.4.js	/^			log: function() {},$/;"	r
+maxV	.\lib\melonJS-0.9.4.js	/^		maxV : function(\/**me.Vector2d*\/ v) {$/;"	r
+me	.\lib\melonJS-0.9.4.js	/^	me = {$/;"	r
+me.LevelConstants	.\lib\melonJS-0.9.4.js	/^	me.LevelConstants = {$/;"	r
+me.ObjectSettings	.\lib\melonJS-0.9.4.js	/^	me.ObjectSettings = {$/;"	r
+me.TMX_BACKGROUND_COLOR	.\lib\melonJS-0.9.4.js	/^	me.TMX_BACKGROUND_COLOR        = "backgroundcolor";$/;"	r
+me.TMX_TAG_ATTR_BASE64	.\lib\melonJS-0.9.4.js	/^				   case me.TMX_TAG_ATTR_BASE64: {$/;"	r
+me.TMX_TAG_ATTR_BASE64	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_ATTR_BASE64         = "base64";$/;"	r
+me.TMX_TAG_COMPRESSION	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_COMPRESSION         = "compression";$/;"	r
+me.TMX_TAG_CSV	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_CSV                 = "csv";$/;"	r
+me.TMX_TAG_DATA	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_DATA                = "data";$/;"	r
+me.TMX_TAG_ENCODING	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_ENCODING            = "encoding";$/;"	r
+me.TMX_TAG_FIRSTGID	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_FIRSTGID            = "firstgid";$/;"	r
+me.TMX_TAG_GID	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_GID                 = "gid";$/;"	r
+me.TMX_TAG_HEIGHT	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_HEIGHT              = "height";$/;"	r
+me.TMX_TAG_ID	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_ID                  = "id";$/;"	r
+me.TMX_TAG_IMAGE	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_IMAGE               = "image";$/;"	r
+me.TMX_TAG_IMAGE_LAYER	.\lib\melonJS-0.9.4.js	/^				case me.TMX_TAG_IMAGE_LAYER: {$/;"	r
+me.TMX_TAG_IMAGE_LAYER	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_IMAGE_LAYER         = "imagelayer";$/;"	r
+me.TMX_TAG_LAYER	.\lib\melonJS-0.9.4.js	/^				case me.TMX_TAG_LAYER: {$/;"	r
+me.TMX_TAG_LAYER	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_LAYER               = "layer";$/;"	r
+me.TMX_TAG_MAP	.\lib\melonJS-0.9.4.js	/^				case me.TMX_TAG_MAP: {$/;"	r
+me.TMX_TAG_MAP	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_MAP                 = "map";$/;"	r
+me.TMX_TAG_MARGIN	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_MARGIN              = "margin";$/;"	r
+me.TMX_TAG_NAME	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_NAME                = "name";$/;"	r
+me.TMX_TAG_OBJECT	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_OBJECT              = "object";$/;"	r
+me.TMX_TAG_OBJECTGROUP	.\lib\melonJS-0.9.4.js	/^				case me.TMX_TAG_OBJECTGROUP: {$/;"	r
+me.TMX_TAG_OBJECTGROUP	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_OBJECTGROUP         = "objectgroup";$/;"	r
+me.TMX_TAG_OPACITY	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_OPACITY             = "opacity";$/;"	r
+me.TMX_TAG_ORIENTATION	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_ORIENTATION	       = "orientation";$/;"	r
+me.TMX_TAG_POINTS	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_POINTS              = "points";$/;"	r
+me.TMX_TAG_POLYGON	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_POLYGON             = "polygon";$/;"	r
+me.TMX_TAG_POLYLINE	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_POLYLINE            = "polyline";$/;"	r
+me.TMX_TAG_PROPERTIES	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_PROPERTIES          = "properties";$/;"	r
+me.TMX_TAG_PROPERTY	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_PROPERTY            = "property";$/;"	r
+me.TMX_TAG_SOURCE	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_SOURCE              = "source";$/;"	r
+me.TMX_TAG_SPACING	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_SPACING             = "spacing";$/;"	r
+me.TMX_TAG_TILE	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_TILE                = "tile";$/;"	r
+me.TMX_TAG_TILEHEIGHT	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_TILEHEIGHT          = "tileheight";$/;"	r
+me.TMX_TAG_TILEOFFSET	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_TILEOFFSET          = "tileoffset";$/;"	r
+me.TMX_TAG_TILESET	.\lib\melonJS-0.9.4.js	/^				case me.TMX_TAG_TILESET: {$/;"	r
+me.TMX_TAG_TILESET	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_TILESET             = "tileset";$/;"	r
+me.TMX_TAG_TILEWIDTH	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_TILEWIDTH           = "tilewidth";$/;"	r
+me.TMX_TAG_TRANS	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_TRANS               = "trans";$/;"	r
+me.TMX_TAG_VALUE	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_VALUE               = "value";	$/;"	r
+me.TMX_TAG_VERSION	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_VERSION             = "version";$/;"	r
+me.TMX_TAG_VISIBLE	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_VISIBLE             = "visible";$/;"	r
+me.TMX_TAG_WIDTH	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_WIDTH               = "width";$/;"	r
+me.TMX_TAG_X	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_X                   = "x";$/;"	r
+me.TMX_TAG_Y	.\lib\melonJS-0.9.4.js	/^	me.TMX_TAG_Y                   = "y";$/;"	r
+me.Tween	.\lib\melonJS-0.9.4.js	/^	me.Tween = function(object) {$/;"	r
+me.Tween.Easing	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing = {$/;"	r
+me.Tween.Easing.Back.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Back.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Back.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Back.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Back.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Back.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Bounce.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Bounce.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Bounce.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Bounce.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Bounce.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Bounce.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Circular.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Circular.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Circular.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Circular.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Circular.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Circular.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Cubic.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Cubic.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Cubic.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Cubic.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Cubic.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Cubic.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Elastic.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Elastic.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Elastic.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Elastic.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Elastic.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Elastic.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Exponential.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Exponential.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Exponential.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Exponential.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Exponential.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Exponential.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Linear.EaseNone	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Linear.EaseNone = function(k) {$/;"	r
+me.Tween.Easing.Quadratic.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quadratic.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Quadratic.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quadratic.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Quadratic.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quadratic.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Quartic.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quartic.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Quartic.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quartic.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Quartic.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quartic.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Quintic.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quintic.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Quintic.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quintic.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Quintic.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Quintic.EaseOut = function(k) {$/;"	r
+me.Tween.Easing.Sinusoidal.EaseIn	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Sinusoidal.EaseIn = function(k) {$/;"	r
+me.Tween.Easing.Sinusoidal.EaseInOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Sinusoidal.EaseInOut = function(k) {$/;"	r
+me.Tween.Easing.Sinusoidal.EaseOut	.\lib\melonJS-0.9.4.js	/^	me.Tween.Easing.Sinusoidal.EaseOut = function(k) {$/;"	r
+me.audio.capabilities.mp3	.\lib\melonJS-0.9.4.js	/^			me.audio.capabilities.mp3 = ("no" != a.canPlayType("audio\/mpeg"))$/;"	r
+me.audio.capabilities.ogg	.\lib\melonJS-0.9.4.js	/^			me.audio.capabilities.ogg = ("no" != a.canPlayType('audio\/ogg; codecs="vorbis"'))$/;"	r
+me.audio.capabilities.wav	.\lib\melonJS-0.9.4.js	/^			me.audio.capabilities.wav = ("no" != a.canPlayType('audio\/wav; codecs="1"'))$/;"	r
+me.debug	.\lib\melonJS-0.9.4.js	/^	me.debug = {$/;"	r
+me.sys	.\lib\melonJS-0.9.4.js	/^	me.sys = {$/;"	r
+me.sys.touch	.\lib\melonJS-0.9.4.js	/^		me.sys.touch = ('createTouch' in document) || ('ontouchstart' in $);$/;"	r
+measureText	.\lib\melonJS-0.9.4.js	/^		measureText : function(context, text) {$/;"	r
+measureText	.\lib\melonJS-0.9.4.js	/^		measureText : function(text) {$/;"	r
+minV	.\lib\melonJS-0.9.4.js	/^		minV : function(\/**me.Vector2d*\/ v) {$/;"	r
+move	.\lib\melonJS-0.9.4.js	/^				move : function(x, y) {$/;"	r
+negate	.\lib\melonJS-0.9.4.js	/^		negate : function() {$/;"	r
+negateSelf	.\lib\melonJS-0.9.4.js	/^		negateSelf : function() {$/;"	r
+nodeValue	.\lib\melonJS-0.9.4.js	/^					  var nodeValue = '';$/;"	r
+normalize	.\lib\melonJS-0.9.4.js	/^		normalize : function() {$/;"	r
+null	.\lib\melonJS-0.9.4.js	/^				   case null: {$/;"	r
+null	.\lib\melonJS-0.9.4.js	/^			 case null: {$/;"	r
+obj	.\lib\melonJS-0.9.4.js	/^		var obj = [];$/;"	r
+obj	.\lib\melonJS-0.9.4.js	/^		var obj = {};$/;"	r
+obj.KEY	.\lib\melonJS-0.9.4.js	/^		obj.KEY = {$/;"	r
+obj.accel	.\lib\melonJS-0.9.4.js	/^		obj.accel = {$/;"	r
+obj.add	.\lib\melonJS-0.9.4.js	/^		obj.add = function(className, entityObj) {$/;"	r
+obj.addLevel	.\lib\melonJS-0.9.4.js	/^		obj.addLevel = function(level) {$/;"	r
+obj.addTMXLevel	.\lib\melonJS-0.9.4.js	/^		obj.addTMXLevel = function(levelId, callback) {$/;"	r
+obj.bindKey	.\lib\melonJS-0.9.4.js	/^		obj.bindKey = function(keycode, action, lock) {$/;"	r
+obj.bindMouse	.\lib\melonJS-0.9.4.js	/^		obj.bindMouse = function (button, keyCode)$/;"	r
+obj.bindTouch	.\lib\melonJS-0.9.4.js	/^		obj.bindTouch = function (keyCode)$/;"	r
+obj.capabilities	.\lib\melonJS-0.9.4.js	/^		obj.capabilities = {$/;"	r
+obj.change	.\lib\melonJS-0.9.4.js	/^		obj.change = function(state) {$/;"	r
+obj.current	.\lib\melonJS-0.9.4.js	/^		obj.current = function() {$/;"	r
+obj.disable	.\lib\melonJS-0.9.4.js	/^		obj.disable = function() {$/;"	r
+obj.enable	.\lib\melonJS-0.9.4.js	/^		obj.enable = function() {$/;"	r
+obj.getBinary	.\lib\melonJS-0.9.4.js	/^		obj.getBinary = function(elt) {$/;"	r
+obj.getCurrentLevelId	.\lib\melonJS-0.9.4.js	/^		obj.getCurrentLevelId = function() {$/;"	r
+obj.getImage	.\lib\melonJS-0.9.4.js	/^		obj.getImage = function(elt) {$/;"	r
+obj.getLoadProgress	.\lib\melonJS-0.9.4.js	/^		obj.getLoadProgress = function() {$/;"	r
+obj.getXML	.\lib\melonJS-0.9.4.js	/^		obj.getXML = function(elt) {$/;"	r
+obj.init	.\lib\melonJS-0.9.4.js	/^		obj.init = function() {$/;"	r
+obj.init	.\lib\melonJS-0.9.4.js	/^		obj.init = function(audioFormat) {$/;"	r
+obj.isAudioEnable	.\lib\melonJS-0.9.4.js	/^		obj.isAudioEnable = function() {$/;"	r
+obj.isCurrent	.\lib\melonJS-0.9.4.js	/^		obj.isCurrent = function(state) {$/;"	r
+obj.isKeyPressed	.\lib\melonJS-0.9.4.js	/^		obj.isKeyPressed = function(action) {$/;"	r
+obj.isRunning	.\lib\melonJS-0.9.4.js	/^		obj.isRunning = function() {$/;"	r
+obj.keyStatus	.\lib\melonJS-0.9.4.js	/^		obj.keyStatus = function(action) {$/;"	r
+obj.load	.\lib\melonJS-0.9.4.js	/^		obj.load = function(res, onload, onerror) {$/;"	r
+obj.load	.\lib\melonJS-0.9.4.js	/^		obj.load = function(sound) {$/;"	r
+obj.loadLevel	.\lib\melonJS-0.9.4.js	/^		obj.loadLevel = function(levelId) {$/;"	r
+obj.mouse	.\lib\melonJS-0.9.4.js	/^		 obj.mouse = {$/;"	r
+obj.newInstanceOf	.\lib\melonJS-0.9.4.js	/^		obj.newInstanceOf = function(prop) {$/;"	r
+obj.nextLevel	.\lib\melonJS-0.9.4.js	/^		obj.nextLevel = function() {$/;"	r
+obj.onLoadingError	.\lib\melonJS-0.9.4.js	/^		obj.onLoadingError = function(res) {$/;"	r
+obj.onResourceLoaded	.\lib\melonJS-0.9.4.js	/^		obj.onResourceLoaded = function(e) {$/;"	r
+obj.pause	.\lib\melonJS-0.9.4.js	/^		obj.pause = function(music) {$/;"	r
+obj.pause	.\lib\melonJS-0.9.4.js	/^		obj.pause = function(sound_id) {$/;"	r
+obj.pauseTrack	.\lib\melonJS-0.9.4.js	/^		obj.pauseTrack = function() {$/;"	r
+obj.playTrack	.\lib\melonJS-0.9.4.js	/^		obj.playTrack = function(sound_id) {$/;"	r
+obj.preload	.\lib\melonJS-0.9.4.js	/^		obj.preload = function(res) {$/;"	r
+obj.previousLevel	.\lib\melonJS-0.9.4.js	/^		obj.previousLevel = function() {$/;"	r
+obj.registerMouseEvent	.\lib\melonJS-0.9.4.js	/^		obj.registerMouseEvent = function(eventType, rect, callback, floating) {$/;"	r
+obj.releaseMouseEvent	.\lib\melonJS-0.9.4.js	/^		obj.releaseMouseEvent = function(eventType, rect) {$/;"	r
+obj.reloadLevel	.\lib\melonJS-0.9.4.js	/^		obj.reloadLevel = function() {$/;"	r
+obj.reset	.\lib\melonJS-0.9.4.js	/^		obj.reset = function() {$/;"	r
+obj.resume	.\lib\melonJS-0.9.4.js	/^		obj.resume = function(music) {$/;"	r
+obj.resumeTrack	.\lib\melonJS-0.9.4.js	/^		obj.resumeTrack = function() {$/;"	r
+obj.set	.\lib\melonJS-0.9.4.js	/^		obj.set = function(state, so) {$/;"	r
+obj.setLoadCallback	.\lib\melonJS-0.9.4.js	/^		obj.setLoadCallback = function(callback) {$/;"	r
+obj.setTransition	.\lib\melonJS-0.9.4.js	/^		obj.setTransition = function(state, enable) {$/;"	r
+obj.stop	.\lib\melonJS-0.9.4.js	/^		obj.stop = function(sound_id) {$/;"	r
+obj.stopTrack	.\lib\melonJS-0.9.4.js	/^		obj.stopTrack = function() {$/;"	r
+obj.touches	.\lib\melonJS-0.9.4.js	/^		obj.touches = [];$/;"	r
+obj.transition	.\lib\melonJS-0.9.4.js	/^		obj.transition = function(effect, color, duration) {$/;"	r
+obj.triggerKeyEvent	.\lib\melonJS-0.9.4.js	/^		obj.triggerKeyEvent = function(keycode, status) {$/;"	r
+obj.unbindKey	.\lib\melonJS-0.9.4.js	/^		obj.unbindKey = function(keycode) {$/;"	r
+obj.unbindMouse	.\lib\melonJS-0.9.4.js	/^		obj.unbindMouse = function(button) {$/;"	r
+obj.unbindTouch	.\lib\melonJS-0.9.4.js	/^		obj.unbindTouch = function() {$/;"	r
+obj.unwatchAccelerometer	.\lib\melonJS-0.9.4.js	/^		obj.unwatchAccelerometer = function() {$/;"	r
+obj.watchAccelerometer	.\lib\melonJS-0.9.4.js	/^		obj.watchAccelerometer = function() {$/;"	r
+objList	.\lib\melonJS-0.9.4.js	/^			var objList = [];$/;"	r
+onClicked	.\lib\melonJS-0.9.4.js	/^		onClicked : function() {$/;"	r
+onClicked	.\lib\melonJS-0.9.4.js	/^	 *    onClicked:function()$/;"	r
+onCollision	.\lib\melonJS-0.9.4.js	/^				onCollision : function(res, obj) {$/;"	r
+onCollision	.\lib\melonJS-0.9.4.js	/^		onCollision : function() {$/;"	r
+onDestroyEvent	.\lib\melonJS-0.9.4.js	/^				onDestroyEvent : function() {$/;"	r
+onDestroyEvent	.\lib\melonJS-0.9.4.js	/^		onDestroyEvent : function() {$/;"	r
+onDestroyEvent	.\lib\melonJS-0.9.4.js	/^	 *    onDestroyEvent : function ()$/;"	r
+onDeviceMotion	.\lib\melonJS-0.9.4.js	/^		function onDeviceMotion(e) {$/;"	r
+onFadeComplete	.\lib\melonJS-0.9.4.js	/^		onFadeComplete : function() {$/;"	r
+onMouseEvent	.\lib\melonJS-0.9.4.js	/^		function onMouseEvent(e) {$/;"	r
+onMouseMove	.\lib\melonJS-0.9.4.js	/^		function onMouseMove(e) {$/;"	r
+onMouseWheel	.\lib\melonJS-0.9.4.js	/^		function onMouseWheel(e) {$/;"	r
+onProgressUpdate	.\lib\melonJS-0.9.4.js	/^		onProgressUpdate : function(progress) {$/;"	r
+onProgressUpdate	.\lib\melonJS-0.9.4.js	/^	 *    onProgressUpdate: function(progress)$/;"	r
+onResetEvent	.\lib\melonJS-0.9.4.js	/^		onResetEvent : function() {$/;"	r
+onTouchEvent	.\lib\melonJS-0.9.4.js	/^		function onTouchEvent(e) {$/;"	r
+onUpdateFrame	.\lib\melonJS-0.9.4.js	/^		onUpdateFrame : function() {$/;"	r
+onload	.\lib\melonJS-0.9.4.js	/^	 *    onload: function()$/;"	r
+output	.\lib\melonJS-0.9.4.js	/^				var output = [], chr1, chr2, chr3, enc1, enc2, enc3, enc4, i = 0;$/;"	r
+overlaps	.\lib\melonJS-0.9.4.js	/^				overlaps : function(r)	{$/;"	r
+parseFromString	.\lib\melonJS-0.9.4.js	/^			parseFromString : function(textxml) {$/;"	r
+parserObj	.\lib\melonJS-0.9.4.js	/^		var parserObj = {$/;"	r
+pixelToTileCoords	.\lib\melonJS-0.9.4.js	/^		pixelToTileCoords : function(x, y) {$/;"	r
+preventDefault	.\lib\melonJS-0.9.4.js	/^		function preventDefault(e) {$/;"	r
+properties	.\lib\melonJS-0.9.4.js	/^						var properties = {};$/;"	r
+readyList	.\lib\melonJS-0.9.4.js	/^	var readyBound = false, isReady = false, readyList = [];$/;"	r
+removeItem	.\lib\melonJS-0.9.4.js	/^		removeItem : function(name) {$/;"	r
+res	.\lib\melonJS-0.9.4.js	/^			var res = {$/;"	r
+res	.\lib\melonJS-0.9.4.js	/^      var res = "", c = 0;$/;"	r
+reset	.\lib\melonJS-0.9.4.js	/^				reset : function(x, y) {$/;"	r
+reset	.\lib\melonJS-0.9.4.js	/^		reset : function() {$/;"	r
+reset	.\lib\melonJS-0.9.4.js	/^		reset : function(name) {$/;"	r
+resetAll	.\lib\melonJS-0.9.4.js	/^		resetAll : function() {$/;"	r
+resize	.\lib\melonJS-0.9.4.js	/^				resize : function(ratio)$/;"	r
+resize	.\lib\melonJS-0.9.4.js	/^		resize : function(scale) {$/;"	r
+result	.\lib\melonJS-0.9.4.js	/^			var result = [];$/;"	r
+rgbCache	.\lib\melonJS-0.9.4.js	/^		var rgbCache = {};$/;"	r
+scale	.\lib\melonJS-0.9.4.js	/^		scale : function(\/**me.Vector2d*\/ v) {$/;"	r
+set	.\lib\melonJS-0.9.4.js	/^				set : function(v, w, h) {$/;"	r
+set	.\lib\melonJS-0.9.4.js	/^		set : function(\/**Int*\/ x, \/**Int*\/ y) {$/;"	r
+set	.\lib\melonJS-0.9.4.js	/^		set : function(align, scale) {$/;"	r
+set	.\lib\melonJS-0.9.4.js	/^		set : function(font, size, color, align) {$/;"	r
+set	.\lib\melonJS-0.9.4.js	/^		set : function(value) {$/;"	r
+setAnimationFrame	.\lib\melonJS-0.9.4.js	/^				setAnimationFrame : function(idx) {$/;"	r
+setBounds	.\lib\melonJS-0.9.4.js	/^				setBounds : function(w, h) {$/;"	r
+setCurrentAnimation	.\lib\melonJS-0.9.4.js	/^				setCurrentAnimation : function(name, resetAnim) {$/;"	r
+setDeadzone	.\lib\melonJS-0.9.4.js	/^				setDeadzone : function(w, h) {$/;"	r
+setFriction	.\lib\melonJS-0.9.4.js	/^				setFriction : function(x, y) {$/;"	r
+setItemValue	.\lib\melonJS-0.9.4.js	/^		setItemValue : function(name, value) {$/;"	r
+setMaxVelocity	.\lib\melonJS-0.9.4.js	/^				setMaxVelocity : function(x, y) {$/;"	r
+setStat	.\lib\melonJS-0.9.4.js	/^                  var setStat = function(k, v) {$/;"	r
+setTile	.\lib\melonJS-0.9.4.js	/^		setTile : function(x, y, tileId) {$/;"	r
+setTransparency	.\lib\melonJS-0.9.4.js	/^				setTransparency : function(col) {$/;"	r
+setV	.\lib\melonJS-0.9.4.js	/^		setV : function(\/**me.Vector2d*\/ v) {$/;"	r
+setVelocity	.\lib\melonJS-0.9.4.js	/^				setVelocity : function(x, y) {$/;"	r
+setZero	.\lib\melonJS-0.9.4.js	/^		setZero : function() {$/;"	r
+settings	.\lib\melonJS-0.9.4.js	/^	 *       settings = {}$/;"	r
+settings.image	.\lib\melonJS-0.9.4.js	/^	 *       settings.image = "button";$/;"	r
+shake	.\lib\melonJS-0.9.4.js	/^				shake : function(intensity, duration, axis, onComplete) {$/;"	r
+singleton	.\lib\melonJS-0.9.4.js	/^		var singleton = {};$/;"	r
+singleton.add	.\lib\melonJS-0.9.4.js	/^		singleton.add = function(name, val) {$/;"	r
+singleton.decode	.\lib\melonJS-0.9.4.js	/^		singleton.decode = function(input) {$/;"	r
+singleton.getItemValue	.\lib\melonJS-0.9.4.js	/^		singleton.getItemValue = function(name) {$/;"	r
+singleton.reset	.\lib\melonJS-0.9.4.js	/^		singleton.reset = function(name) {$/;"	r
+singleton.resetAll	.\lib\melonJS-0.9.4.js	/^		singleton.resetAll = function() {$/;"	r
+singleton.setValue	.\lib\melonJS-0.9.4.js	/^		singleton.setValue = function(name, value) { $/;"	r
+singleton.updateValue	.\lib\melonJS-0.9.4.js	/^		singleton.updateValue = function(name, value) {$/;"	r
+soundclip.preload	.\lib\melonJS-0.9.4.js	/^			soundclip.preload = 'auto';$/;"	r
+sub	.\lib\melonJS-0.9.4.js	/^		sub : function(\/**me.Vector2d*\/ v) {$/;"	r
+supportedFormat	.\lib\melonJS-0.9.4.js	/^		var supportedFormat = [ "mp3", "ogg", "wav" ];$/;"	r
+swingSword	.\lib\melonJS-0.9.4.js	/^	 *    swingSword: function()$/;"	r
+this.HUDItems	.\lib\melonJS-0.9.4.js	/^			this.HUDItems = {};$/;"	r
+this.HUDobj	.\lib\melonJS-0.9.4.js	/^			this.HUDobj = [];$/;"	r
+this.TileProperties	.\lib\melonJS-0.9.4.js	/^			this.TileProperties = [];$/;"	r
+this._fadeIn	.\lib\melonJS-0.9.4.js	/^					this._fadeIn = {$/;"	r
+this._fadeOut	.\lib\melonJS-0.9.4.js	/^					this._fadeOut = {$/;"	r
+this._shake	.\lib\melonJS-0.9.4.js	/^					this._shake = {$/;"	r
+this.anim	.\lib\melonJS-0.9.4.js	/^					this.anim = [];$/;"	r
+this.chain	.\lib\melonJS-0.9.4.js	/^		this.chain = function(chainedTween) {$/;"	r
+this.delay	.\lib\melonJS-0.9.4.js	/^		this.delay = function(amount) {$/;"	r
+this.destroy	.\lib\melonJS-0.9.4.js	/^		this.destroy = function() {$/;"	r
+this.easing	.\lib\melonJS-0.9.4.js	/^		this.easing = function(easing) {$/;"	r
+this.font	.\lib\melonJS-0.9.4.js	/^			this.font = "" + size + "px " + font;$/;"	r
+this.font	.\lib\melonJS-0.9.4.js	/^			this.font = "bold " + this.font;$/;"	r
+this.font	.\lib\melonJS-0.9.4.js	/^			this.font = "italic " + this.font;$/;"	r
+this.layerData	.\lib\melonJS-0.9.4.js	/^			this.layerData = [];$/;"	r
+this.mapLayers	.\lib\melonJS-0.9.4.js	/^			this.mapLayers = [];$/;"	r
+this.objectGroups	.\lib\melonJS-0.9.4.js	/^			this.objectGroups = [];$/;"	r
+this.objects	.\lib\melonJS-0.9.4.js	/^			this.objects = [];$/;"	r
+this.onComplete	.\lib\melonJS-0.9.4.js	/^		this.onComplete = function(onCompleteCallback) {$/;"	r
+this.onUpdate	.\lib\melonJS-0.9.4.js	/^		this.onUpdate = function(onUpdateCallback) {$/;"	r
+this.orientation	.\lib\melonJS-0.9.4.js	/^			this.orientation = "";$/;"	r
+this.points	.\lib\melonJS-0.9.4.js	/^					this.points = [];$/;"	r
+this.setAnimationFrame	.\lib\melonJS-0.9.4.js	/^						this.setAnimationFrame = function() {;};$/;"	r
+this.start	.\lib\melonJS-0.9.4.js	/^		this.start = function() {$/;"	r
+this.stop	.\lib\melonJS-0.9.4.js	/^		this.stop = function() {$/;"	r
+this.tileXOffset	.\lib\melonJS-0.9.4.js	/^			this.tileXOffset = [];$/;"	r
+this.tileYOffset	.\lib\melonJS-0.9.4.js	/^			this.tileYOffset = [];$/;"	r
+this.tilesets	.\lib\melonJS-0.9.4.js	/^			this.tilesets = [];$/;"	r
+this.to	.\lib\melonJS-0.9.4.js	/^		this.to = function(properties, duration) {$/;"	r
+this.type	.\lib\melonJS-0.9.4.js	/^			this.type = {$/;"	r
+this.update	.\lib\melonJS-0.9.4.js	/^		this.update = function(\/* time *\/) {$/;"	r
+this.version	.\lib\melonJS-0.9.4.js	/^			this.version = "";$/;"	r
+this.xmlDoc.async	.\lib\melonJS-0.9.4.js	/^					this.xmlDoc.async = "false";$/;"	r
+tileToPixelCoords	.\lib\melonJS-0.9.4.js	/^		tileToPixelCoords : function(x, y) {$/;"	r
+toString	.\lib\melonJS-0.9.4.js	/^		toString : function() {$/;"	r
+union	.\lib\melonJS-0.9.4.js	/^				union : function(\/** {me.Rect} *\/ r) {$/;"	r
+update	.\lib\melonJS-0.9.4.js	/^				update : function() {$/;"	r
+update	.\lib\melonJS-0.9.4.js	/^				update : function(updateTarget) {$/;"	r
+update	.\lib\melonJS-0.9.4.js	/^		update : function() {$/;"	r
+update	.\lib\melonJS-0.9.4.js	/^		update : function(value) {$/;"	r
+update	.\lib\melonJS-0.9.4.js	/^	 *    update: function()$/;"	r
+updateColRect	.\lib\melonJS-0.9.4.js	/^				updateColRect : function(x, w, y, h) {$/;"	r
+updateCoordFromEvent	.\lib\melonJS-0.9.4.js	/^		function updateCoordFromEvent(e) {$/;"	r
+updateItemValue	.\lib\melonJS-0.9.4.js	/^		updateItemValue : function(name, value) {$/;"	r
+updateMovement	.\lib\melonJS-0.9.4.js	/^				updateMovement : function() {$/;"	r
+updateStat	.\lib\melonJS-0.9.4.js	/^                  var updateStat = function(k, v) {$/;"	r
+v	.\lib\melonJS-0.9.4.js	/^							var v = {x: x + vpos.x - map_pos.x, y: y + vpos.y - map_pos.y };$/;"	r
+v	.\lib\melonJS-0.9.4.js	/^							var v = {x: x, y: y};$/;"	r
+vendors	.\lib\melonJS-0.9.4.js	/^		var vendors = ['ms', 'moz', 'webkit', 'o'];$/;"	r
+window.cancelAnimationFrame	.\lib\melonJS-0.9.4.js	/^			window.cancelAnimationFrame = function() {$/;"	r
+window.requestAnimationFrame	.\lib\melonJS-0.9.4.js	/^			window.requestAnimationFrame = function(callback, element) {$/;"	r
+within	.\lib\melonJS-0.9.4.js	/^				within: function(r) {$/;"	r
+xmlList	.\lib\melonJS-0.9.4.js	/^		var xmlList = {};$/;"	r
+xmlhttp.onload	.\lib\melonJS-0.9.4.js	/^			xmlhttp.onload = function(event) {$/;"	r
+xprop	.\lib\melonJS-0.9.4.js	/^				xprop : {},$/;"	r
+yprop	.\lib\melonJS-0.9.4.js	/^				yprop : {}$/;"	r

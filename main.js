@@ -102,7 +102,7 @@ var jsApp        =
         me.entityPool.add('computer', Computer);
         me.entityPool.add('chair', Chair);
         me.entityPool.add('chairchair', Chair);
-        me.entityPool.add('vender', Vendor);
+        me.entityPool.add('vender', Vender);
         me.entityPool.add('watercooler', Watercooler);
 
         // Start the game 

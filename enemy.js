@@ -78,13 +78,12 @@ var Enemy = me.ObjectEntity.extend(
     {
         if(obj.name == "bullet")
         {
-	    console.log("Crack");
+            console.log("Crack");
             this.health -= obj.damage;
+        }else if (obj.name == "soda")
+        {
+            return false;
         }
-	else if (obj.name == "soda")
-	{
-	    return false;
-	}
 
         if (this.health <= 0)
             me.game.remove(this);
@@ -259,8 +258,8 @@ var Computer = Enemy.extend(
     }
 });
 
-/**Vending Machine*/
-var Vendor = Enemy.extend(
+/** Vending Machine */
+var Vender = Enemy.extend(
 {
     init:  function(x, y, settings)
     {
@@ -273,7 +272,7 @@ var Vendor = Enemy.extend(
     onProximity: function()
     {
         this.tickCount += me.timer.tick;
-        if(aim > -2 && aim < -1) // In Radians
+        if(this.target.top > this.bottom)
         {
             if(this.tickCount > this.fireGap)
             {
@@ -285,21 +284,22 @@ var Vendor = Enemy.extend(
 
     _shoot: function()
     {
-	//Create a soda
-	var soda = new Soda(
-	    this.pos.x,
-	    this.pos.y, 
-	    this.aim);
-	me.game.add(soda, this.z);
-	me.game.sort();
+        //Create a soda
+        var soda = new Soda(
+            this.pos.x,
+            this.pos.y,  
+            this.aim);
+        me.game.add(soda, this.z);
+        me.game.sort();
     }
 });
 
+/** Water Cooler */
 var Watercooler = Enemy.extend(
 {
     init: function (x, y, settings)
     {
-	    this.parent(x, y, settings, settings.width * 2);
+        this.parent(x, y, settings, settings.width * 2);
 
         this.fireGap = 240; // Ticks between firing
         this.tickCount = 120;

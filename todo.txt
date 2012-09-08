@@ -10,7 +10,7 @@ Vending machine - Fahmi and Dan
 watercooler - Fahmi - DONE
     - Watercooler continues spill water even when player is away, Fahmi - DONE
 audio - Nick
-Vender aiming bug
+Vender aiming bug - Fahmi
 Game screens - Nick
 donuts
 Computer explosions randomised
