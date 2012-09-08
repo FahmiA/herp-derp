@@ -10,10 +10,11 @@ Vending machine - Fahmi and Dan
 watercooler - Fahmi - DONE
     - Watercooler continues spill water even when player is away, Fahmi - DONE
 audio - Nick
-Vender aiming bug - Fahmi
+Vender aiming bug - Fahmi/Dan - DONE
 Game screens - Nick
-donuts
+Novel enemy behaviour - Dan
+donuts - Fahmi
 Computer explosions randomised
-armer (if time)
+armour (if time)
 AI tweeking
     - Path finding + deviation
