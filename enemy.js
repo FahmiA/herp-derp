@@ -168,9 +168,9 @@ var Table = ChasingEnemy.extend(
         // Set animations
         this.addAnimation('move', [24, 25, 26]);
         this.addAnimation('stay', [24]);
-        this.setCurrentAnimation('move');
-
-	this.damage = 25;
+        this.setCurrentAnimation('stay');
+        
+        this.damage = 25;
     },
 });
 
@@ -181,16 +181,16 @@ var Chair = ChasingEnemy.extend(
     {
         this.parent(x, y, settings, settings.width * 4, 2);
 
-	//Chairs have less health
-	this.health = 35;
-	this.updateColRect(5, 22, 5, 22);
+        //Chairs have less health
+        this.health = 35;
+        this.updateColRect(5, 22, 5, 22);
 
         // Set animations
-        this.addAnimation('move', [29, 30, 31, 32, 43, 44, 45, 46, 47, 48, 49, 50]);
-        this.addAnimation('stay', [29]);
-        this.setCurrentAnimation('move');
+        this.addAnimation('move', [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]);
+        this.addAnimation('stay', [48]);
+        this.setCurrentAnimation('stay');
 
-	this.damage = 5
+        this.damage = 5
     }
 });
 
@@ -202,8 +202,8 @@ var Computer = Enemy.extend(
         this.parent(x, y, settings, settings.width * 2);
 
         // Set animations
-        this.addAnimation('idle', [27]);
-        this.addAnimation('alert', [27, 28]);
+        this.addAnimation('idle', [36]);
+        this.addAnimation('alert', [36, 37]);
         this.setCurrentAnimation('idle');
 
         this.fuseMaxTicks = 120;
@@ -227,12 +227,17 @@ var Computer = Enemy.extend(
                     spriteheight: 32,
                 };
 
-                for(var row = this.pos.x - 32; row < this.pos.x + 32; row += 32)
+                var maxExplosions = 9;
+                var minX = this.pos.x - 32;
+                var maxX = this.pos.x + 32;
+                var minY = this.pos.y - 32;
+                var maxY = this.pos.y + 32;
+                // TODO: Give explostions a vector to follow AWAY from the computer.
+                for(var i = 0; i < maxExplosions; i++)
                 {
-                    for(var col = this.pos.y - 32; col < this.pos.y + 32; col += 32)
-                    {
-                        me.game.add(new Explosion(row, col, settings), this.z + 1);
-                    }
+                    var x = minX + (Math.random() * (maxX - minX));
+                    var y = minY + (Math.random() * (maxY - minY));
+                    me.game.add(new Explosion(x, y, settings), this.z + 1);
                 }
 
                 me.game.remove(this);
