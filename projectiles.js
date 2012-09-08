@@ -1,10 +1,5 @@
+//Base projectile object
 var Projectile = me.ObjectEntity.extend({
-	/*
-	 * Spawns a projectile
-	 * X - X position of the projectile
-	 * Y - Y position of the projectile
-	 * aim - The heading of the projectile in radians
-	 */
     init: function(x, y, settings, aim)
     {
         this.parent(x, y, settings);
@@ -45,10 +40,14 @@ var Projectile = me.ObjectEntity.extend({
                 console.log("Thunk");
                 //TODO SOUND Wall hit
                 me.game.remove(this);
-            }
+             }
         }
 });
 
+
+/*
+ * Extended projectile types
+ */
 var Bullet = Projectile.extend({
     init: function(x, y, aim)  {
         this.source = new me.Vector2d(x, y);
@@ -82,7 +81,12 @@ var Bullet = Projectile.extend({
 	var xC          = this.pos.x + deltaXAC;
 	var yC          = this.pos.y + deltaYAC;
 	
-
+	//Create drawing gradient
+	var grad = context.createLinearGradient(xC, yC, this.pos.x, this.pos.y);
+	grad.addColorStop(0, "white");
+	grad.addColorStop(1, "rgba(255, 255, 0, 0.25)");
+	context.strokeStyle = grad;
+	
 	context.beginPath();
 	context.moveTo(this.pos.x, this.pos.y);
 	context.lineTo(xC, yC);
@@ -90,26 +94,21 @@ var Bullet = Projectile.extend({
     }
 });
 
-/*
-var Soda = Projectile.extend({(x, y, aim) {
-    var settings = {
-	name: "soda",
-	x: x,
-	y: y,
-	z: 2,
-	width: 1,
-	height: 1,
-	gid: null,
-	isPolygon: false,
-	image: "OBJ_TILESET",
-	spriteheight: 1,
-	spritewidth: 1
-    };
-    Projectile.call(this, x, y, settings, aim);
-}
-
-Soda.prototype = new Projectile;
-
-Soda.prototype.draw = function() {
-};
-*/
+var Soda = Projectile.extend({
+    init: function(x, y, aim){
+	var settings = {
+	    name: "bullet",
+	    x: x,
+	    y: y,
+	    z: 2,
+	    width: 1,
+	    height: 1,
+	    gid: null,
+	    isPolygon: false,
+	    image: "OBJ_TILESET",
+	    spriteheight: 1,
+	    spritewidth: 1
+	};
+	this.parent(x, y, settings, aim);
+    }
+});
