@@ -1,20 +1,16 @@
-/** Table */
-var Table = me.ObjectEntity.extend(
+/** Abstract Enemy */
+var Enemy = me.ObjectEntity.extend(
 {
-    init: function(x, y, settings)
+    init: function(x, y, settings, speed, respondDist)
     {
         this.parent(x, y, settings);
         this.collidable = true;
         
         // Set the default horizontal & vertical speed (accel vector)
-        this.setVelocity(1, 1);
+        this.setVelocity(speed, speed);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
 
-        // Set animations
-        this.addAnimation('move', [9, 10]);
-        this.addAnimation('stay', [8]);
-        this.setCurrentAnimation('move');
-
+        // Set up evilness
         if(typeof(settings.evil) != 'undefined')
         {
             this.evil = settings.evil;
@@ -23,6 +19,7 @@ var Table = me.ObjectEntity.extend(
         }
 
         this.target = null;
+        this.doUpdate = false;
     },
 
     update: function()
@@ -33,6 +30,8 @@ var Table = me.ObjectEntity.extend(
             return true;
         }
 
+        this.doUpdate = true;
+
         // Search for the player
         if(this.evil && !this.target)
         {
@@ -40,29 +39,23 @@ var Table = me.ObjectEntity.extend(
             if(this.pos.distance(player.pos) < this.width * 2)
             {
                 this.target = player;
-                this.setCurrentAnimation('move');
             }
         }
 
-        // Chase the player 
         if(this.target)
-        {
-            this._chaseTarget();
-        }
+            this.onProximity();
 
         // Update player movement
         this.updateMovement();
 
         // Update animation if necessary
-        var moved = false;
-        if (this.vel.x != 0 || this.vel.y != 0)
+        if (this.doUpdate)
         {
             // Update object animation
             this.parent(this);
-            moved = true;
         }
                 
-        return moved;
+        return this.doUpdate;
     },
 
     onHit: function(obj)
@@ -72,21 +65,53 @@ var Table = me.ObjectEntity.extend(
             return true;
     },
 
+    stateChanged: function()
+    {
+        this.doUpdate = true;
+    }
+});
+
+
+/** Table */
+var Table = Enemy.extend(
+{
+    init: function(x, y, settings)
+    {
+        this.parent(x, y, settings, 1, settings.width * 3);
+
+        // Set animations
+        this.addAnimation('move', [9, 10]);
+        this.addAnimation('stay', [8]);
+        this.setCurrentAnimation('move');
+    },
+
+    onProximity: function()
+    {
+        // Chase the player 
+        if(this.target)
+        {
+            this._chaseTarget();
+        }
+    },
+
     _chaseTarget: function()
     {
         // Calculate velocity based on target position
         if(this.target.bottom < this.bottom) // Above
         {
             this.vel.y -= this.accel.x * me.timer.tick;
+            this.stateChanged();
         }else if(this.target.top > this.top) { // Below
             this.vel.y += this.accel.x * me.timer.tick;
+            this.stateChanged();
         }
         
         if(this.target.right < this.right) { // Left
             this.vel.x -= this.accel.x * me.timer.tick;
+            this.stateChanged();
         }else if(this.target.left > this.left) { // Right
             this.vel.x += this.accel.x * me.timer.tick;
+            this.stateChanged();
         }
     }
 });
-

@@ -89,6 +89,8 @@ var jsApp        =
         // Add entities
         me.entityPool.add('player', Player);
         me.entityPool.add('table', Table);
+        me.entityPool.add('computer', Table);
+        me.entityPool.add('chair', Table);
 
         // Start the game 
         me.state.change(me.state.TITLE);
