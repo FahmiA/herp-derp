@@ -15,6 +15,9 @@ var Player = me.ObjectEntity.extend(
         this.aim = 0;
         this.doUpdate = true;
 
+	//Health
+	this.health = 100;
+
         //Bind keys
         me.input.bindKey(me.input.KEY.LEFT, 'left');
         me.input.bindKey(me.input.KEY.RIGHT, 'right');
@@ -26,7 +29,6 @@ var Player = me.ObjectEntity.extend(
         me.input.bindKey(me.input.KEY.D, 'right');
         me.input.bindKey(me.input.KEY.W, 'up');
         me.input.bindKey(me.input.KEY.S, 'down');
-
 
         me.input.bindKey(me.input.KEY.SPACE, 'shoot', true);
         me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
@@ -80,12 +82,26 @@ var Player = me.ObjectEntity.extend(
 
     onHit: function(obj)
     {
-        if(obj.name != "bullet")
-        {
-            console.log("Thwack");
-            //Loose health
-            //TODO SOUND
-        }
+	if(!this.alive)
+	    return;	
+
+	switch (obj.name)
+	{
+	case "soda":
+	    //TODO SOUND
+	    this._doDamage(obj.damage);
+	    break;
+	case "chair":
+	    //TODO SOUND
+	    this._doDamage(obj.damage);
+	    break;
+	case "table":
+	    //TODO SOUND
+	    this._doDamage(obj.damage);
+	    break;
+	default:
+	    break;
+	}
     },
 
     _steer: function()
@@ -132,7 +148,9 @@ var Player = me.ObjectEntity.extend(
     _updateAim: function(pos)
     {
         //Do math to convert player position and mouse pos
-        this.aim = Math.atan2(pos.y - this.pos.y, pos.x - this.pos.x);
+        this.aim = Math.atan2(
+	    pos.y - this.pos.y - this.anchorPoint.y + me.game.viewport.pos.y,
+	    pos.x - this.pos.x - this.anchorPoint.x + me.game.viewport.pos.x);
         var aim = this.aim;
         var PI = Math.PI;
 
@@ -169,5 +187,19 @@ var Player = me.ObjectEntity.extend(
             this.aim);
 	me.game.add(bullet, this.z);
 	me.game.sort();
+    },
+
+    _doDamage: function(damage)
+    {
+	console.log("You take " + damage + " damage.");
+	this.health -= damage;
+
+	if(this.health <= 0)
+	{
+	    console.log("Death stalks you...")
+	    this.alive = false;
+	}
+	
+	//TODO update animations
     }
 });

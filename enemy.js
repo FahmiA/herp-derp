@@ -5,6 +5,8 @@ var Enemy = me.ObjectEntity.extend(
     {
         this.parent(x, y, settings);
         this.collidable = true;
+
+	this.health = 100;
         
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(0, 0);
@@ -19,6 +21,7 @@ var Enemy = me.ObjectEntity.extend(
         }
 
         this.target = null;
+	this.aim = 0;
         this.doUpdate = false;
     },
 
@@ -43,7 +46,10 @@ var Enemy = me.ObjectEntity.extend(
         }
 
         if(this.target)
+	{
+	    this._updateAim(this.target.pos);
             this.onProximity();
+	}
 
         // Update player movement
         this.updateMovement();
@@ -62,12 +68,28 @@ var Enemy = me.ObjectEntity.extend(
     {
         console.log("Crack");
         if(obj.name == "bullet")
-            return true;
+	{
+	    this.health -= obj.damage;
+	}
+
+	if (this.health <= 0)
+	    me.game.remove(this);
+
+	return true; //Absorb bullet
     },
 
     stateChanged: function()
     {
         this.doUpdate = true;
+    },
+    
+    _updateAim: function(pos)
+    {
+        //Do math to convert player and enemy position
+        this.aim = Math.atan2(
+	    pos.y - this.pos.y - this.anchorPoint.y + me.game.viewport.pos.y,
+	    pos.x - this.pos.x - this.anchorPoint.x + me.game.viewport.pos.x);
+	console.log(this.aim);
     }
 });
 
@@ -79,6 +101,19 @@ var ChasingEnemy = Enemy.extend(
         this.speed = speed;
 
         this.setVelocity(speed, speed);
+    },
+
+     update: function()
+    {
+	this.parent();
+	
+	//Check collision with objects
+        var res = me.game.collide(this);
+        if (res != null)
+        {   
+            if (res.obj.name == "player")
+		res.obj.onHit(this);
+        }
     },
 
     onProximity: function()
@@ -130,6 +165,8 @@ var Table = ChasingEnemy.extend(
         this.addAnimation('move', [9, 10]);
         this.addAnimation('stay', [8]);
         this.setCurrentAnimation('move');
+
+	this.damage = 25;
     },
 });
 
@@ -140,13 +177,20 @@ var Chair = ChasingEnemy.extend(
     {
         this.parent(x, y, settings, settings.width * 4, 2);
 
+	//Chairs have less health
+	this.health = 35;
+	this.updateColRect(5, 22, 5, 22);
+
         // Set animations
         this.addAnimation('move', [29, 30, 31, 32, 43, 44, 45, 46, 47, 48, 49, 50]);
         this.addAnimation('stay', [29]);
         this.setCurrentAnimation('move');
-    },
+
+	this.damage = 5
+    }
 });
 
+/** Computer Bomb */
 var Computer = Enemy.extend(
 {
     init: function(x, y, settings)
@@ -156,11 +200,13 @@ var Computer = Enemy.extend(
         // Set animations
         this.addAnimation('idle', [27, 28]);
         this.addAnimation('alert', [27, 28]);
-        this.setCurrentAnimation('alert');
+        this.setCurrentAnimation('alert', 'alert');
     },
 
     onProximity: function()
     {
+	this.setCurrentAnimation('alert');
         console.debug('Boom!');
+	me.game.remove(this);
     }
 });
