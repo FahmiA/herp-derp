@@ -147,34 +147,43 @@ var Computer = Enemy.extend(
         this.parent(x, y, settings, settings.width * 2);
 
         // Set animations
-        this.addAnimation('idle', [27, 28]);
+        this.addAnimation('idle', [27]);
         this.addAnimation('alert', [27, 28]);
-        this.setCurrentAnimation('alert');
+        this.setCurrentAnimation('idle');
+
+        this.fuseMaxTicks = 120;
+        this.fuseTicks = 0;
     },
 
     onProximity: function()
     {
         if(this.alive)
         {
-            console.debug('exploded!');
-            var settings = {
-                image: 'EFFECTS_TILESET',
-                spritewidth: 32,
-                spriteheight: 32,
-            };
-
-            for(var row = this.pos.x - 32; row < this.pos.x + 32; row += 32)
+            if(this.fuseTicks < this.fuseMaxTicks)
             {
-                for(var col = this.pos.y - 32; col < this.pos.y + 32; col += 32)
+                this.fuseTicks++;
+                this.setCurrentAnimation('alert');
+                this.stateChanged();
+            }else{
+                var settings = {
+                    image: 'EFFECTS_TILESET',
+                    spritewidth: 32,
+                    spriteheight: 32,
+                };
+
+                for(var row = this.pos.x - 32; row < this.pos.x + 32; row += 32)
                 {
-                    me.game.add(new Explosion(row, col, settings), this.z + 1);
+                    for(var col = this.pos.y - 32; col < this.pos.y + 32; col += 32)
+                    {
+                        me.game.add(new Explosion(row, col, settings), this.z + 1);
+                    }
                 }
+
+                me.game.remove(this);
+                me.game.sort();
+
+                this.alive = false;
             }
-
-            me.game.remove(this);
-            me.game.sort();
-
-            this.alive = false;
         }
     }
 });
