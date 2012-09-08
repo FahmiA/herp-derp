@@ -38,22 +38,22 @@ var Player = me.ObjectEntity.extend(
         this.setCurrentAnimation('moveRight');
 
         // Adjust the bounding box
-	this.updateColRect(5, 22, 5, 22);
+        this.updateColRect(5, 22, 5, 22);
 
         // Set the display to follow our position on both axis
-	me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     },
 
     update: function()
     {
-	//Check if player is still alive
+        //Check if player is still alive
         if(!this.alive)
         {
             this.parent(this);
             return true;
         }
 
-	//Check player controls
+        //Check player controls
         this._steer();
 
         // Update animation if necessary
@@ -135,17 +135,18 @@ var Player = me.ObjectEntity.extend(
     {
 	//Do math to convert player position and mouse pos
 	this.aim = Math.atan2(pos.y - this.pos.y, pos.x - this.pos.x);
+
+	//Rotate sprite
     },
     
     _fireWeapon: function()
     {
 	//Fire mah lazer
-	console.log("Pew!Pew!");
-
 	//TODO SOUND
 	
 	//Create a bullet
-	var bullet = new Bullet(this.pos.x, this.pos.y, this.aim);
+	var bullet = new Bullet(this.pos.x + this.anchorPoint.x
+				, this.pos.y + this.anchorPoint.y, this.aim);
 	me.game.add(bullet, this.z);
 	me.game.sort();
     }
