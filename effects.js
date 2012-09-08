@@ -19,7 +19,7 @@ var Explosion = me.ObjectEntity.extend(
         // Accessed by player
         this.damage = 50;
     },
-
+    /*
     update: function()
     {
         this.parent();
@@ -29,6 +29,7 @@ var Explosion = me.ObjectEntity.extend(
         {
             if(res.obj.type == 'player')
             {
+		console.log("Hit Player")
                 res.obj.onHit(this);
             }
         }
@@ -37,7 +38,7 @@ var Explosion = me.ObjectEntity.extend(
         this.updateMovement();
         return true;
     },
-
+    */
 });
 
 /** Watter Spill  Effect */

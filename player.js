@@ -9,6 +9,7 @@ var Player = me.ObjectEntity.extend(
         this.type = 'player';
 
         this.anchorPoint = new me.Vector2d(this.width/2, this.height/2);
+	this.toss = new me.Vector2d(0,0);
         
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(1.5, 1.5);
@@ -49,6 +50,7 @@ var Player = me.ObjectEntity.extend(
 
         // Set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+	me.game.viewport.setDeadzone(0,0);
     },
 
     update: function()
@@ -84,34 +86,54 @@ var Player = me.ObjectEntity.extend(
 
     onHit: function(obj)
     {
-        if(!this.alive)
-            return;	
+	if(!this.alive)
+	    return;	
 
-        switch (obj.name)
-        {
-        case "soda":
-            //TODO SOUND
-            this._doDamage(obj.damage);
-            break;
-        case "chair":
-            //TODO SOUND
-            this._doDamage(obj.damage);
-            break;
-        case "table":
-            //TODO SOUND
-            this._doDamage(obj.damage);
-            break;
-        case "explosion":
-            //TODO SOUND
-            this._doDamage(obj.damage);
-            break;
+	switch (obj.name)
+	{
+	case "soda":
+	    //TODO SOUND
+	    this._doDamage(obj.damage);
+	    return true;
+	case "chair":
+	    //TODO SOUND
+	    var toss = getPoint(obj.pos , obj.aim, -25);
+	    tween = new me.Tween(obj.pos)
+	    tween.to({x: toss.x, 
+		      y: toss.y},
+		    500);
+	    tween.easing(me.Tween.Easing.Cubic.EaseOut);
+	    tween.start();
+	    this._doDamage(obj.damage);
+	    break;
+	case "table":
+	    //TODO SOUND
+	    this._doDamage(obj.damage);
+	    break;
+	case "computer":
+	    //TODO SOUND
+	    this._doDamage(obj.damage);
+	    
+	    //Throw player slightly
+	    //var aim = Math.atan2(this.pos.y - obj.pos.y,
+	    //this.pos.x - obj.pos.x);
+
+	    var toss = getPoint(obj.pos , obj.aim, 70);
+	    tween = new me.Tween(this.pos)
+	    tween.to({x: toss.x, 
+		      y: toss.y},
+		    500);
+	    tween.easing(me.Tween.Easing.Linear.EaseNone);
+	    tween.start();
+
+	    break;
         case "health":
             //TODO SOUND
             this._doHealth(obj.healthPoints);
             break;
-        default:
-            return;
-        }
+	default:
+	    return false;
+	}
     },
 
     _steer: function()

@@ -224,6 +224,8 @@ var Computer = Enemy.extend(
 
         this.fuseMaxTicks = 120;
         this.fuseTicks = 0;
+
+	this.damage = 80;
     },
 
     onProximity: function()
@@ -255,6 +257,11 @@ var Computer = Enemy.extend(
                     var y = minY + (Math.random() * (maxY - minY));
                     me.game.add(new Explosion(x, y, settings), this.z + 1);
                 }
+		
+		if(this.distanceTo(this.target) <= 64)
+		{
+		    this.target.onHit(this);
+		}
 
                 me.game.remove(this);
                 me.game.sort();
