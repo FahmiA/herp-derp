@@ -13,7 +13,8 @@ audio - Nick
 Vender aiming bug - Fahmi/Dan - DONE
 Game screens - Nick
 Novel enemy behaviour - Dan
-donuts - Fahmi
+donuts - Fahmi, DONE
+Static objects should not be easy to destroy
 Computer explosions randomised
 armour (if time)
 AI tweeking

@@ -104,6 +104,7 @@ var jsApp        =
         me.entityPool.add('chairchair', Chair);
         me.entityPool.add('vender', Vender);
         me.entityPool.add('watercooler', Watercooler);
+        me.entityPool.add('health', Health);
 
         // Start the game 
         me.state.change(me.state.TITLE);

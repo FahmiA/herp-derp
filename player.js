@@ -84,30 +84,35 @@ var Player = me.ObjectEntity.extend(
 
     onHit: function(obj)
     {
-	if(!this.alive)
-	    return;	
+        console.debug(obj.name);
+        if(!this.alive)
+            return;	
 
-	switch (obj.name)
-	{
-	case "soda":
-	    //TODO SOUND
-	    this._doDamage(obj.damage);
-	    break;
-	case "chair":
-	    //TODO SOUND
-	    this._doDamage(obj.damage);
-	    break;
-	case "table":
-	    //TODO SOUND
-	    this._doDamage(obj.damage);
-	    break;
-	case "explosion":
-	    //TODO SOUND
-	    this._doDamage(obj.damage);
-	    break;
-	default:
-	    return;
-	}
+        switch (obj.name)
+        {
+        case "soda":
+            //TODO SOUND
+            this._doDamage(obj.damage);
+            break;
+        case "chair":
+            //TODO SOUND
+            this._doDamage(obj.damage);
+            break;
+        case "table":
+            //TODO SOUND
+            this._doDamage(obj.damage);
+            break;
+        case "explosion":
+            //TODO SOUND
+            this._doDamage(obj.damage);
+            break;
+        case "health":
+            //TODO SOUND
+            this._doHealth(obj.healthPoints);
+            break;
+        default:
+            return;
+        }
     },
 
     _steer: function()
@@ -197,15 +202,28 @@ var Player = me.ObjectEntity.extend(
 
     _doDamage: function(damage)
     {
-	console.log("You take " + damage + " damage.");
-	//this.health -= damage;
+        console.log("You take " + damage + " damage.");
+        this.health -= damage;
 
-	if(this.health <= 0)
-	{
-	    console.log("Death stalks you...")
-	    this.alive = false;
-	}
-	
-	//TODO update animations
+        if(this.health <= 0)
+        {
+            console.log("Death stalks you...")
+            this.alive = false;
+        }
+        
+        //TODO update animations
+    },
+
+    _doHealth: function(health)
+    {
+        console.log("You take " + health + " health points.");
+        this.health += health;
+
+        if(this.health >= 100)
+        {
+            console.log("You have full health");
+        }
+        
+        //TODO update animations
     }
 });
