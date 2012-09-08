@@ -6,6 +6,9 @@
  <tileset firstgid="257" name="MOB_TILESET" tilewidth="32" tileheight="32">
   <image source="art/MOB_TILESET.png" width="384" height="512"/>
  </tileset>
+ <tileset firstgid="449" name="OBJ_TILESET" tilewidth="32" tileheight="32">
+  <image source="art/OBJ_TILESET.png" width="256" height="256"/>
+ </tileset>
  <layer name="Back" width="10" height="5">
   <data encoding="base64">
    BQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAA=
@@ -24,5 +27,6 @@
     <property name="evil" value="true"/>
    </properties>
   </object>
+  <object name="health" gid="482" x="254" y="34" width="32" height="32"/>
  </objectgroup>
 </map>

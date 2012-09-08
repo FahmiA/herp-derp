@@ -28,7 +28,7 @@ AI tweaking
 
 Known Bugs
 ---------
-Destroy cans on player hit
-Computer animation - Fahmi
-Player Speed on diagonals
-Viewport Deadzone
+Destroy cans on player hit - Dan - DONE
+Computer animation - Fahmi -DONE
+Player Speed on diagonals - Fahmi
+Viewport Deadzone - Dan - DONE
