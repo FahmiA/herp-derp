@@ -149,8 +149,7 @@ var Player = me.ObjectEntity.extend(
         var speedY = this.accel.y * me.timer.tick;
 
         // Player movement
-        if(me.input.isKeyPressed('left'))
-        {
+        if(me.input.isKeyPressed('left')) {
             moveX = -speedX;
         }else if(me.input.isKeyPressed('right')) {
             moveX = speedX;

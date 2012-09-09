@@ -4,9 +4,9 @@ Features
 audio - Nick/Dan - DONE
 Game screens - Nick
 Novel enemy behaviour - Dan - KINDA DONE
-Gun fire flash
+Gun fire flash - Fahmi, DONE
 New map + black borders
-HUD
+HUD - Fahmi
 Game Tweaking
      - Player health/enemy damage
      - Enemy health/player damage
