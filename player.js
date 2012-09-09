@@ -201,7 +201,7 @@ var Player = me.ObjectEntity.extend(
         var aim = this.aim;
         var PI = Math.PI;
 
-        var pos = new me.Vector2d(this.pos.x, this.pos.y)
+        var pos = new me.Vector2d(this.pos.x, this.pos.y + 12);
         if((aim <= 0 && aim > -PI / 4) || (aim >= 0 && aim < PI / 4)) {
             this.setCurrentAnimation('lookRight');
             this.doUpdate = true;
