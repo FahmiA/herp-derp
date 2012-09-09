@@ -184,37 +184,36 @@ var Player = me.ObjectEntity.extend(
     {
         //Do math to convert player position and mouse pos
         this.aim = Math.atan2(
-	    pos.y - this.pos.y - this.anchorPoint.y + me.game.viewport.pos.y,
-	    pos.x - this.pos.x - this.anchorPoint.x + me.game.viewport.pos.x);
+            pos.y - this.pos.y - this.anchorPoint.y + me.game.viewport.pos.y,
+            pos.x - this.pos.x - this.anchorPoint.x + me.game.viewport.pos.x);
         var aim = this.aim;
         var PI = Math.PI;
 
-        var adjusted = new me.Vector2d(this.pos.x - me.game.viewport.pos.x, 
-                           this.pos.y - me.game.viewport.pos.y)
+        var pos = new me.Vector2d(this.pos.x, this.pos.y)
         if((aim <= 0 && aim > -PI / 4) || (aim >= 0 && aim < PI / 4)) {
             this.setCurrentAnimation('lookRight');
             this.doUpdate = true;
-            this.gunPos = new me.Vector2d(adjusted.x + 16, adjusted.y - 8);
+            this.gunPos = new me.Vector2d(pos.x + 16, pos.y - 8);
         }else if(aim <= -PI / 4 && aim > -PI / 2) {
             this.setCurrentAnimation('lookUpRight');
             this.doUpdate = true;
-            this.gunPos = new me.Vector2d(adjusted.x + 8, adjusted.y - 10);
+            this.gunPos = new me.Vector2d(pos.x + 8, pos.y - 10);
         }else if(aim <= -PI / 2 && aim > -(3 * PI) / 4) {
             this.setCurrentAnimation('lookUpLeft');
             this.doUpdate = true;
-            this.gunPos = new me.Vector2d(adjusted.x - 8, adjusted.y - 10);
+            this.gunPos = new me.Vector2d(pos.x - 8, pos.y - 10);
         }else if((aim <= -(3 * PI) / 4 && aim > -PI) || (aim < PI && aim > (3 * PI) / 4)) {
             this.setCurrentAnimation('lookLeft');
             this.doUpdate = true;
-            this.gunPos = new me.Vector2d(adjusted.x - 16, adjusted.y - 8);
+            this.gunPos = new me.Vector2d(pos.x - 16, pos.y - 8);
         }else if(aim <= (3 * PI) / 4 && aim > PI / 2) {
             this.setCurrentAnimation('lookDownLeft');
             this.doUpdate = true;
-            this.gunPos = new me.Vector2d(adjusted.x - 8, adjusted.y);
+            this.gunPos = new me.Vector2d(pos.x - 8, pos.y);
         }else{
             this.setCurrentAnimation('lookDownRight');
             this.doUpdate = true;
-            this.gunPos = new me.Vector2d(adjusted.x + 8, adjusted.y);
+            this.gunPos = new me.Vector2d(pos.x + 8, pos.y);
         }
     },
     
