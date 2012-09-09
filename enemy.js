@@ -13,8 +13,6 @@ var Enemy = me.ObjectEntity.extend(
         this.parent(x, y, settings);
         this.collidable = true;
         
-        this.health = 100;
-        
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(0, 0);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
@@ -31,6 +29,8 @@ var Enemy = me.ObjectEntity.extend(
         }else{
             this.evil = false;
         }
+
+        this.health = (this.evil) ? 100 : 1000;
 
         this.player = null;
     },

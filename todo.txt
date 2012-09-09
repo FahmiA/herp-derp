@@ -19,7 +19,9 @@ Novel enemy behaviour - Dan
 Donuts - Fahmi - DONE
 Chair colour should be random - Fahmi - DONE
 New map + black borders
-Enemy Deadstates
+Enemy updated animations - Fahmi
+    - New animations
+    - Deathstates
 Game Tweaking
      - Player health/enemy damage
      - Enemy health/player damage
@@ -32,5 +34,6 @@ Known Bugs
 ---------
 Destroy cans on player hit - Dan - DONE
 Computer animation - Fahmi -DONE
-Player Speed on diagonals - Fahmi
+Player Speed on diagonals
 Viewport Deadzone - Dan - DONE
+Chairs should animated on direction. Chairs should no spin
