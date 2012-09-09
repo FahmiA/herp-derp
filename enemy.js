@@ -183,7 +183,7 @@ var Table = ChasingEnemy.extend(
 
         // Set animations
         this.addAnimation('move', [24, 25, 26]);
-        this.addAnimation('stay', [24]);
+        this.addAnimation('stay', [144]);
         this.setCurrentAnimation('stay');
         
         this.damage = 25;
