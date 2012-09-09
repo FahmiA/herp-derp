@@ -304,7 +304,18 @@ var Vender = Enemy.extend(
 {
     init:  function(x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 2, false);
+        this.parent(x, y, settings, settings.width * 2, true);
+
+        var aniIndex = Math.floor(Math.random() * 2);
+        if(aniIndex == 0)
+        {
+            this.addAnimation('idle', [96]);
+            this.addAnimation('die', [121]);
+        }else{
+            this.addAnimation('idle', [97]);
+            this.addAnimation('die', [120]);
+        }
+        this.setCurrentAnimation('idle');
 
         this.fireGap = 60; // Ticks between firing
         this.tickCount = 0;
