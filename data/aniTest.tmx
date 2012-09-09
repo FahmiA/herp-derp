@@ -47,5 +47,6 @@
     <property name="evil" value="true"/>
    </properties>
   </object>
+  <object name="table" gid="281" x="264" y="147" width="32" height="32"/>
  </objectgroup>
 </map>

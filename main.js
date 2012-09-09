@@ -79,7 +79,6 @@ var jsApp =
     /** Initialize the jsApp */
     onload: function()
     {
-
         // Init the video
         if (!me.video.init('jsapp', 448, 448, false, 1.0))
         {
@@ -99,7 +98,7 @@ var jsApp =
         // Load everything & display a loading screen
         me.state.change(me.state.LOADING);
 
-        me.debug.renderHitBox = true;
+        //me.debug.renderHitBox = true;
     },
 
 

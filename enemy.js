@@ -13,8 +13,6 @@ var Enemy = me.ObjectEntity.extend(
         this.parent(x, y, settings);
         this.collidable = true;
         
-        this.health = 100;
-        
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(0, 0);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
@@ -31,6 +29,8 @@ var Enemy = me.ObjectEntity.extend(
         }else{
             this.evil = false;
         }
+
+        this.health = (this.evil) ? 100 : 1000;
 
         this.player = null;
     },
@@ -93,7 +93,7 @@ var Enemy = me.ObjectEntity.extend(
         }
 
         if (this.health <= 0)
-            me.game.remove(this);
+            this.onDie();
 
         return true; //Absorb bullet
     },
@@ -109,6 +109,14 @@ var Enemy = me.ObjectEntity.extend(
         this.aim = Math.atan2(
 	    pos.y - this.pos.y,
 	    pos.x - this.pos.x);
+    },
+
+    onDie: function()
+    {
+        this.setCurrentAnimation('die');
+
+        this.alive = false;
+        this.collidable = false;
     }
 });
 
@@ -178,7 +186,7 @@ var ChasingEnemy = Enemy.extend(
         {
             this.setCurrentAnimation('move');
         }
-    }
+    },
 });
 
 
@@ -191,7 +199,8 @@ var Table = ChasingEnemy.extend(
 
         // Set animations
         this.addAnimation('move', [24, 25, 26]);
-        this.addAnimation('stay', [24]);
+        this.addAnimation('stay', [144]);
+        this.addAnimation('die', [132]);
         this.setCurrentAnimation('stay');
         
         this.damage = 25;
@@ -210,8 +219,25 @@ var Chair = ChasingEnemy.extend(
         this.updateColRect(5, 22, 5, 22);
 
         // Set animations
-        this.addAnimation('move', [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]);
-        this.addAnimation('stay', [48]);
+        var aniMoveIndex = Math.floor(Math.random() * 3);
+        if(aniMoveIndex == 0)
+        {
+            // Blue Chair
+            this.addAnimation('move', [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]);
+            this.addAnimation('stay', [48]);
+            this.addAnimation('die', [123]);
+        }else if(aniMoveIndex == 1) {
+            // Orange Chair
+            this.addAnimation('move', [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]);
+            this.addAnimation('stay', [60]);
+            this.addAnimation('die', [124]);
+        }else{
+            // Green Chair
+            this.addAnimation('move', [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83]);
+            this.addAnimation('stay', [72]);
+            this.addAnimation('die', [125]);
+        }
+
         this.setCurrentAnimation('stay');
 
         this.damage = 5
@@ -226,14 +252,15 @@ var Computer = Enemy.extend(
         this.parent(x, y, settings, settings.width * 2, true);
 
         // Set animations
-        this.addAnimation('idle', [36]);
+        this.addAnimation('idle', [38]);
         this.addAnimation('alert', [36, 37]);
+        this.addAnimation('die', [122]);
         this.setCurrentAnimation('idle');
 
         this.fuseMaxTicks = 120;
         this.fuseTicks = 0;
 
-	this.damage = 80;
+	    this.damage = 80;
     },
 
     onProximity: function()
@@ -275,10 +302,10 @@ var Computer = Enemy.extend(
 		}
 		
 		me.audio.play("vender_explosion");
-                me.game.remove(this);
                 me.game.sort();
 
-                this.alive = false;
+                // TODO: This doesn't show any animation.
+                this.onDie();
             }
         }
     }
@@ -289,7 +316,18 @@ var Vender = Enemy.extend(
 {
     init:  function(x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 2, false);
+        this.parent(x, y, settings, settings.width * 2, true);
+
+        var aniIndex = Math.floor(Math.random() * 2);
+        if(aniIndex == 0)
+        {
+            this.addAnimation('idle', [96]);
+            this.addAnimation('die', [121]);
+        }else{
+            this.addAnimation('idle', [97]);
+            this.addAnimation('die', [120]);
+        }
+        this.setCurrentAnimation('idle');
 
         this.fireGap = 60; // Ticks between firing
         this.tickCount = 0;
@@ -318,6 +356,20 @@ var Vender = Enemy.extend(
 	me.audio.play("vender_fire");
         me.game.add(soda, this.z);
         me.game.sort();
+    },
+
+    onDie: function()
+    {
+        var settings = {
+            name: 'explosion',
+            image: 'EFFECTS_TILESET',
+            spritewidth: 32,
+            spriteheight: 32,
+        };
+        me.game.add(new Explosion(this.pos.x, this.pos.y, settings), this.z + 1);
+        me.game.sort();
+
+        this.parent();
     }
 });
 
@@ -326,7 +378,11 @@ var Watercooler = Enemy.extend(
 {
     init: function (x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 2, false);
+        this.parent(x, y, settings, settings.width * 2, true);
+
+        this.addAnimation('idle', [92]);
+        this.addAnimation('die', [127]);
+        this.setCurrentAnimation('idle');
 
         this.fireGap = 240; // Ticks between firing
         this.tickCount = 120;

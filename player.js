@@ -4,7 +4,7 @@ var Player = me.ObjectEntity.extend(
     init: function(x, y, settings)
     {
         this.parent(x, y, settings);
-	this.map = new me.Vector2d(settings.x, settings.y);
+	    this.map = new me.Vector2d(settings.x, settings.y);
         this.collidable = true;
         this.type = 'player';
 
@@ -20,8 +20,8 @@ var Player = me.ObjectEntity.extend(
         this.aim = 0;
         this.doUpdate = true;
 
-	//Health
-	this.health = 100;
+        //Health
+        this.health = 100;
 
         //Bind keys
         me.input.bindKey(me.input.KEY.LEFT, 'left');
@@ -45,6 +45,7 @@ var Player = me.ObjectEntity.extend(
         this.addAnimation('lookRight', [0, 1]);
         this.addAnimation('lookDownLeft', [8, 9]);
         this.addAnimation('lookDownRight', [10, 11]);
+        this.addAnimation('die', [128]);
         this.setCurrentAnimation('lookRight');
 
         // Adjust the bounding box
@@ -52,7 +53,7 @@ var Player = me.ObjectEntity.extend(
 
         // Set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-	me.game.viewport.setDeadzone(0,0);
+        me.game.viewport.setDeadzone(0,0);
     },
 
     update: function()
@@ -234,6 +235,7 @@ var Player = me.ObjectEntity.extend(
         if(this.health <= 0)
         {
             console.log("Death stalks you...")
+            this.setCurrentAnimation('die');
             this.alive = false;
         }
         
