@@ -443,3 +443,12 @@ var Watercooler = Enemy.extend(
         }
     }
 });
+
+/** Dumb Object */
+var DumObject = me.ObjectEntity.extend(
+{
+    init: function(x, y, settings)
+    {
+        this.parent(x, y, settings);
+    }
+});
