@@ -52,6 +52,8 @@ var Player = me.ObjectEntity.extend(
         // Set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
         me.game.viewport.setDeadzone(0,0);
+
+        this.gunPos = this.pos;
     },
 
     update: function()
@@ -187,24 +189,32 @@ var Player = me.ObjectEntity.extend(
         var aim = this.aim;
         var PI = Math.PI;
 
+        var adjusted = new me.Vector2d(this.pos.x - me.game.viewport.pos.x, 
+                           this.pos.y - me.game.viewport.pos.y)
         if((aim <= 0 && aim > -PI / 4) || (aim >= 0 && aim < PI / 4)) {
             this.setCurrentAnimation('lookRight');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(adjusted.x + 16, adjusted.y - 8);
         }else if(aim <= -PI / 4 && aim > -PI / 2) {
             this.setCurrentAnimation('lookUpRight');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(adjusted.x + 8, adjusted.y - 10);
         }else if(aim <= -PI / 2 && aim > -(3 * PI) / 4) {
             this.setCurrentAnimation('lookUpLeft');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(adjusted.x - 8, adjusted.y - 10);
         }else if((aim <= -(3 * PI) / 4 && aim > -PI) || (aim < PI && aim > (3 * PI) / 4)) {
             this.setCurrentAnimation('lookLeft');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(adjusted.x - 16, adjusted.y - 8);
         }else if(aim <= (3 * PI) / 4 && aim > PI / 2) {
             this.setCurrentAnimation('lookDownLeft');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(adjusted.x - 8, adjusted.y);
         }else{
             this.setCurrentAnimation('lookDownRight');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(adjusted.x + 8, adjusted.y);
         }
     },
     
@@ -214,12 +224,15 @@ var Player = me.ObjectEntity.extend(
         //TODO SOUND
 
         //Create a bullet
-	var bullet = new Bullet(
-	    this.pos.x + this.anchorPoint.x,
-	    this.pos.y + this.anchorPoint.y,  
-	    this.aim);
-	me.game.add(bullet, this.z);
-	me.game.sort();
+        var bullet = new Bullet(
+            this.pos.x + this.anchorPoint.x,
+            this.pos.y + this.anchorPoint.y,  
+            this.aim);
+        me.game.add(bullet, this.z);
+
+        //Create the gun flash
+        me.game.add(new GunFlash(this.gunPos.x, this.gunPos.y), this.z + 1);
+        me.game.sort();
     },
 
     _doDamage: function(damage)
