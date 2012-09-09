@@ -94,7 +94,6 @@ var Enemy = me.ObjectEntity.extend(
 
         if (this.health <= 0)
             this.onDie();
-            //me.game.remove(this);
 
         return true; //Absorb bullet
     },
@@ -291,13 +290,10 @@ var Computer = Enemy.extend(
                     this.target.onHit(this);
                 }
 
-                me.game.remove(this);
                 me.game.sort();
 
                 // TODO: This doesn't show any animation.
-                this.setCurrentAnimation('die');
-                this.stateChanged();
-                this.alive = false;
+                this.onDie();
             }
         }
     }

@@ -38,8 +38,8 @@ var g_resources= [
     // Level 1
     name: 'area01',
     type: 'tmx',
-    //src: 'data/aniTest.tmx'
-    src: 'data/testlevel.tmx'
+    src: 'data/aniTest.tmx'
+    //src: 'data/testlevel.tmx'
 }, {
     //Title screen image
     name: "title_screen",
@@ -54,7 +54,6 @@ var jsApp        =
     /** Initialize the jsApp */
     onload: function()
     {
-
         // Init the video
         if (!me.video.init('jsapp', 448, 448, false, 1.0))
         {
