@@ -208,7 +208,8 @@ var Table = ChasingEnemy.extend(
 {
     init: function(x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 3, true, 1);
+        this.parent(x, y, settings, settings.width * 3, true, 0.5);
+	this.updateColRect(2, 28, 2, 28);
 
         // Set animations
         this.addAnimation('move', [32, 33]);
