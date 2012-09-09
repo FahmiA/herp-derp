@@ -9,7 +9,7 @@ var HUDHealth = me.HUD_Item.extend(
         this.healthPercent = 1.0;
         this.icons = [];
         this.iconCount = 5;
-        this.value = this.iconCount;
+        this.value = 1
 
         var image = me.loader.getImage('hud_health');
         for(var i = 0; i < this.iconCount; i++)

@@ -257,7 +257,7 @@ var Player = me.ObjectEntity.extend(
 	    setTimeout(function(){me.state.change(me.state.GAMEOVER)}, 2000)
         }
 
-        me.game.HUD.updateItemValue('hudHealth', this.health / 100);
+        me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
     },
 
     _doHealth: function(health)
@@ -271,6 +271,6 @@ var Player = me.ObjectEntity.extend(
             console.log("You have full health");
         }
 
-        me.game.HUD.updateItemValue('hudHealth', this.health / 100);
+        me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
     }
 });
