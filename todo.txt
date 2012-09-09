@@ -9,7 +9,7 @@ Title Sreens - Dan - DONE
 
 Game Tweaking
      - Player health/enemy damage
-     - Enemy health/player damage
+     - Enemy health/player damage - Dan - Done
      - Non-evil - more hitpoints - Fahmi - Done
 Armour
 AI tweaking
