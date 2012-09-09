@@ -19,26 +19,40 @@ var Explosion = me.ObjectEntity.extend(
         // Accessed by player
         this.damage = 50;
     },
-    /*
+});
+
+/** Gun flash effect */
+var GunFlash = me.ObjectEntity.extend(
+{
+    init: function(x, y)
+    {
+        var settings = {
+            image: 'EFFECTS_TILESET',
+            spritewidth: 32,
+            spriteheight: 32
+        }
+        this.parent(x, y, settings);
+        this.collidable = false;
+
+        // Set animations
+        this.addAnimation('flash', [10]);
+        this.setCurrentAnimation('flash');
+
+        this.tickCount = 5;
+    },
+
     update: function()
     {
-        this.parent();
+        this.tickCount--;
 
-        var res = me.game.collide(this);
-        if(res != null)
+        if(this.tickCount <= 0)
         {
-            if(res.obj.type == 'player')
-            {
-		console.log("Hit Player")
-                res.obj.onHit(this);
-            }
+            me.game.remove(this);
         }
 
         this.parent(this);
-        this.updateMovement();
         return true;
-    },
-    */
+    }
 });
 
 /** Watter Spill  Effect */

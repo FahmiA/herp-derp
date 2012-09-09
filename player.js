@@ -54,6 +54,8 @@ var Player = me.ObjectEntity.extend(
         // Set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
         me.game.viewport.setDeadzone(0,0);
+
+        this.gunPos = this.pos;
     },
 
     update: function()
@@ -93,8 +95,26 @@ var Player = me.ObjectEntity.extend(
     onHit: function(obj)
     {
 	if(!this.alive)
-	    return;
+	    return true;
+	
+	if(obj.name === "health")
+	{
+	    this._doHealth(obj.healthPoints);
+	}
+	else if(obj.name === "waterspill")
+	{
+	    this.setVelocity(0.5, 0.5);
+	}
+	else if(obj.name === "bullet")
+	{
+	    return false;
+	}
+	else
+	{
+	    this._doDamage(obj.damage);
+	}
 
+	/*
 	switch (obj.name)
 	{
 	case "soda":
@@ -103,24 +123,10 @@ var Player = me.ObjectEntity.extend(
 	    return true;
 	case "chair":
 	    //TODO SOUND
-	    var toss = getPoint(obj.pos , obj.aim, -25);
-	    tween = new me.Tween(obj.pos)
-	    tween.to({x: toss.x, 
-		      y: toss.y},
-		    500);
-	    tween.easing(me.Tween.Easing.Cubic.EaseOut);
-	    tween.start();
 	    this._doDamage(obj.damage);
 	    break;
 	case "table":
 	    //TODO SOUND
-	    var toss = getPoint(obj.pos , obj.aim, -15);
-	    tween = new me.Tween(obj.pos)
-	    tween.to({x: toss.x, 
-		      y: toss.y},
-		    500);
-	    tween.easing(me.Tween.Easing.Cubic.EaseOut);
-	    tween.start();
 	    this._doDamage(obj.damage);
 	    break;
 	case "computer":
@@ -137,6 +143,7 @@ var Player = me.ObjectEntity.extend(
 	default:
 	    return false;
 	}
+	*/
     },
 
     _steer: function()
@@ -184,29 +191,36 @@ var Player = me.ObjectEntity.extend(
     {
         //Do math to convert player position and mouse pos
         this.aim = Math.atan2(
-	    pos.y - this.pos.y - this.anchorPoint.y + me.game.viewport.pos.y,
-	    pos.x - this.pos.x - this.anchorPoint.x + me.game.viewport.pos.x);
+            pos.y - this.pos.y - this.anchorPoint.y + me.game.viewport.pos.y,
+            pos.x - this.pos.x - this.anchorPoint.x + me.game.viewport.pos.x);
         var aim = this.aim;
         var PI = Math.PI;
 
+        var pos = new me.Vector2d(this.pos.x, this.pos.y)
         if((aim <= 0 && aim > -PI / 4) || (aim >= 0 && aim < PI / 4)) {
             this.setCurrentAnimation('lookRight');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(pos.x + 16, pos.y - 8);
         }else if(aim <= -PI / 4 && aim > -PI / 2) {
             this.setCurrentAnimation('lookUpRight');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(pos.x + 8, pos.y - 10);
         }else if(aim <= -PI / 2 && aim > -(3 * PI) / 4) {
             this.setCurrentAnimation('lookUpLeft');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(pos.x - 8, pos.y - 10);
         }else if((aim <= -(3 * PI) / 4 && aim > -PI) || (aim < PI && aim > (3 * PI) / 4)) {
             this.setCurrentAnimation('lookLeft');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(pos.x - 16, pos.y - 8);
         }else if(aim <= (3 * PI) / 4 && aim > PI / 2) {
             this.setCurrentAnimation('lookDownLeft');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(pos.x - 8, pos.y);
         }else{
             this.setCurrentAnimation('lookDownRight');
             this.doUpdate = true;
+            this.gunPos = new me.Vector2d(pos.x + 8, pos.y);
         }
     },
     
@@ -216,12 +230,15 @@ var Player = me.ObjectEntity.extend(
         me.audio.play("pistol");
 
         //Create a bullet
-	var bullet = new Bullet(
-	    this.pos.x + this.anchorPoint.x,
-	    this.pos.y + this.anchorPoint.y,  
-	    this.aim);
-	me.game.add(bullet, this.z);
-	me.game.sort();
+        var bullet = new Bullet(
+            this.pos.x + this.anchorPoint.x,
+            this.pos.y + this.anchorPoint.y,  
+            this.aim);
+        me.game.add(bullet, this.z);
+
+        //Create the gun flash
+        me.game.add(new GunFlash(this.gunPos.x, this.gunPos.y), this.z + 1);
+        me.game.sort();
     },
 
     _doDamage: function(damage)
@@ -238,8 +255,6 @@ var Player = me.ObjectEntity.extend(
             this.setCurrentAnimation('die');
             this.alive = false;
         }
-        
-        //TODO update animations
     },
 
     _doHealth: function(health)
@@ -252,7 +267,5 @@ var Player = me.ObjectEntity.extend(
         {
             console.log("You have full health");
         }
-        
-        //TODO update animations
     }
 });

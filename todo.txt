@@ -1,10 +1,8 @@
 
 Features
 -------
-audio - Nick/Dan - DONE
 Game screens - Nick
-Novel enemy behaviour - Dan - KINDA DONE
-Gun fire flash
+Gun fire flash - Fahmi
 New map + black borders
 HUD
 Game Tweaking
