@@ -142,13 +142,13 @@ var ChasingEnemy = Enemy.extend(
         var res = me.game.collide(this);
         if (res != null)
         {   
-            if (res.obj.name == "player" && !this.delayNextHit);
+            if (res.obj.name === "player" && !this.delayNextHit)
 	    {
 		if (typeof(res.obj.onHit) == 'function')
                     res.obj.onHit(this);
 		
 		this.delayNextHit = true;
-
+		
 		//Have the enemy react
 		var toss = getPoint(this.pos , this.aim, this.bounce);
 		tween = new me.Tween(this.pos)
@@ -217,7 +217,6 @@ var Table = ChasingEnemy.extend(
         this.setCurrentAnimation('stay');
 
 	this.bounce = -25;
-        
         this.damage = 25;
     },
 });
@@ -233,7 +232,8 @@ var Chair = ChasingEnemy.extend(
         this.health = 35;
         this.updateColRect(5, 22, 5, 22);
 
-	this.bounce = -15;
+	this.bounce = -15;	
+	this.health = (this.evil) ? 20 : 200;
 
         // Set animations
         var aniMoveIndex = Math.floor(Math.random() * 3);
@@ -276,8 +276,7 @@ var Computer = Enemy.extend(
 
         this.fuseMaxTicks = 120;
         this.fuseTicks = 0;
-
-	    this.damage = 80;
+	this.damage = 80;
     },
 
     onProximity: function()
@@ -346,6 +345,8 @@ var Vender = Enemy.extend(
         }
         this.setCurrentAnimation('idle');
 
+	this.health = (this.evil) ? 50 : 500;
+
         this.fireGap = 60; // Ticks between firing
         this.tickCount = 0;
     },
@@ -403,6 +404,8 @@ var Watercooler = Enemy.extend(
 
         this.fireGap = 240; // Ticks between firing
         this.tickCount = 120;
+
+	this.health = (this.evil) ? 30 : 300;
     },
 
     onProximity: function()

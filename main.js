@@ -46,11 +46,31 @@ var g_resources= [
     //src: 'data/aniTest.tmx'
     src: 'data/testlevel.tmx'
 }, {
+    //Presents screen image
+    name: "presents_screen",
+    type: "image",
+    src:  "data/art/title2.png"
+}, {
     //Title screen image
     name: "title_screen",
     type: "image",
     src:  "data/art/title.png"
 }, {
+    //Game over screen image
+    name: "gameover_screen",
+    type: "image",
+    src:  "data/art/gameover.png"
+}, {
+    //Victory screen image
+    name: "victory_screen",
+    type: "image",
+    src:  "data/art/victoryscreen.png"
+}, {
+    //Level 1 screen image
+    name: "level_screen",
+    type: "image",
+    src:  "data/art/levelstartscreen.png"
+},{
     name: "computer_timer", type: "audio", src: "data/sfx/", channel: 1
 }, {
     name: "elevator", type: "audio", src: "data/sfx/", channel: 1
@@ -111,22 +131,20 @@ var jsApp =
 
     /** Callback when everything is loaded. */
     loaded: function ()
-    {
-	//Set presenting screen
-//	me.state.set(me.state.PRESENTS, new CreditScreen());
-	
-        //Set title screen state
-        me.state.set(me.state.TITLE, new TitleScreen());
-
+    {	
         // Set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new PlayScreen());
 
 	//Set end game screen
-//	me.state.set(me.state.END, new EndScreen());
+	me.state.set(me.state.SCORE, new VictoryScreen());
 
 	//Set death screen
-//	me.state.set (me.state.DEATH, new DeathScreen());
+	me.state.set(me.state.GAMEOVER, new DeathScreen());
 	
+	//Set title screen state
+   	me.state.set(me.state.MENU, new TitleScreen());
+
+
         // Add entities
         me.entityPool.add('player', Player);
         me.entityPool.add('table', Table);
@@ -138,7 +156,7 @@ var jsApp =
         me.entityPool.add('health', Health);
 
         // Start the game 
-        me.state.change(me.state.TITLE);
+        me.state.change(me.state.MENU);
     }
 
 }; // jsApp
@@ -152,13 +170,15 @@ var TitleScreen = me.ScreenObject.extend(
         {
             this.parent(true);
             this.background = null;
+	    
+	    this.screen = 0;
 
 	    me.audio.playTrack("intro");
         },
         
         onResetEvent: function()
         {
-            this.background = me.loader.getImage("title_screen");
+            this.background = me.loader.getImage("presents_screen");
             
             //Bind enter key
             me.input.bindKey(me.input.KEY.ENTER, "enter", true);
@@ -170,7 +190,14 @@ var TitleScreen = me.ScreenObject.extend(
             //Check if enter has been pressed
             if (me.input.isKeyPressed('enter'))
             {
-                me.state.change(me.state.PLAY);
+		if(this.screen == 0)
+		    this.background = me.loader.getImage("title_screen");
+		else if(this.screen == 1)
+		    this.background = me.loader.getImage("level_screen");
+		else
+                    me.state.change(me.state.PLAY);
+
+		this.screen++;
             }
             return true;
         },
@@ -184,6 +211,8 @@ var TitleScreen = me.ScreenObject.extend(
         {
             //Destroy the audio
 	    me.audio.stopTrack();
+
+	    this.screen = 0;
 
             //Unbind enter key
             me.input.unbindKey(me.input.KEY.ENTER);
@@ -219,50 +248,85 @@ var PlayScreen = me.ScreenObject.extend(
     }
 });
 
-var CreditScreen = me.ScreenObject.extend(
+var VictoryScreen = me.ScreenObject.extend(
 {
-    onResetEvent: function()
-    {        
-    
-    },
-
-
-    /** Action to perform when game is finished (state change) */
-    onDestroyEvent: function()
-    {
+    init: function()
+        {
+            this.parent(true);
+            this.background = null;
+        },
         
-    }
-});
-
-
-var EndScreen = me.ScreenObject.extend(
-{
-    onResetEvent: function()
-    {        
-	
-    },
-    
-    
-    /** Action to perform when game is finished (state change) */
-    onDestroyEvent: function()
-    {
+        onResetEvent: function()
+        {
+            this.background = me.loader.getImage("victory_screen");
+            
+            //Bind enter key
+            me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+            me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
+        },
         
-    }
+        update: function()
+        {
+            //Check if enter has been pressed
+            if (me.input.isKeyPressed('enter'))
+            {
+                me.state.change(me.state.MENU);
+            }
+            return true;
+        },
+
+        draw : function(context)
+        {
+            context.drawImage(this.background, 0,0); 
+        },
+
+        onDestroyEvent: function()
+        {
+            //Unbind enter key
+            me.input.unbindKey(me.input.KEY.ENTER);
+            me.input.unbindMouse(me.input.mouse.LEFT);
+        }
 });
 
 
 var DeathScreen = me.ScreenObject.extend(
-{
-    onResetEvent: function()
-    {        
-     
-    },
-
-    /** Action to perform when game is finished (state change) */
-    onDestroyEvent: function()
     {
+	init: function()
+        {
+            this.parent(true);
+            this.deathground = null;
+        },
         
-    }
+        onResetEvent: function()
+        {
+            this.deathground = me.loader.getImage("gameover_screen");
+            
+            //Bind enter key
+            me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+            me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
+        },
+        
+        update: function()
+        {
+            //Check if enter has been pressed
+            if (me.input.isKeyPressed('enter'))
+            {
+                me.state.change(me.state.MENU);
+            }
+            return true;
+        },
+
+        draw : function(context)
+        {
+            context.drawImage(this.deathground, 0,0); 
+        },
+
+        onDestroyEvent: function()
+        {
+            //Unbind enter key
+            me.input.unbindKey(me.input.KEY.ENTER);
+            me.input.unbindMouse(me.input.mouse.LEFT);
+        }
 });
 
 //bootstrap :)

@@ -1,10 +1,12 @@
 
 Features
 -------
-Game screens - Nick
-Gun fire flash - Fahmi
+Game screens - Nick/Dan - DONE
+Gun fire flash - Fahmi - DONE
 New map + black borders
 HUD - Fahmi
+Title Sreens - Dan - DONE
+
 Game Tweaking
      - Player health/enemy damage
      - Enemy health/player damage
