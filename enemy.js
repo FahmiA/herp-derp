@@ -93,7 +93,8 @@ var Enemy = me.ObjectEntity.extend(
         }
 
         if (this.health <= 0)
-            me.game.remove(this);
+            this.onDie();
+            //me.game.remove(this);
 
         return true; //Absorb bullet
     },
@@ -109,6 +110,14 @@ var Enemy = me.ObjectEntity.extend(
         this.aim = Math.atan2(
 	    pos.y - this.pos.y,
 	    pos.x - this.pos.x);
+    },
+
+    onDie: function()
+    {
+        this.setCurrentAnimation('die');
+
+        this.alive = false;
+        this.collidable = false;
     }
 });
 
@@ -170,7 +179,7 @@ var ChasingEnemy = Enemy.extend(
         {
             this.setCurrentAnimation('move');
         }
-    }
+    },
 });
 
 
@@ -184,6 +193,7 @@ var Table = ChasingEnemy.extend(
         // Set animations
         this.addAnimation('move', [24, 25, 26]);
         this.addAnimation('stay', [144]);
+        this.addAnimation('die', [132]);
         this.setCurrentAnimation('stay');
         
         this.damage = 25;
@@ -205,14 +215,20 @@ var Chair = ChasingEnemy.extend(
         var aniMoveIndex = Math.floor(Math.random() * 3);
         if(aniMoveIndex == 0)
         {
+            // Blue Chair
             this.addAnimation('move', [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]);
             this.addAnimation('stay', [48]);
+            this.addAnimation('die', [123]);
         }else if(aniMoveIndex == 1) {
+            // Orange Chair
             this.addAnimation('move', [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]);
             this.addAnimation('stay', [60]);
+            this.addAnimation('die', [124]);
         }else{
+            // Green Chair
             this.addAnimation('move', [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83]);
             this.addAnimation('stay', [72]);
+            this.addAnimation('die', [125]);
         }
 
         this.setCurrentAnimation('stay');
@@ -231,12 +247,13 @@ var Computer = Enemy.extend(
         // Set animations
         this.addAnimation('idle', [38]);
         this.addAnimation('alert', [36, 37]);
+        this.addAnimation('die', [122]);
         this.setCurrentAnimation('idle');
 
         this.fuseMaxTicks = 120;
         this.fuseTicks = 0;
 
-	this.damage = 80;
+	    this.damage = 80;
     },
 
     onProximity: function()
@@ -269,14 +286,17 @@ var Computer = Enemy.extend(
                     me.game.add(new Explosion(x, y, settings), this.z + 1);
                 }
 		
-		if(this.distanceTo(this.target) <= 64)
-		{
-		    this.target.onHit(this);
-		}
+                if(this.distanceTo(this.target) <= 64)
+                {
+                    this.target.onHit(this);
+                }
 
                 me.game.remove(this);
                 me.game.sort();
 
+                // TODO: This doesn't show any animation.
+                this.setCurrentAnimation('die');
+                this.stateChanged();
                 this.alive = false;
             }
         }
