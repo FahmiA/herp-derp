@@ -10,7 +10,7 @@ var Projectile = me.ObjectEntity.extend({
         this.gravity = 0;
             
         this.aim = aim;
-        this.damage = 100;
+        this.damage = 10;
     },
 
     update: function()
@@ -104,13 +104,6 @@ var Soda = Projectile.extend({
 
         this.setVelocity(0.2, 0.2);
     },
-
-    /*update: function()
-    {
-        this.updateMovement();
-        this.parent(this);
-        return true;
-    }*/
 });
 
 //Math stuff

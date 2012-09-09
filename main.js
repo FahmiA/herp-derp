@@ -129,13 +129,13 @@ var jsApp =
         me.state.set(me.state.PLAY, new PlayScreen());
 
 	//Set end game screen
-	me.state.set(me.state.VICTORY, new VictoryScreen());
+	me.state.set(me.state.SCORE, new VictoryScreen());
 
 	//Set death screen
-	me.state.set (me.state.DEATH, new DeathScreen());
+	me.state.set(me.state.GAMEOVER, new DeathScreen());
 	
 	//Set title screen state
-        me.state.set(me.state.TITLE, new TitleScreen());
+   	me.state.set(me.state.MENU, new TitleScreen());
 
 
         // Add entities
@@ -149,7 +149,7 @@ var jsApp =
         me.entityPool.add('health', Health);
 
         // Start the game 
-        me.state.change(me.state.TITLE);
+        me.state.change(me.state.MENU);
     }
 
 }; // jsApp
@@ -205,6 +205,8 @@ var TitleScreen = me.ScreenObject.extend(
             //Destroy the audio
 	    me.audio.stopTrack();
 
+	    this.screen = 0;
+
             //Unbind enter key
             me.input.unbindKey(me.input.KEY.ENTER);
             me.input.unbindMouse(me.input.mouse.LEFT);
@@ -255,7 +257,7 @@ var VictoryScreen = me.ScreenObject.extend(
             //Check if enter has been pressed
             if (me.input.isKeyPressed('enter'))
             {
-                me.state.change(me.state.PLAY);
+                me.state.change(me.state.MENU);
             }
             return true;
         },
@@ -279,12 +281,12 @@ var DeathScreen = me.ScreenObject.extend(
 	init: function()
         {
             this.parent(true);
-            this.background =  me.loader.getImage("gameover_screen");
+            this.deathground = null;
         },
         
         onResetEvent: function()
         {
-            this.background = me.loader.getImage("gameover_screen");
+            this.deathground = me.loader.getImage("gameover_screen");
             
             //Bind enter key
             me.input.bindKey(me.input.KEY.ENTER, "enter", true);
@@ -296,14 +298,14 @@ var DeathScreen = me.ScreenObject.extend(
             //Check if enter has been pressed
             if (me.input.isKeyPressed('enter'))
             {
-                me.state.change(me.state.TITLE);
+                me.state.change(me.state.MENU);
             }
             return true;
         },
 
         draw : function(context)
         {
-            context.drawImage(this.background, 0,0); 
+            context.drawImage(this.deathground, 0,0); 
         },
 
         onDestroyEvent: function()

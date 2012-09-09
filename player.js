@@ -254,7 +254,7 @@ var Player = me.ObjectEntity.extend(
             console.log("Death stalks you...")
             this.setCurrentAnimation('die');
             this.alive = false;
-	    setTimeout(function(){me.state.change(me.state.DEATH)}, 1000)
+	    setTimeout(function(){me.state.change(me.state.GAMEOVER)}, 2000)
         }
     },
 
