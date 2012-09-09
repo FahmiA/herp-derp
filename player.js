@@ -95,8 +95,26 @@ var Player = me.ObjectEntity.extend(
     onHit: function(obj)
     {
 	if(!this.alive)
-	    return;
+	    return true;
+	
+	if(obj.name === "health")
+	{
+	    this._doHealth(obj.healthPoints);
+	}
+	else if(obj.name === "waterspill")
+	{
+	    this.setVelocity(0.5, 0.5);
+	}
+	else if(obj.name === "bullet")
+	{
+	    return false;
+	}
+	else
+	{
+	    this._doDamage(obj.damage);
+	}
 
+	/*
 	switch (obj.name)
 	{
 	case "soda":
@@ -105,24 +123,10 @@ var Player = me.ObjectEntity.extend(
 	    return true;
 	case "chair":
 	    //TODO SOUND
-	    var toss = getPoint(obj.pos , obj.aim, -25);
-	    tween = new me.Tween(obj.pos)
-	    tween.to({x: toss.x, 
-		      y: toss.y},
-		    500);
-	    tween.easing(me.Tween.Easing.Cubic.EaseOut);
-	    tween.start();
 	    this._doDamage(obj.damage);
 	    break;
 	case "table":
 	    //TODO SOUND
-	    var toss = getPoint(obj.pos , obj.aim, -15);
-	    tween = new me.Tween(obj.pos)
-	    tween.to({x: toss.x, 
-		      y: toss.y},
-		    500);
-	    tween.easing(me.Tween.Easing.Cubic.EaseOut);
-	    tween.start();
 	    this._doDamage(obj.damage);
 	    break;
 	case "computer":
@@ -139,6 +143,7 @@ var Player = me.ObjectEntity.extend(
 	default:
 	    return false;
 	}
+	*/
     },
 
     _steer: function()
@@ -249,8 +254,6 @@ var Player = me.ObjectEntity.extend(
             this.setCurrentAnimation('die');
             this.alive = false;
         }
-        
-        //TODO update animations
     },
 
     _doHealth: function(health)
@@ -263,7 +266,5 @@ var Player = me.ObjectEntity.extend(
         {
             console.log("You have full health");
         }
-        
-        //TODO update animations
     }
 });

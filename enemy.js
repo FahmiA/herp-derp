@@ -129,26 +129,39 @@ var ChasingEnemy = Enemy.extend(
 
         this.setVelocity(speed, speed);
 	this.delayNextHit = false;
+
+	this.bounce = 0;
     },
 
     update: function()
     {
-        if (!this.parent())
+        if (!this.parent() || !this.alive)
             return;
 
         //Check collision with objects
         var res = me.game.collide(this);
         if (res != null)
         {   
-            if (res.obj.name == "player"  && !this.delayNextHit)
+            if (res.obj.name == "player" && !this.delayNextHit);
 	    {
-                res.obj.onHit(this);
-		this.delayNextHit == true;
+		if (typeof(res.obj.onHit) == 'function')
+                    res.obj.onHit(this);
+		
+		this.delayNextHit = true;
+
+		//Have the enemy react
+		var toss = getPoint(this.pos , this.aim, this.bounce);
+		tween = new me.Tween(this.pos)
+		tween.to({x: toss.x, 
+			  y: toss.y},
+			 500);
+		tween.easing(me.Tween.Easing.Cubic.EaseOut);
+		tween.start();
 	    }
         }
 	else
 	{
-	    this.delayNextHit == false;
+	    this.delayNextHit = false;
 	}
     },
 
@@ -202,6 +215,8 @@ var Table = ChasingEnemy.extend(
         this.addAnimation('stay', [144]);
         this.addAnimation('die', [132]);
         this.setCurrentAnimation('stay');
+
+	this.bounce = -25;
         
         this.damage = 25;
     },
@@ -217,6 +232,8 @@ var Chair = ChasingEnemy.extend(
         //Chairs have less health
         this.health = 35;
         this.updateColRect(5, 22, 5, 22);
+
+	this.bounce = -15;
 
         // Set animations
         var aniMoveIndex = Math.floor(Math.random() * 3);
@@ -411,8 +428,11 @@ var Watercooler = Enemy.extend(
             {
                 for(var y = minY; y <= maxY; y += 32)
                 {
-                    me.game.add(new WaterSpill(x, y, settings), this.z + 1);
-                }
+		    if(!(x == this.pos.x && y == this.pos.y))
+			me.game.add(new WaterSpill(x, y, settings), this.z + 1);
+		    else
+			console.log(x, y, this.pos);
+		}
             }
 	    me.audio.play("watercooler_bloop");
             me.game.sort();
