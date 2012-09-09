@@ -340,7 +340,11 @@ var Watercooler = Enemy.extend(
 {
     init: function (x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 2, false);
+        this.parent(x, y, settings, settings.width * 2, true);
+
+        this.addAnimation('idle', [92]);
+        this.addAnimation('die', [127]);
+        this.setCurrentAnimation('idle');
 
         this.fireGap = 240; // Ticks between firing
         this.tickCount = 120;
