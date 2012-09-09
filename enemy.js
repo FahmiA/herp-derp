@@ -229,7 +229,7 @@ var Computer = Enemy.extend(
         this.parent(x, y, settings, settings.width * 2, true);
 
         // Set animations
-        this.addAnimation('idle', [36]);
+        this.addAnimation('idle', [38]);
         this.addAnimation('alert', [36, 37]);
         this.setCurrentAnimation('idle');
 
