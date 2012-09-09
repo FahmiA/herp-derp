@@ -85,7 +85,7 @@ var Enemy = me.ObjectEntity.extend(
     {
         if(obj.name == "bullet")
         {
-            console.log("Crack");
+            me.audio.play("enemy_hit");
             this.health -= obj.damage;
         }else if (obj.name == "soda")
         {
@@ -128,6 +128,7 @@ var ChasingEnemy = Enemy.extend(
         this.speed = speed;
 
         this.setVelocity(speed, speed);
+	this.delayNextHit = false;
     },
 
     update: function()
@@ -139,9 +140,16 @@ var ChasingEnemy = Enemy.extend(
         var res = me.game.collide(this);
         if (res != null)
         {   
-            if (res.obj.name == "player")
+            if (res.obj.name == "player"  && !this.delayNextHit)
+	    {
                 res.obj.onHit(this);
+		this.delayNextHit == true;
+	    }
         }
+	else
+	{
+	    this.delayNextHit == false;
+	}
     },
 
     onProximity: function()
@@ -259,6 +267,9 @@ var Computer = Enemy.extend(
     {
         if(this.alive)
         {
+	    if(this.fuseTicks == 0)
+		me.audio.play("computer_timer");
+
             if(this.fuseTicks < this.fuseMaxTicks)
             {
                 this.fuseTicks++;
@@ -285,11 +296,12 @@ var Computer = Enemy.extend(
                     me.game.add(new Explosion(x, y, settings), this.z + 1);
                 }
 		
-                if(this.distanceTo(this.target) <= 64)
-                {
-                    this.target.onHit(this);
-                }
-
+		if(this.distanceTo(this.target) <= 64)
+		{
+		    this.target.onHit(this);
+		}
+		
+		me.audio.play("vender_explosion");
                 me.game.sort();
 
                 // TODO: This doesn't show any animation.
@@ -341,6 +353,7 @@ var Vender = Enemy.extend(
             this.pos.x,
             this.pos.y,  
             this.aim);
+	me.audio.play("vender_fire");
         me.game.add(soda, this.z);
         me.game.sort();
     },
@@ -383,7 +396,7 @@ var Watercooler = Enemy.extend(
             this.tickCount = 0;
 
             var settings = {
-                name: 'waterSpill',
+                name: 'waterspill',
                 image: 'EFFECTS_TILESET',
                 spritewidth: 32,
                 spriteheight: 32,
@@ -401,7 +414,7 @@ var Watercooler = Enemy.extend(
                     me.game.add(new WaterSpill(x, y, settings), this.z + 1);
                 }
             }
-
+	    me.audio.play("watercooler_bloop");
             me.game.sort();
             
             // Forget the player exists

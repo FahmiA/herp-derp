@@ -85,7 +85,7 @@ var WaterSpill = me.ObjectEntity.extend(
         var res = me.game.collide(this);
         if(res != null)
         {
-            if(res.obj.type == 'player')
+            if(res.obj.name == 'player')
             {
                 res.obj.onHit(this);
             }
