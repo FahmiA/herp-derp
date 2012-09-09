@@ -217,7 +217,7 @@ var Table = ChasingEnemy.extend(
         this.setCurrentAnimation('stay');
 
 	this.bounce = -25;
-        this.damage = 25;
+        this.damage = 60; //Three donuts
     },
 });
 
@@ -229,11 +229,11 @@ var Chair = ChasingEnemy.extend(
         this.parent(x, y, settings, settings.width * 4, true, 2);
 
         //Chairs have less health
-        this.health = 35;
         this.updateColRect(5, 22, 5, 22);
 
 	this.bounce = -15;	
 	this.health = (this.evil) ? 20 : 200;
+	this.damage = 20; //One Donut
 
         // Set animations
         var aniMoveIndex = Math.floor(Math.random() * 3);
@@ -256,8 +256,6 @@ var Chair = ChasingEnemy.extend(
         }
 
         this.setCurrentAnimation('stay');
-
-        this.damage = 5
     }
 });
 
@@ -276,7 +274,7 @@ var Computer = Enemy.extend(
 
         this.fuseMaxTicks = 120;
         this.fuseTicks = 0;
-	this.damage = 80;
+	this.damage = 80; //Four Donuts
     },
 
     onProximity: function()
@@ -347,7 +345,7 @@ var Vender = Enemy.extend(
 
 	this.health = (this.evil) ? 50 : 500;
 
-        this.fireGap = 60; // Ticks between firing
+        this.fireGap = 120; // Ticks between firing
         this.tickCount = 0;
     },
 
