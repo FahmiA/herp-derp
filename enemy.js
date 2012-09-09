@@ -343,6 +343,20 @@ var Vender = Enemy.extend(
             this.aim);
         me.game.add(soda, this.z);
         me.game.sort();
+    },
+
+    onDie: function()
+    {
+        var settings = {
+            name: 'explosion',
+            image: 'EFFECTS_TILESET',
+            spritewidth: 32,
+            spriteheight: 32,
+        };
+        me.game.add(new Explosion(this.pos.x, this.pos.y, settings), this.z + 1);
+        me.game.sort();
+
+        this.parent();
     }
 });
 
