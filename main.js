@@ -43,8 +43,8 @@ var g_resources= [
     // Level 1
     name: 'area01',
     type: 'tmx',
-    src: 'data/aniTest.tmx'
-    //src: 'data/testlevel.tmx'
+    //src: 'data/aniTest.tmx'
+    src: 'data/testlevel.tmx'
 }, {
     //Title screen image
     name: "title_screen",
@@ -199,9 +199,10 @@ var PlayScreen = me.ScreenObject.extend(
         // Load a level
         me.levelDirector.loadLevel('area01');
 
-        console.debug('yay');
-        me.game.addHUD(70, windowSize - 100, windowSize, 32);
-        me.game.HUD.addItem('hudHealth', new HUDHealth(0, 0));
+
+        me.game.addHUD(0, 0, windowSize, 32);
+        me.game.HUD.addItem('hudHealth', new HUDHealth(me.game.viewport.pos.x,
+                                                      me.game.viewport.pos.y));
 
         // Make sure everything is in the right order
         me.game.sort();

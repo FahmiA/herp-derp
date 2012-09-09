@@ -84,6 +84,7 @@ var Player = me.ObjectEntity.extend(
         if(me.input.isKeyPressed('shoot'))
         {
             this._fireWeapon();    
+        this.gunPos = this.pos;
         }
 
 	//Make sure the player moves at the correct speed
@@ -243,10 +244,10 @@ var Player = me.ObjectEntity.extend(
     _doDamage: function(damage)
     {
         console.log("You take " + damage + " damage.");
-	me.audio.play("player_hit");
+	    me.audio.play("player_hit");
         this.health -= damage;
 	
-	this.flicker(30);
+	    this.flicker(30);
 
         if(this.health <= 0)
         {
@@ -254,17 +255,21 @@ var Player = me.ObjectEntity.extend(
             this.setCurrentAnimation('die');
             this.alive = false;
         }
+
+        me.game.HUD.updateItemValue('hudHealth', this.health / 100);
     },
 
     _doHealth: function(health)
     {
         console.log("You take " + health + " health points.");
-	me.audio.play("heal");
+	    me.audio.play("heal");
         this.health += health;
 
         if(this.health >= 100)
         {
             console.log("You have full health");
         }
+
+        me.game.HUD.updateItemValue('hudHealth', this.health / 100);
     }
 });

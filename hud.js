@@ -6,8 +6,10 @@ var HUDHealth = me.HUD_Item.extend(
         this.parent(x, y);
 
 
+        this.healthPercent = 1.0;
         this.icons = [];
         this.iconCount = 5;
+        this.value = this.iconCount;
 
         var image = me.loader.getImage('hud_health');
         for(var i = 0; i < this.iconCount; i++)
@@ -18,11 +20,30 @@ var HUDHealth = me.HUD_Item.extend(
         }
     },
 
+    update: function()
+    {
+        this.parent(this);
+        return true;
+    },
+
     draw: function(context, x, y)
     {
-        for(var i = 0; i < this.iconCount; i++)
+        var iconsToShow = this._getIconsLeft();
+        if(iconsToShow < 1 && this.value > 0)
+            iconsToShow = 1;
+        for(var i = 0; i < iconsToShow; i++)
         {
             this.icons[i].draw(context);
         }
+    },
+
+    _getIconsLeft: function()
+    {
+        // Clamp the percentage
+        var percentage = this.value;
+        percentage = Math.max(0.0, percentage);
+        percentage = Math.min(1.0, percentage);
+
+        return percentage * this.iconCount;
     }
 });
