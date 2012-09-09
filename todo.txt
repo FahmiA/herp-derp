@@ -1,20 +1,10 @@
-
 Features
 -------
-Game screens - Nick/Dan - DONE
-Gun fire flash - Fahmi - DONE
-New map + black borders
-HUD - Fahmi
-Title Sreens - Dan - DONE
-
-Game Tweaking
-     - Player health/enemy damage
-     - Enemy health/player damage - Dan - Done
-     - Non-evil - more hitpoints - Fahmi - Done
-Armour
+HUD - Partial, bug with updating value
+Armour - Partial, assets exist
 AI tweaking
     - Path finding + deviation
 
 Known Bugs
 ---------
-Player Speed on diagonals - Fahmi
+Player Speed on diagonals

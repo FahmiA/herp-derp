@@ -10,7 +10,7 @@ var HUDHealth = me.HUD_Item.extend(
         this.icons = [];
         this.iconCount = 5;
         this.value = 1
-	
+        
         var image = me.loader.getImage('hud_health');
         for(var i = 0; i < this.iconCount; i++)
         {
@@ -44,7 +44,7 @@ var HUDHealth = me.HUD_Item.extend(
         percentage = Math.max(0.0, percentage);
         percentage = Math.min(1.0, percentage);
 
-	console.log("Printing ", percentage * this.iconCount);
+        console.log("Printing ", percentage * this.iconCount);
         return percentage * this.iconCount;
     }
 });

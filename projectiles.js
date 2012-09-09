@@ -7,10 +7,12 @@ var Projectile = me.ObjectEntity.extend({
         this.collidable = true;
         //this.updateColRect(0, 32, 0, 32);
 
+        //Some defaults
         this.gravity = 0;
-            
+        this.damage = 0;
+
+        //The heading the projectile will travel along
         this.aim = aim;
-        this.damage = 10;
     },
 
     update: function()
@@ -35,16 +37,12 @@ var Projectile = me.ObjectEntity.extend({
         //Update movement and check collision with the world
         wrld = this.updateMovement();
         if(wrld.x != 0 || wrld.y != 0)
-        {
-            //TODO SOUND Wall hit
             me.game.remove(this);
-        }
     
         this.parent(this);
         return true;
     }
 });
-
 
 /*
  * Extended projectile types
@@ -62,17 +60,16 @@ var Bullet = Projectile.extend({
         this.parent(x, y, settings, aim);
 
         this.setVelocity(15,15);
+        this.damage = 10;
     },
     
     draw: function(context)
     {
+        //Adjust the pos for drawing on the viewport
         var adjusted = new me.Vector2d(this.pos.x - me.game.viewport.pos.x, 
                            this.pos.y - me.game.viewport.pos.y)
         var tracer = getPoint(adjusted, this.aim, -12);
-        
-        //console.log(adjusted.x, adjusted.y);
-        //me.game.remove(this);
-        
+                
         //Create drawing gradient
         var grad = context.createLinearGradient(tracer.x, tracer.y, adjusted.x, adjusted.y);
         grad.addColorStop(1, "white");
@@ -103,7 +100,7 @@ var Soda = Projectile.extend({
         this.updateColRect(8, 16, 8, 16);
 
         this.setVelocity(2, 2);
-	this.damage = 20; //One Donut
+        this.damage = 20; //One Donut
     },
 });
 

@@ -16,11 +16,6 @@ var Enemy = me.ObjectEntity.extend(
         // Set the default horizontal & vertical speed (accel vector)
         this.setVelocity(0, 0);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
-
-        this.respondDist = respondDist;
-        this.target = null;
-        this.aim = 0;
-        this.doUpdate = false;
         
         // Set up evilness
         if(typeof(settings.evil) != 'undefined')
@@ -30,9 +25,13 @@ var Enemy = me.ObjectEntity.extend(
             this.evil = false;
         }
 
-        this.health = (this.evil) ? 100 : 1000;
-
+        //Some defaults
+        this.respondDist = respondDist;
+        this.target = null;
         this.player = null;
+        this.aim = 0;
+        this.health = (this.evil) ? 100 : 1000;
+        this.doUpdate = false;
     },
 
     update: function()
@@ -107,8 +106,8 @@ var Enemy = me.ObjectEntity.extend(
     {
         //Do math to convert player and enemy position
         this.aim = Math.atan2(
-	    pos.y - this.pos.y,
-	    pos.x - this.pos.x);
+            pos.y - this.pos.y,
+            pos.x - this.pos.x);
     },
 
     onDie: function()
@@ -128,9 +127,9 @@ var ChasingEnemy = Enemy.extend(
         this.speed = speed;
 
         this.setVelocity(speed, speed);
-	this.delayNextHit = false;
+        this.delayNextHit = false;
 
-	this.bounce = 0;
+        this.bounce = 0;
     },
 
     update: function()
@@ -143,26 +142,26 @@ var ChasingEnemy = Enemy.extend(
         if (res != null)
         {   
             if (res.obj.name === "player" && !this.delayNextHit)
-	    {
-		if (typeof(res.obj.onHit) == 'function')
+            {
+                if (typeof(res.obj.onHit) == 'function')
                     res.obj.onHit(this);
-		
-		this.delayNextHit = true;
-		
-		//Have the enemy react
-		var toss = getPoint(this.pos , this.aim, this.bounce);
-		tween = new me.Tween(this.pos)
-		tween.to({x: toss.x, 
-			  y: toss.y},
-			 500);
-		tween.easing(me.Tween.Easing.Cubic.EaseOut);
-		tween.start();
-	    }
+                
+                this.delayNextHit = true;
+                
+                //Have the enemy react
+                var toss = getPoint(this.pos , this.aim, this.bounce);
+                tween = new me.Tween(this.pos)
+                tween.to({x: toss.x, 
+                          y: toss.y},
+                         500);
+                tween.easing(me.Tween.Easing.Cubic.EaseOut);
+                tween.start();
+            }
         }
-	else
-	{
-	    this.delayNextHit = false;
-	}
+        else
+        {
+            this.delayNextHit = false;
+        }
     },
 
     onProximity: function()
@@ -209,7 +208,7 @@ var Table = ChasingEnemy.extend(
     init: function(x, y, settings)
     {
         this.parent(x, y, settings, settings.width * 3, true, 0.5);
-	this.updateColRect(2, 28, 2, 28);
+        this.updateColRect(2, 28, 2, 28);
 
         // Set animations
         this.addAnimation('move', [32, 33]);
@@ -217,7 +216,7 @@ var Table = ChasingEnemy.extend(
         this.addAnimation('die', [132]);
         this.setCurrentAnimation('stay');
 
-	this.bounce = -25;
+        this.bounce = -25;
         this.damage = 60; //Three donuts
     },
 });
@@ -232,9 +231,9 @@ var Chair = ChasingEnemy.extend(
         //Chairs have less health
         this.updateColRect(5, 22, 5, 22);
 
-	this.bounce = -15;	
-	this.health = (this.evil) ? 20 : 200;
-	this.damage = 20; //One Donut
+        this.bounce = -15;      
+        this.health = (this.evil) ? 20 : 200;
+        this.damage = 20; //One Donut
 
         // Set animations
         var aniMoveIndex = Math.floor(Math.random() * 3);
@@ -275,15 +274,15 @@ var Computer = Enemy.extend(
 
         this.fuseMaxTicks = 120;
         this.fuseTicks = 0;
-	this.damage = 80; //Four Donuts
+        this.damage = 80; //Four Donuts
     },
 
     onProximity: function()
     {
         if(this.alive)
         {
-	    if(this.fuseTicks == 0)
-		me.audio.play("computer_timer");
+            if(this.fuseTicks == 0)
+                me.audio.play("computer_timer");
 
             if(this.fuseTicks < this.fuseMaxTicks)
             {
@@ -310,13 +309,13 @@ var Computer = Enemy.extend(
                     var y = minY + (Math.random() * (maxY - minY));
                     me.game.add(new Explosion(x, y, settings), this.z + 1);
                 }
-		
-		if(this.distanceTo(this.target) <= 64)
-		{
-		    this.target.onHit(this);
-		}
-		
-		me.audio.play("vender_explosion");
+                
+                if(this.distanceTo(this.target) <= 64)
+                {
+                    this.target.onHit(this);
+                }
+                
+                me.audio.play("vender_explosion");
                 me.game.sort();
 
                 // TODO: This doesn't show any animation.
@@ -344,7 +343,7 @@ var Vender = Enemy.extend(
         }
         this.setCurrentAnimation('idle');
 
-	this.health = (this.evil) ? 50 : 500;
+        this.health = (this.evil) ? 50 : 500;
 
         this.fireGap = 120; // Ticks between firing
         this.tickCount = 0;
@@ -370,7 +369,7 @@ var Vender = Enemy.extend(
             this.pos.x,
             this.pos.y,  
             this.aim);
-	me.audio.play("vender_fire");
+        me.audio.play("vender_fire");
         me.game.add(soda, this.z);
         me.game.sort();
     },
@@ -404,7 +403,7 @@ var Watercooler = Enemy.extend(
         this.fireGap = 240; // Ticks between firing
         this.tickCount = 120;
 
-	this.health = (this.evil) ? 30 : 300;
+        this.health = (this.evil) ? 30 : 300;
     },
 
     onProximity: function()
@@ -430,13 +429,13 @@ var Watercooler = Enemy.extend(
             {
                 for(var y = minY; y <= maxY; y += 32)
                 {
-		    if(!(x == this.pos.x && y == this.pos.y))
-			me.game.add(new WaterSpill(x, y, settings), this.z + 1);
-		    else
-			console.log(x, y, this.pos);
-		}
+                    if(!(x == this.pos.x && y == this.pos.y))
+                        me.game.add(new WaterSpill(x, y, settings), this.z + 1);
+                    else
+                        console.log(x, y, this.pos);
+                }
             }
-	    me.audio.play("watercooler_bloop");
+            me.audio.play("watercooler_bloop");
             me.game.sort();
             
             // Forget the player exists

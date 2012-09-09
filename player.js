@@ -4,20 +4,16 @@ var Player = me.ObjectEntity.extend(
     init: function(x, y, settings)
     {
         this.parent(x, y, settings);
-	    this.map = new me.Vector2d(settings.x, settings.y);
+            this.map = new me.Vector2d(settings.x, settings.y);
         this.collidable = true;
         this.type = 'player';
 
-	//Hacky fix stuff
         this.anchorPoint = new me.Vector2d(this.width/2, this.height/2);
-	//this.toss = new me.Vector2d(0,0);
-	this.slow = new me.Vector2d(1, 1);
-        
-        // Set the default horizontal & vertical speed (accel vector)
-        //this.setVelocity(1.5, 1.5); //Set at end of update now
         this.gravity = 0; // 0 as this is a top-down, not a platformer
-
+        
+        //Some defaults
         this.aim = 0;
+        this.gunPos = this.pos;
         this.doUpdate = true;
 
         //Health
@@ -38,6 +34,9 @@ var Player = me.ObjectEntity.extend(
         me.input.bindKey(me.input.KEY.SPACE, 'shoot', true);
         me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
 
+        // Adjust the bounding box
+        this.updateColRect(5, 22, 5, 22);
+
         // Set animations
         this.addAnimation('lookUpLeft', [4, 5]);
         this.addAnimation('lookUpRight', [2, 3]);
@@ -48,14 +47,9 @@ var Player = me.ObjectEntity.extend(
         this.addAnimation('die', [128]);
         this.setCurrentAnimation('lookRight');
 
-        // Adjust the bounding box
-        this.updateColRect(5, 22, 5, 22);
-
         // Set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
         me.game.viewport.setDeadzone(0,0);
-
-        this.gunPos = this.pos;
     },
 
     update: function()
@@ -68,9 +62,9 @@ var Player = me.ObjectEntity.extend(
             this.parent(this);
             return true;
         }
-	
-	//Check keyboard movement
-	this._steer();
+        
+        //Check keyboard movement
+        this._steer();
 
         // Update animation if necessary
         if (this.vel.x != 0 || this.vel.y != 0)
@@ -87,69 +81,33 @@ var Player = me.ObjectEntity.extend(
         this.gunPos = this.pos;
         }
 
-	//Make sure the player moves at the correct speed
-	this.setVelocity(1.5, 1.5);
+        //Make sure the player moves at the correct speed
+        this.setVelocity(1.5, 1.5);
                 
         return this.doUpdate;
     },
 
     onHit: function(obj)
     {
-	if(!this.alive)
-	    return true;
-	
-	if(obj.name === "health")
-	{
-	    this._doHealth(obj.healthPoints);
-	}
-	else if(obj.name === "waterspill")
-	{
-	    this.setVelocity(0.5, 0.5);
-	}
-	else if(obj.name === "bullet")
-	{
-	    return false;
-	}
-	else if(obj.name === "soda")
-	{
-	    this._doDamage(obj.damage);
-	    return true;
-	}
-	else
-	{
-	    this._doDamage(obj.damage);
-	}
-
-	/*
-	switch (obj.name)
-	{
-	case "soda":
-	    //TODO SOUND
-	    this._doDamage(obj.damage);
-	    return true;
-	case "chair":
-	    //TODO SOUND
-	    this._doDamage(obj.damage);
-	    break;
-	case "table":
-	    //TODO SOUND
-	    this._doDamage(obj.damage);
-	    break;
-	case "computer":
-	    //TODO SOUND
-	    this._doDamage(obj.damage);
-	    break;
-	case "waterspill":
-	    this.setVelocity(0.5, 0.5);
-	    break
-        case "health":
-            //TODO SOUND
+        if(!this.alive)
+            return true;
+        
+        //Check for the differnt types of objects that could collide
+        if(obj.name === "health") //Heal player
             this._doHealth(obj.healthPoints);
-            break;
-	default:
-	    return false;
-	}
-	*/
+        else if(obj.name === "waterspill") //Slow player
+            this.setVelocity(0.5, 0.5);
+        else if(obj.name === "bullet") //Ignore bullets
+            return false;
+        else if(obj.name === "soda") //Absorb
+        {
+            this._doDamage(obj.damage);
+            return true;
+        }
+        else
+            this._doDamage(obj.damage);
+        
+        return false;
     },
 
     _steer: function()
@@ -248,28 +206,28 @@ var Player = me.ObjectEntity.extend(
 
     _doDamage: function(damage)
     {
-	me.audio.play("player_hit");
+        me.audio.play("player_hit");
         this.health -= damage;
-	
-	    this.flicker(30);
+        
+            this.flicker(30);
 
-	/*
         if(this.health <= 0)
         {
             this.setCurrentAnimation('die');
             this.alive = false;
-	    setTimeout(function(){me.state.change(me.state.GAMEOVER)}, 2000)
+            setTimeout(function(){me.state.change(me.state.GAMEOVER)}, 2000)
         }
-	*/
-
+        
+        //HUD is broken
         //me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
     },
 
     _doHealth: function(health)
     {
-	me.audio.play("heal");
+        me.audio.play("heal");
         this.health += health;
-
+        
+        //HUD is broken
         //me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
     }
 });

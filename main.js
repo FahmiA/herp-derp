@@ -1,12 +1,3 @@
-/*!
- * 
- *   melonJS
- *   http://www.melonjs.org
- *                
- *   Step by step game creation tutorial
- *
- **/
-
 // game resources
 var g_resources= [
 {
@@ -125,25 +116,25 @@ var jsApp =
         // Load everything & display a loading screen
         me.state.change(me.state.LOADING);
 
+        //For Debugging
         //me.debug.renderHitBox = true;
     },
 
 
     /** Callback when everything is loaded. */
     loaded: function ()
-    {	
+    {   
         // Set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new PlayScreen());
 
-	//Set end game screen
-	me.state.set(me.state.SCORE, new VictoryScreen());
+        //Set end game screen
+        me.state.set(me.state.SCORE, new VictoryScreen());
 
-	//Set death screen
-	me.state.set(me.state.GAMEOVER, new DeathScreen());
-	
-	//Set title screen state
-   	me.state.set(me.state.MENU, new TitleScreen());
-
+        //Set death screen
+        me.state.set(me.state.GAMEOVER, new DeathScreen());
+        
+        //Set title screen state
+        me.state.set(me.state.MENU, new TitleScreen());
 
         // Add entities
         me.entityPool.add('player', Player);
@@ -173,10 +164,10 @@ var TitleScreen = me.ScreenObject.extend(
         {
             this.parent(true);
             this.background = null;
-	    
-	    this.screen = 0;
+            
+            this.screen = 0;
 
-	    me.audio.playTrack("intro");
+            me.audio.playTrack("intro");
         },
         
         onResetEvent: function()
@@ -193,14 +184,14 @@ var TitleScreen = me.ScreenObject.extend(
             //Check if enter has been pressed
             if (me.input.isKeyPressed('enter'))
             {
-		if(this.screen == 0)
-		    this.background = me.loader.getImage("title_screen");
-		else if(this.screen == 1)
-		    this.background = me.loader.getImage("level_screen");
-		else
+                if(this.screen == 0)
+                    this.background = me.loader.getImage("title_screen");
+                else if(this.screen == 1)
+                    this.background = me.loader.getImage("level_screen");
+                else
                     me.state.change(me.state.PLAY);
 
-		this.screen++;
+                this.screen++;
             }
             return true;
         },
@@ -213,9 +204,9 @@ var TitleScreen = me.ScreenObject.extend(
         onDestroyEvent: function()
         {
             //Destroy the audio
-	    me.audio.stopTrack();
+            me.audio.stopTrack();
 
-	    this.screen = 0;
+            this.screen = 0;
 
             //Unbind enter key
             me.input.unbindKey(me.input.KEY.ENTER);
@@ -238,7 +229,7 @@ var PlayScreen = me.ScreenObject.extend(
         // Make sure everything is in the right order
         me.game.sort();
 
-	    me.audio.playTrack("main");
+            me.audio.playTrack("main");
     },
 
 
@@ -246,7 +237,7 @@ var PlayScreen = me.ScreenObject.extend(
     onDestroyEvent: function()
     {
         //me.game.disableHUD();
-	me.audio.stopTrack();
+        me.audio.stopTrack();
     }
 });
 
@@ -293,7 +284,7 @@ var VictoryScreen = me.ScreenObject.extend(
 
 var DeathScreen = me.ScreenObject.extend(
     {
-	init: function()
+        init: function()
         {
             this.parent(true);
             this.deathground = null;
