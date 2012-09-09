@@ -211,7 +211,7 @@ var Table = ChasingEnemy.extend(
         this.parent(x, y, settings, settings.width * 3, true, 1);
 
         // Set animations
-        this.addAnimation('move', [24, 25, 26]);
+        this.addAnimation('move', [32, 33]);
         this.addAnimation('stay', [144]);
         this.addAnimation('die', [132]);
         this.setCurrentAnimation('stay');
@@ -441,5 +441,14 @@ var Watercooler = Enemy.extend(
             // Forget the player exists
             this.target = null; 
         }
+    }
+});
+
+/** Dumb Object */
+var DumObject = me.ObjectEntity.extend(
+{
+    init: function(x, y, settings)
+    {
+        this.parent(x, y, settings);
     }
 });

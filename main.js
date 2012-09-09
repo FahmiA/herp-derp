@@ -44,7 +44,7 @@ var g_resources= [
     name: 'area01',
     type: 'tmx',
     //src: 'data/aniTest.tmx'
-    src: 'data/testlevel.tmx'
+    src: 'data/floor1.tmx'
 }, {
     //Presents screen image
     name: "presents_screen",
@@ -154,6 +154,8 @@ var jsApp =
         me.entityPool.add('vender', Vender);
         me.entityPool.add('watercooler', Watercooler);
         me.entityPool.add('health', Health);
+
+        me.entityPool.add('paperbin', DumObject);
 
         // Start the game 
         me.state.change(me.state.MENU);
