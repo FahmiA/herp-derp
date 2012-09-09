@@ -156,6 +156,7 @@ var jsApp =
         me.entityPool.add('health', Health);
 
         me.entityPool.add('paperbin', DumObject);
+        me.entityPool.add('d', DumObject);
 
         // Start the game 
         me.state.change(me.state.MENU);
