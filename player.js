@@ -110,6 +110,11 @@ var Player = me.ObjectEntity.extend(
 	{
 	    return false;
 	}
+	else if(obj.name === "soda")
+	{
+	    this._doDamage(obj.damage);
+	    return true;
+	}
 	else
 	{
 	    this._doDamage(obj.damage);
@@ -243,34 +248,28 @@ var Player = me.ObjectEntity.extend(
 
     _doDamage: function(damage)
     {
-        console.log("You take " + damage + " damage.");
-	    me.audio.play("player_hit");
+	me.audio.play("player_hit");
         this.health -= damage;
 	
 	    this.flicker(30);
 
+	/*
         if(this.health <= 0)
         {
-            console.log("Death stalks you...")
             this.setCurrentAnimation('die');
             this.alive = false;
 	    setTimeout(function(){me.state.change(me.state.GAMEOVER)}, 2000)
         }
+	*/
 
-        me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
+        //me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
     },
 
     _doHealth: function(health)
     {
-        console.log("You take " + health + " health points.");
-	    me.audio.play("heal");
+	me.audio.play("heal");
         this.health += health;
 
-        if(this.health >= 100)
-        {
-            console.log("You have full health");
-        }
-
-        me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
+        //me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
     }
 });

@@ -229,9 +229,8 @@ var PlayScreen = me.ScreenObject.extend(
         me.levelDirector.loadLevel('area01');
 
 
-        me.game.addHUD(0, 0, windowSize, 32);
-        me.game.HUD.addItem('hudHealth', new HUDHealth(me.game.viewport.pos.x,
-                                                      me.game.viewport.pos.y));
+        //me.game.addHUD(0, 0, windowSize, 32);
+        //me.game.HUD.addItem('hudHealth', new HUDHealth(me.game.viewport.pos.x,                                                     me.game.viewport.pos.y));
 
         // Make sure everything is in the right order
         me.game.sort();
@@ -243,8 +242,8 @@ var PlayScreen = me.ScreenObject.extend(
     /** Action to perform when game is finished (state change) */
     onDestroyEvent: function()
     {
-        me.game.disableHUD();
-	    me.audio.stopTrack();
+        //me.game.disableHUD();
+	me.audio.stopTrack();
     }
 });
 
