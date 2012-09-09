@@ -102,7 +102,7 @@ var Soda = Projectile.extend({
 
         this.updateColRect(8, 16, 8, 16);
 
-        this.setVelocity(0.5, 0.5);
+        this.setVelocity(2, 2);
 	this.damage = 20; //One Donut
     },
 });

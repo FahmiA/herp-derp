@@ -331,7 +331,7 @@ var Vender = Enemy.extend(
 {
     init:  function(x, y, settings)
     {
-        this.parent(x, y, settings, settings.width * 4, true);
+        this.parent(x, y, settings, settings.width * 7, true);
 
         var aniIndex = Math.floor(Math.random() * 2);
         if(aniIndex == 0)
