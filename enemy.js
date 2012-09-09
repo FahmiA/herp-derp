@@ -142,13 +142,13 @@ var ChasingEnemy = Enemy.extend(
         var res = me.game.collide(this);
         if (res != null)
         {   
-            if (res.obj.name == "player" && !this.delayNextHit);
+            if (res.obj.name === "player" && !this.delayNextHit)
 	    {
 		if (typeof(res.obj.onHit) == 'function')
                     res.obj.onHit(this);
 		
 		this.delayNextHit = true;
-
+		
 		//Have the enemy react
 		var toss = getPoint(this.pos , this.aim, this.bounce);
 		tween = new me.Tween(this.pos)
