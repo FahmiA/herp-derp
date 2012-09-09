@@ -35,6 +35,11 @@ var g_resources= [
     type: 'image',
     src: 'data/art/COLLIDERS.png'
 }, {
+    // HUD health icon
+    name: 'hud_health',
+    type: 'image',
+    src: 'data/ui/HP.png'
+}, {
     // Level 1
     name: 'area01',
     type: 'tmx',
@@ -194,8 +199,9 @@ var PlayScreen = me.ScreenObject.extend(
         // Load a level
         me.levelDirector.loadLevel('area01');
 
-        me.game.addHUD(0, 0, windowSize, windowSize);
-        me.game.HUD.addItem('hudHealth', HUDHealth);
+        console.debug('yay');
+        me.game.addHUD(70, windowSize - 100, windowSize, 32);
+        me.game.HUD.addItem('hudHealth', new HUDHealth(0, 0));
 
         // Make sure everything is in the right order
         me.game.sort();
