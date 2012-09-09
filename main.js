@@ -38,18 +38,43 @@ var g_resources= [
     // Level 1
     name: 'area01',
     type: 'tmx',
-    //src: 'data/aniTest.tmx'
-    src: 'data/testlevel.tmx'
+    src: 'data/aniTest.tmx'
+    //src: 'data/testlevel.tmx'
 }, {
     //Title screen image
     name: "title_screen",
     type: "image",
     src:  "data/art/title.png"
+}, {
+    name: "computer_timer", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "elevator", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "enemy_hit", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "heal", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "pistol", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "player_hit", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "powerup", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "table_step", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "vender_explosion", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "vender_fire", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "watercooler_bloop", type: "audio", src: "data/sfx/", channel: 1
+}, {
+    name: "intro", type: "audio", src: "data/sfx/mus/", channel: 2
+}, {
+    name: "main", type: "audio", src: "data/sfx/mus/", channel: 2
 }
 ];
 
-
-var jsApp        = 
+var jsApp = 
 {        
     /** Initialize the jsApp */
     onload: function()
@@ -63,7 +88,7 @@ var jsApp        =
         }
 
         // Initialize the background audio
-        //me.audio.init("mp3,ogg");
+        me.audio.init("ogg");
 
         // Set all resources to be loaded
         me.loader.onload = this.loaded.bind(this);
@@ -121,6 +146,8 @@ var TitleScreen = me.ScreenObject.extend(
         {
             this.parent(true);
             this.background = null;
+
+	    me.audio.playTrack("intro");
         },
         
         onResetEvent: function()
@@ -130,8 +157,6 @@ var TitleScreen = me.ScreenObject.extend(
             //Bind enter key
             me.input.bindKey(me.input.KEY.ENTER, "enter", true);
             me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.ENTER);
-
-	    //me.video.scale(me.video.getScreenFrameBuffer(), 0.5);
         },
         
         update: function()
@@ -151,7 +176,8 @@ var TitleScreen = me.ScreenObject.extend(
 
         onDestroyEvent: function()
         {
-            //Destroy the image
+            //Destroy the audio
+	    me.audio.stopTrack();
 
             //Unbind enter key
             me.input.unbindKey(me.input.KEY.ENTER);
@@ -169,13 +195,15 @@ var PlayScreen = me.ScreenObject.extend(
 
         // Make sure everything is in the right order
         me.game.sort();
+
+	me.audio.playTrack("main");
     },
 
 
     /** Action to perform when game is finished (state change) */
     onDestroyEvent: function()
     {
-        
+	me.audio.stopTrack();
     }
 });
 

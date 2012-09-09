@@ -1,35 +1,20 @@
 
 Features
 -------
-Bullets working again - Dan, DONE
-Some enemies evil - Fahmi, DONE
-Animation - Fahmi, DONE
-Player shoot damage - Dan, 
-Can move through walls - Fahmi,  DONE
-Vending machine - Fahmi and Dan
-    Shoots player - DONE
-    Can kill player - DONE
-    Animation - DONE
-watercooler - Fahmi - DONE
-    - Watercooler continues spill water even when player is away, Fahmi - DONE
-audio - Nick
-Vender aiming bug - Fahmi/Dan - DONE
+audio - Nick/Dan - DONE
 Game screens - Nick
-Novel enemy behaviour - Dan
-Donuts - Fahmi - DONE
+Novel enemy behaviour - Dan - KINDA DONE
+Gun fire flash
 New map + black borders
-Enemy Deadstates
+HUD
 Game Tweaking
      - Player health/enemy damage
      - Enemy health/player damage
-     - Non-evil - more hitpoints
+     - Non-evil - more hitpoints - Fahmi - Done
 Armour
 AI tweaking
     - Path finding + deviation
 
 Known Bugs
 ---------
-Destroy cans on player hit - Dan - DONE
-Computer animation - Fahmi -DONE
 Player Speed on diagonals - Fahmi
-Viewport Deadzone - Dan - DONE

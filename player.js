@@ -8,11 +8,13 @@ var Player = me.ObjectEntity.extend(
         this.collidable = true;
         this.type = 'player';
 
+	//Hacky fix stuff
         this.anchorPoint = new me.Vector2d(this.width/2, this.height/2);
-	this.toss = new me.Vector2d(0,0);
+	//this.toss = new me.Vector2d(0,0);
+	this.slow = new me.Vector2d(1, 1);
         
         // Set the default horizontal & vertical speed (accel vector)
-        this.setVelocity(1.5, 1.5);
+        //this.setVelocity(1.5, 1.5); //Set at end of update now
         this.gravity = 0; // 0 as this is a top-down, not a platformer
 
         this.aim = 0;
@@ -63,9 +65,9 @@ var Player = me.ObjectEntity.extend(
             this.parent(this);
             return true;
         }
-
-        //Check player controls
-        this._steer();
+	
+	//Check keyboard movement
+	this._steer();
 
         // Update animation if necessary
         if (this.vel.x != 0 || this.vel.y != 0)
@@ -80,6 +82,9 @@ var Player = me.ObjectEntity.extend(
         {
             this._fireWeapon();    
         }
+
+	//Make sure the player moves at the correct speed
+	this.setVelocity(1.5, 1.5);
                 
         return this.doUpdate;
     },
@@ -87,7 +92,7 @@ var Player = me.ObjectEntity.extend(
     onHit: function(obj)
     {
 	if(!this.alive)
-	    return;	
+	    return;
 
 	switch (obj.name)
 	{
@@ -108,25 +113,22 @@ var Player = me.ObjectEntity.extend(
 	    break;
 	case "table":
 	    //TODO SOUND
+	    var toss = getPoint(obj.pos , obj.aim, -15);
+	    tween = new me.Tween(obj.pos)
+	    tween.to({x: toss.x, 
+		      y: toss.y},
+		    500);
+	    tween.easing(me.Tween.Easing.Cubic.EaseOut);
+	    tween.start();
 	    this._doDamage(obj.damage);
 	    break;
 	case "computer":
 	    //TODO SOUND
 	    this._doDamage(obj.damage);
-	    
-	    //Throw player slightly
-	    //var aim = Math.atan2(this.pos.y - obj.pos.y,
-	    //this.pos.x - obj.pos.x);
-
-	    var toss = getPoint(obj.pos , obj.aim, 70);
-	    tween = new me.Tween(this.pos)
-	    tween.to({x: toss.x, 
-		      y: toss.y},
-		    500);
-	    tween.easing(me.Tween.Easing.Linear.EaseNone);
-	    tween.start();
-
 	    break;
+	case "waterspill":
+	    this.setVelocity(0.5, 0.5);
+	    break
         case "health":
             //TODO SOUND
             this._doHealth(obj.healthPoints);
@@ -210,7 +212,7 @@ var Player = me.ObjectEntity.extend(
     _fireWeapon: function()
     {
         //Fire mah lazer
-        //TODO SOUND
+        me.audio.play("pistol");
 
         //Create a bullet
 	var bullet = new Bullet(
@@ -224,7 +226,10 @@ var Player = me.ObjectEntity.extend(
     _doDamage: function(damage)
     {
         console.log("You take " + damage + " damage.");
+	me.audio.play("player_hit");
         this.health -= damage;
+	
+	this.flicker(30);
 
         if(this.health <= 0)
         {
@@ -238,6 +243,7 @@ var Player = me.ObjectEntity.extend(
     _doHealth: function(health)
     {
         console.log("You take " + health + " health points.");
+	me.audio.play("heal");
         this.health += health;
 
         if(this.health >= 100)
