@@ -35,11 +35,16 @@ var g_resources= [
     type: 'image',
     src: 'data/art/COLLIDERS.png'
 }, {
+    // HUD health icon
+    name: 'hud_health',
+    type: 'image',
+    src: 'data/ui/HP.png'
+}, {
     // Level 1
     name: 'area01',
     type: 'tmx',
-    src: 'data/aniTest.tmx'
-    //src: 'data/testlevel.tmx'
+    //src: 'data/aniTest.tmx'
+    src: 'data/testlevel.tmx'
 }, {
     //Presents screen image
     name: "presents_screen",
@@ -94,13 +99,15 @@ var g_resources= [
 }
 ];
 
+var windowSize = 448;
+
 var jsApp = 
 {        
     /** Initialize the jsApp */
     onload: function()
     {
         // Init the video
-        if (!me.video.init('jsapp', 448, 448, false, 1.0))
+        if (!me.video.init('jsapp', windowSize, windowSize, false, 1.0))
         {
             alert("Sorry but your browser does not support html 5 canvas.");
             return;
@@ -221,17 +228,23 @@ var PlayScreen = me.ScreenObject.extend(
         // Load a level
         me.levelDirector.loadLevel('area01');
 
+
+        me.game.addHUD(0, 0, windowSize, 32);
+        me.game.HUD.addItem('hudHealth', new HUDHealth(me.game.viewport.pos.x,
+                                                      me.game.viewport.pos.y));
+
         // Make sure everything is in the right order
         me.game.sort();
 
-	me.audio.playTrack("main");
+	    me.audio.playTrack("main");
     },
 
 
     /** Action to perform when game is finished (state change) */
     onDestroyEvent: function()
     {
-	me.audio.stopTrack();
+        me.game.disableHUD();
+	    me.audio.stopTrack();
     }
 });
 
