@@ -452,3 +452,29 @@ var DumObject = me.ObjectEntity.extend(
         this.parent(x, y, settings);
     }
 });
+
+/** Dumb Object */
+var Elevator = me.ObjectEntity.extend(
+{
+    init: function(x, y, settings)
+    {
+        this.parent(x, y, settings);
+	this.collidable = true;
+    },
+
+    update: function()
+    {
+	this.parent();
+	
+	var res = me.game.collide(this);
+	if(res != null)
+	{
+	    console.log(res.obj.name);
+	    if(res.obj.name === "player")
+	    {
+		me.audio.play("elevator");
+		me.state.change(me.state.SCORE);
+	    }
+	}
+    }
+});

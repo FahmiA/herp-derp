@@ -145,6 +145,7 @@ var jsApp =
         me.entityPool.add('vender', Vender);
         me.entityPool.add('watercooler', Watercooler);
         me.entityPool.add('health', Health);
+	me.entityPool.add('elevator', Elevator);
 
         me.entityPool.add('paperbin', DumObject);
         me.entityPool.add('d', DumObject);
