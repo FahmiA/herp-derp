@@ -430,9 +430,7 @@ var Watercooler = Enemy.extend(
                 for(var y = minY; y <= maxY; y += 32)
                 {
                     if(!(x == this.pos.x && y == this.pos.y))
-                        me.game.add(new WaterSpill(x, y, settings), this.z + 1);
-                    else
-                        console.log(x, y, this.pos);
+                        me.game.add(new WaterSpill(x, y, settings), this.z);
                 }
             }
             me.audio.play("watercooler_bloop");

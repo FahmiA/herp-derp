@@ -4,7 +4,7 @@ var Player = me.ObjectEntity.extend(
     init: function(x, y, settings)
     {
         this.parent(x, y, settings);
-            this.map = new me.Vector2d(settings.x, settings.y);
+        this.map = new me.Vector2d(settings.x, settings.y);
         this.collidable = true;
         this.type = 'player';
 
@@ -55,7 +55,7 @@ var Player = me.ObjectEntity.extend(
     update: function()
     {
         this.doUpdate = false;
-
+	
         //Check if player is still alive
         if(!this.alive)
         {
@@ -72,13 +72,13 @@ var Player = me.ObjectEntity.extend(
             // Update object animation
             this.parent(this);
             this.doUpdate = true;
-        }
+	}
 
         //Player shooting
         if(me.input.isKeyPressed('shoot'))
         {
             this._fireWeapon();    
-        this.gunPos = this.pos;
+            this.gunPos = this.pos;
         }
 
         //Make sure the player moves at the correct speed

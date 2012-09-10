@@ -137,7 +137,6 @@ var jsApp =
         me.state.set(me.state.MENU, new TitleScreen());
 
         // Add entities
-        me.entityPool.add('player', Player);
         me.entityPool.add('table', Table);
         me.entityPool.add('computer', Computer);
         me.entityPool.add('chair', Chair);
@@ -146,6 +145,7 @@ var jsApp =
         me.entityPool.add('watercooler', Watercooler);
         me.entityPool.add('health', Health);
 	me.entityPool.add('elevator', Elevator);
+	me.entityPool.add('player', Player);
 
         me.entityPool.add('paperbin', DumObject);
         me.entityPool.add('d', DumObject);
