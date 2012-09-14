@@ -10,6 +10,7 @@ var Player = me.ObjectEntity.extend(
 
         this.anchorPoint = new me.Vector2d(this.width/2, this.height/2);
         this.gravity = 0; // 0 as this is a top-down, not a platformer
+        this.z = 10;
         
         //Some defaults
         this.aim = 0;
@@ -55,6 +56,7 @@ var Player = me.ObjectEntity.extend(
     update: function()
     {
         this.doUpdate = false;
+        this.z = 10; // Force player to be on top
 	
         //Check if player is still alive
         if(!this.alive)
