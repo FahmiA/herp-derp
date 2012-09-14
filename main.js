@@ -105,7 +105,7 @@ var jsApp =
         }
 
         // Initialize the background audio
-        me.audio.init("ogg");
+        me.audio.init("mp3,ogg");
 
         // Set all resources to be loaded
         me.loader.onload = this.loaded.bind(this);
