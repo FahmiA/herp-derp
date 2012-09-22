@@ -220,8 +220,8 @@ var Player = me.ObjectEntity.extend(
             setTimeout(function(){me.state.change(me.state.GAMEOVER)}, 2000)
         }
         
-        //HUD is broken
-        //me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
+        //Update the HUD
+        me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
     },
 
     _doHealth: function(health)
@@ -229,7 +229,7 @@ var Player = me.ObjectEntity.extend(
         me.audio.play("heal");
         this.health += health;
         
-        //HUD is broken
-        //me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
+        //Update the HUD
+        me.game.HUD.setItemValue('hudHealth', this.health / 100.0);
     }
 });

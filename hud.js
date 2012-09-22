@@ -1,23 +1,16 @@
 /** Heads Up Display (HUD) */
 var HUDHealth = me.HUD_Item.extend(
 {
-    init: function(x, y)
+    init: function()
     {
-        this.parent(x, y);
-
+        this.parent(0, 0);
 
         this.healthPercent = 1.0;
-        this.icons = [];
         this.iconCount = 5;
-        this.value = 1
+        this.value = 1;
         
         var image = me.loader.getImage('hud_health');
-        for(var i = 0; i < this.iconCount; i++)
-        {
-            // 37 = sprite width (32) + gap (5)
-            var newIcon = new me.SpriteObject(x + (i * 37), y, image, 32, 32);
-            this.icons.push(newIcon);
-        }
+        this.icon = new me.SpriteObject(0, 0, image, 32, 32);
     },
 
     update: function()
@@ -28,12 +21,20 @@ var HUDHealth = me.HUD_Item.extend(
 
     draw: function(context)
     {
+        // Get the number of icons to show
         var iconsToShow = this._getIconsLeft();
-        if(iconsToShow < 1 && this.value > 0)
+        if(iconsToShow < 1 && this.value > 0.001)
             iconsToShow = 1;
+
+        // Draw the number of icons required
         for(var i = 0; i < iconsToShow; i++)
         {
-            this.icons[i].draw(context);
+            // Update the position of the icon to stay on the screen
+            this.icon.pos.x = me.game.viewport.pos.x + (i * 37);
+            this.icon.pos.y = me.game.viewport.pos.y;
+
+            // Draw the icon
+            this.icon.draw(context);
         }
     },
 
@@ -44,7 +45,6 @@ var HUDHealth = me.HUD_Item.extend(
         percentage = Math.max(0.0, percentage);
         percentage = Math.min(1.0, percentage);
 
-        console.log("Printing ", percentage * this.iconCount);
         return percentage * this.iconCount;
     }
 });
