@@ -114,34 +114,43 @@ var Player = me.ObjectEntity.extend(
 
     _steer: function()
     {
-        var moveX = 0;
-        var moveY = 0;
-        var speedX = this.accel.x * me.timer.tick;
-        var speedY = this.accel.y * me.timer.tick;
+        var doMoveX = 0; // -1 = Left, 0 = Idle, 1 = Right
+        var doMoveY = 0; // -1 = Up, 0 = Idle, 1 = Down
 
         // Player movement
         if(me.input.isKeyPressed('left')) {
-            moveX = -speedX;
+            doMoveX = -1;
         }else if(me.input.isKeyPressed('right')) {
-            moveX = speedX;
+            doMoveX = 1;
         }
 
         if(me.input.isKeyPressed('up')) {
-            moveY = -speedY;
+            doMoveY = -1;
         }else if(me.input.isKeyPressed('down')) {
-            moveY = speedY;
+            doMoveY = 1;
         }
         
         //Ensure travel speed is constant
-        var dist = Math.sqrt(Math.pow(moveX, 2) + Math.pow(moveY, 2));
+        var moveX = 0;
+        var moveY = 0;
+        var speed = this.accel.x * me.timer.tick;
+        if(moveX != 0 && moveY != 0)
+        {
+            var dist = Math.sqrt(Math.pow(speed, 2) / 2.0);
+            moveX = dist * doMoveX;
+            moveY = dist * doMoveY;
+        }else{
+            moveX = speed * doMoveX;
+            moveY = speed * doMoveY;
+        }
         
         if (moveX != 0)
-            this.vel.x += moveX/dist;
+            this.vel.x += moveX;
         else
             this.vel.x = 0;
 
         if (moveY != 0)
-            this.vel.y += moveY/dist;
+            this.vel.y += moveY;
         else
             this.vel.y = 0;
 

@@ -1,10 +1,9 @@
 Features
 -------
-HUD - Partial, bug with updating value
 Armour - Partial, assets exist
 AI tweaking
     - Path finding + deviation
 
 Known Bugs
 ---------
-Player Speed on diagonals
+Enemy Speed on diagonals
